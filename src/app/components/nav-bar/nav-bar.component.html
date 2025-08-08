@@ -1,0 +1,17 @@
+<nav class="bg-gray-800 px-6 py-4 flex items-center justify-between shadow-lg">
+    <a [routerLink]="['/']" class="flex items-center">
+        <img src="logos/logoBlanc.png" alt="Logo" class="w-16 mr-4">
+        <span class="text-2xl font-bold text-white tracking-wide">
+            Liv&Co
+        </span>
+    </a>
+
+    <div class="w-4/6 flex justify-end">
+        <ul class="w-full flex justify-evenly">
+            <li>
+                <a [routerLink]="['contact']"
+                    class="inline-block transform text-white font-bold uppercase tracking-wide hover:text-slate-400 hover:scale-125 transition-all duration-500">Contact</a>
+            </li>
+        </ul>
+    </div>
+</nav>
