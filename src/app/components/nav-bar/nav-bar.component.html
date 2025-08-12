@@ -1,16 +1,36 @@
-<nav class="bg-gray-800 px-6 py-4 flex items-center justify-between shadow-lg">
-    <a [routerLink]="['/']" class="flex items-center">
-        <img src="logos/logoBlanc.png" alt="Logo" class="w-16 mr-4">
-        <span class="text-2xl font-bold text-white tracking-wide">
+<nav class="px-6 py-3 flex items-center justify-between shadow-lg">
+    <a [routerLink]="['/']" class="flex items-center transform mx-4 tracking-wide hover:text-slate-400 hover:scale-110 transition-all duration-500">
+        <img src="logos/logoVert.png" alt="Logo" class="w-14 mr-3">
+        <span class="text-2xl font-medium text-[1.1rem]">
             Liv&Co
         </span>
     </a>
 
     <div class="w-4/6 flex justify-end">
-        <ul class="w-full flex justify-evenly">
+        <ul class="w-full flex justify-evenly items-center">
+            <li>
+                <a [routerLink]="['/']"
+                    class="nav-link">Home</a>
+            </li>
             <li>
                 <a [routerLink]="['contact']"
-                    class="inline-block transform text-white font-bold uppercase tracking-wide hover:text-slate-400 hover:scale-125 transition-all duration-500">Contact</a>
+                    class="nav-link">Annonces</a>
+            </li>
+            <li>
+                <a [routerLink]="['contact']"
+                    class="nav-link">Aide</a>
+            </li>
+            <li>
+                <a [routerLink]="['contact']"
+                    class="nav-link">Contact</a>
+            </li>
+            <li>
+                <a [routerLink]="['contact']"
+                    class="main-button">Déposer
+                    une annonce</a>
+            </li>
+            <li>
+                <a [routerLink]="['contact']"><img class="nav-link w-10"  src="/icons/login-green.svg" alt="symbole de connexion"></a>
             </li>
         </ul>
     </div>

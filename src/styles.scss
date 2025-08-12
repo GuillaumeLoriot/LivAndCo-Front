@@ -2,14 +2,64 @@
 
 :root {
     --color-primary: #064749;
-    --color-secondary: #E2F1E8;
+    --color-secondary: #c6d7cd;
     --color-secondary-button: #52725C;
-    --color-secondary-card: #F2F0F2;
-    --color-text: #181818;
-    --color-background: #e7e7e7;
+    --color-secondary-card: #c6c6c6;
+    --color-text: #282828;
+    --color-background: #f6f6f6;
 }
 
-body{
-    font-family: Verdana, sans-serif;
+body {
+    font-family: sans-serif, Verdana;
     background-color: var(--color-background);
+}
+
+nav {
+    background-color: var(--color-background);
+}
+
+nav .nav-link {
+    @apply inline-block transform text-[1.1rem] font-medium mx-4 tracking-wide hover:text-slate-400 hover:scale-125 transition-all duration-500;
+}
+
+h1 {
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: var(--color-text);
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--color-text);
+}
+
+h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--color-text);
+    margin: 0.5rem 0 0.5rem;
+}
+
+.main-button {
+    display: inline-block;
+    background-color: var(--color-primary);
+    font-size: 1.1rem;
+    color: var(--color-background) !important;
+    padding: 0.5rem 1rem;
+    border-radius: 1.1rem;
+    transition: all 150ms ease-out;
+}
+
+.main-button:hover {
+    background-color: var(--color-secondary-button);
+}
+
+.main-button:active {
+    transform: scale(0.95);
+}
+
+footer {
+    background-color: var(--color-background);
+    color: var(--color-text);
 }
