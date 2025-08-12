@@ -1,2 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
+
+:root {
+    --color-primary: #064749;
+    --color-secondary: #E2F1E8;
+    --color-secondary-button: #52725C;
+    --color-secondary-card: #F2F0F2;
+    --color-text: #181818;
+    --color-background: #e7e7e7;
+}
+
+body{
+    font-family: Verdana, sans-serif;
+    background-color: var(--color-background);
+}
