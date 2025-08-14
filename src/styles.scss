@@ -41,6 +41,10 @@ h3 {
     margin: 0.5rem 0 0.5rem;
 }
 
+.white {
+    color: var(--color-background);
+}
+
 .main-button {
     display: inline-block;
     background-color: var(--color-primary);
@@ -56,6 +60,25 @@ h3 {
 }
 
 .main-button:active {
+    transform: scale(0.95);
+}
+
+.square-button {
+    display: inline-block;
+    background-color: var(--color-primary);
+    font-size: 1.1rem;
+    color: var(--color-background) !important;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 150ms ease-out;
+}
+
+.square-button:hover {
+    background-color: var(--color-secondary-button);
+    cursor: pointer;
+}
+
+.square-button:active {
     transform: scale(0.95);
 }
 

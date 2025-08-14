@@ -6,12 +6,12 @@
     height: 85vh;
 }
 
-#hero-card{
+#hero-card {
     background-color: var(--color-background);
 }
 
 #teaser {
-    background-image: url('/illustrations/teaser-1.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/illustrations/teaser-1.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -26,9 +26,14 @@
     height: 70vh;
 }
 
+.teaser-card {
+    background-color: var(--color-background);
+    border-radius: 40px 40px 40px 10px;
+    padding: 2rem;
+}
+
 .basic-card {
     background-color: var(--color-secondary);
     border-radius: 20px;
     padding: 2rem;
-    // @apply text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl;
 }

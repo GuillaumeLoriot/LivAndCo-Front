@@ -16,7 +16,8 @@
             </div>
             <div class="flex flex-col justify-center items-center w-1/2">
                 <h2 class="w-3/4">The future is nomad</h2>
-                <p class="w-3/4">Nous croyons en un monde où le partage d'un logement crée des liens authentiques. Que vous soyez
+                <p class="w-3/4">Nous croyons en un monde où le partage d'un logement crée des liens authentiques. Que
+                    vous soyez
                     freelance, en
                     découverte d'une nouvelle ville ou en quête d'inspiration, apportez simplement votre passion, et
                     nous nous occupons du
@@ -25,7 +26,8 @@
         </div>
         <div class="flex flex-col items-center w-1/2 mt-28 mb-16">
             <h2>Tout votre confort, d'un simple clic</h2>
-            <p class="text-center">Posez vos valises et profitez d'espaces design, de services inclus et d'une communauté vibrante — on
+            <p class="text-center">Posez vos valises et profitez d'espaces design, de services inclus et d'une
+                communauté vibrante — on
                 s'occupe de tout,
                 vous n'avez plus qu'à vivre.</p>
         </div>
@@ -56,31 +58,56 @@
     <section id="random-announcements" class="">
 
     </section>
-    <section id="teaser" class="">
-        <div>
-            <h2></h2>
-            <button></button>
+    <section id="teaser" class="flex items-center">
+        <div class="w-1/3 ml-[50%]">
+            <h2 class="white">Des espaces d'exception</h2>
+            <p class="white mb-7">Chaque logement répond aux normes d'excellence pour vous garantir une expérience
+                incomparable.</p>
+            <a [routerLink]="['contact']" class="main-button">Déposer une annonce</a>
         </div>
     </section>
-    <section id="partners" class="">
-        <h2></h2>
-        <p></p>
-        <ul>
-            <li>
-                <img src="" alt="">
-                <h3></h3>
-                <p></p>
+    <section id="partners" class="flex flex-col justify-center items-center w-full my-16">
+        <h2>Des partenaires impliqués</h2>
+        <p class="mb-16">Nous collaborons avec des partenaires soigneusement sélectionnés pour vous proposer des services
+            complémentaires
+            d'excellence.</p>
+        <ul class="flex justify-around">
+            <li class="basic-card w-1/4">
+                <img src="/icons/cleanning.svg" alt="icone d'un balai'">
+                <h3>Ménage premium</h3>
+                <p>Ne vous souciez plus du ménage, on s'occupe de tout</p>
+            </li>
+            <li class="basic-card w-1/4">
+                <img src="/icons/chef.svg" alt="icone d'une toque de chef">
+                <h3>Chef à domicile</h3>
+                <p>Envie d'un repas Gastronomique?</p>
+            </li>
+            <li class="basic-card w-1/4">
+                <img src="/icons/massage.svg" alt="icone d'un massage">
+                <h3>Massage</h3>
+                <p>Relaxez vous après une longue journée de travail</p>
             </li>
         </ul>
     </section>
-    <section id="reviews" class="">
+    <section id="reviews" class="flex flex-col items-center mb-16">
+        <div>
+            <h2 class="text-center">Échos de Résidents</h2>
+            <p class="text-center mb-16">Parcourez les avis de ceux qui ont déjà vécu l'aventure</p>
+        </div>
+        <div>
+
+        </div>
+        <div class="flex justify-between w-1/12">
+            <button class="square-button">◀</button>
+            <button class="square-button">▶</button>
+        </div>
 
     </section>
-    <section id="second-teaser" class="">
-        <div>
-            <h2></h2>
-            <p></p>
-            <button></button>
+    <section id="second-teaser" class="flex justify-center items-center">
+        <div class="teaser-card flex flex-col items-center max-w-3/12">
+            <h2>N'attendez plus</h2>
+            <p class="mb-7">Un simple clic vous ouvre les portes d'une expérience inoubliable</p>
+            <button class="main-button cursor-pointer">Choisissez une ville ▼</button>
         </div>
     </section>
 </main>
