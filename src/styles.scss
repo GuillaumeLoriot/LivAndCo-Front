@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import 'swiper/swiper-bundle.css';
 
 :root {
     --color-primary: #064749;
@@ -7,6 +8,8 @@
     --color-secondary-card: #c6c6c6;
     --color-text: #282828;
     --color-background: #f6f6f6;
+    --swiper-theme-color: var(--color-primary);
+    --swiper-navigation-color: var(--color-primary);
 }
 
 body {

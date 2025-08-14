@@ -1,3 +1,4 @@
+
 .review-card {
     background-color: var(--color-secondary-card);
     width: 23%;
@@ -13,32 +14,35 @@
 .slider{
     position: relative;
     width: 90%;
-    margin:auto;
+    margin: 0 auto 3rem;
     display: flex;
-    gap: 25px;
     justify-content: center;
     overflow: hidden;
 }
 
-.slider::before,
-.slider::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    width: 200px;
-    /* largeur de la zone de dégradé */
-    height: 100%;
-    pointer-events: none;
-    /* pour ne pas bloquer les clics */
-    z-index: 2;
-}
+// .slider::before,
+// .slider::after {
+//     content: "";
+//     position: absolute;
+//     top: 0;
+//     width: 200px;
+//     /* largeur de la zone de dégradé */
+//     height: 100%;
+//     pointer-events: none;
+//     /* pour ne pas bloquer les clics */
+//     z-index: 2;
+// }
 
-.slider::before {
-    left: 0;
-    background: linear-gradient(to right, var(--color-background), transparent);
-}
+// .slider::before {
+//     left: 0;
+//     background: linear-gradient(to right, var(--color-background), transparent);
+// }
 
-.slider::after {
-    right: 0;
-    background: linear-gradient(to left, var(--color-background), transparent);
+// .slider::after {
+//     right: 0;
+//     background: linear-gradient(to left, var(--color-background), transparent);
+// }
+
+.slider .swiper-wrapper {
+    justify-content: space-around;
 }

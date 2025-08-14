@@ -1,28 +1,27 @@
 <div class="slider">
-    @for (test of tests; track test) {
-        <article class="review-card">
-            <div class="flex mb-3">
-                <img src="/uploads/profile-pictures/profil.png" alt="photo de profil">
-                <hgroup class="pl-4">
-                    <h3>Nom</h3>
-                    <p>digital nomad</p>
-                </hgroup>
-            </div>
-            <div class="flex mb-5">
-                <img src="/icons/star.svg" alt="">
-                <img src="/icons/star.svg" alt="">
-                <img src="/icons/star.svg" alt="">
-                <img src="/icons/star.svg" alt="">
-                <img src="/icons/star.svg" alt="">
-            </div>
-            <p>“ceci est le commentaire de test test test test test test test test test test test testtest test test
-                test”</p>
-        </article>
+    <swiper-container slides-per-view="auto" space-between="25" navigation="true" loop="true" class="slider">
+        @for (test of tests; track test) {
+            <swiper-slide class="review-card">
 
-    }
+                    <div class="flex mb-3">
+                        <img src="/uploads/profile-pictures/profil.png" alt="photo de profil">
+                        <hgroup class="pl-4">
+                            <h3>Nom</h3>
+                            <p>digital nomad</p>
+                        </hgroup>
+                    </div>
+                    <div class="flex mb-5">
+                        <img src="/icons/star.svg" alt="">
+                        <img src="/icons/star.svg" alt="">
+                        <img src="/icons/star.svg" alt="">
+                        <img src="/icons/star.svg" alt="">
+                        <img src="/icons/star.svg" alt="">
+                    </div>
+                    <p>“ceci est le commentaire de test test test test test test test test test test test testtest test test
+                        test”</p>
 
-</div>
-<div class="flex justify-center m-10">
-    <button class="square-button">◀</button>
-    <button class="square-button">▶</button>
+            </swiper-slide>
+        }
+    </swiper-container>
+
 </div>
