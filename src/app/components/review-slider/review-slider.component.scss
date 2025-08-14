@@ -1,0 +1,44 @@
+.review-card {
+    background-color: var(--color-secondary-card);
+    width: 23%;
+        border-radius: 20px;
+        padding: 2rem;
+        flex-shrink: 0;
+}
+
+.review-card:nth-child(odd){
+    background-color: var(--color-secondary);
+}
+
+.slider{
+    position: relative;
+    width: 90%;
+    margin:auto;
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.slider::before,
+.slider::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 200px;
+    /* largeur de la zone de dégradé */
+    height: 100%;
+    pointer-events: none;
+    /* pour ne pas bloquer les clics */
+    z-index: 2;
+}
+
+.slider::before {
+    left: 0;
+    background: linear-gradient(to right, var(--color-background), transparent);
+}
+
+.slider::after {
+    right: 0;
+    background: linear-gradient(to left, var(--color-background), transparent);
+}
