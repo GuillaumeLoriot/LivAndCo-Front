@@ -10,14 +10,14 @@
     background-color: var(--color-secondary);
 }
 
-.slider {
+.review-slider {
     position: relative;
+    display: flex;
     width: 90%;
     margin: 0 auto 3rem;
-    display: flex;
-    justify-content: center;
     overflow: hidden;
 }
+
 
 // .slider::before,
 // .slider::after {
@@ -42,9 +42,6 @@
 //     background: linear-gradient(to left, var(--color-background), transparent);
 // }
 
-.slider .swiper-wrapper {
-    justify-content: space-around;
-}
 
 @layer utilities {
     .fade-clamp {

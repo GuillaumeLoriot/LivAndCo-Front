@@ -11,6 +11,6 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 })
 export class ReviewSliderComponent {
 
-  tests = [1,2,3,4,5,6,7,8,9];
+  tests = [1,2,3,4,5,6,7,8];
 
 }

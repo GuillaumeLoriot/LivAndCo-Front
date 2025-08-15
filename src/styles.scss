@@ -10,6 +10,7 @@
     --color-background: #f6f6f6;
     --swiper-theme-color: var(--color-primary);
     --swiper-navigation-color: var(--color-primary);
+    --swiper-pagination-color: var(--color-primary);
 }
 
 body {
@@ -54,7 +55,7 @@ h3 {
     font-size: 1.1rem;
     color: var(--color-background) !important;
     padding: 0.5rem 1rem;
-    border-radius: 1.1rem;
+    border-radius: 1.3rem;
     transition: all 150ms ease-out;
 }
 

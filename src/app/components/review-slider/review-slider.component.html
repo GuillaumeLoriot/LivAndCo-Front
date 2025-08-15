@@ -1,5 +1,5 @@
-<div class="slider">
-    <swiper-container slides-per-view="auto" space-between="25" navigation="true" loop="true" class="slider">
+<div class="m-auto w-auto">
+    <swiper-container slides-per-view="4" space-between="28" navigation="true" pagination="true" [centerInsufficientSlides]="true" class="review-slider">
         @for (test of tests; track test) {
             <swiper-slide class="review-card">
 
