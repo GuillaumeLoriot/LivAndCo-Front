@@ -1,19 +1,19 @@
-<form class="flex w-2/3 bg-[var(--color-background)] p-1 rounded-[1.3rem]">
-    <div>
+<form class="flex justify-between items-center w-2/3 bg-[var(--color-background)] p-1 rounded-full border-2 border-[var(--color-primary)]">
+    <div class="w-3/12 border-r-2 border-[var(--color-primary)]">
         <label for="" hidden>Recherchez une ville</label>
-        <input type="text">
+        <input type="text" placeholder="Choisissez une ville" class="h-[2.5rem] w-full px-2 rounded-l-full ">
     </div>
-    <div class="flex">
-        <label for="">Date d'arrivée</label>
-        <input type="date" placeholder="">
+    <div class="w-2/12 border-r-2 border-[var(--color-primary)]">
+        <label for="" hidden>Date d'arrivée</label>
+        <input type="date" class="h-[2.5rem] w-full px-2">
     </div>
-    <div>
-        <label for="">Date de départ</label>
-        <input type="date">
+    <div class="w-2/12 border-r-2 border-[var(--color-primary)]">
+        <label for="" hidden>Durée</label>
+        <input type="number" placeholder="Durée" class="h-[2.5rem] w-full px-2">
     </div>
-    <div>
-        <label for="">Nombre de personnes</label>
-        <input type="number">
+    <div class="w-2/12">
+        <label for="" hidden>Nombre de personnes</label>
+        <input type="number" placeholder="👥 Résidents" class="h-[2.5rem] w-full">
     </div>
-    <input type="submit" class="main-button">
+    <input type="submit" class="main-button"  value="rechercher">
 </form>
