@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { SearchBarComponent } from "../search-bar/search-bar.component";
+import { SearchBarComponent } from '../../common/search-bar/search-bar.component';
+
 
 @Component({
   selector: 'app-announcement-list',
