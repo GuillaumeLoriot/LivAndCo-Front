@@ -1,1 +1,27 @@
-<p>login works!</p>
+<main>
+    <section id="login" class="flex justify-center items-center">
+        <div class="w-2/5 bg-neutral-200 rounded-[30px] my-7 p-7">
+            <h1 class="small-h1-title text-center mb-7">Se connecter</h1>
+            <form action="">
+                <div class="flex flex-col items-center mb-3">
+                    <label for="" class="mb-3 font-bold text-sm">Email</label>
+                    <input type="text"
+                        class="bg-neutral-200 text-[var(--color-primary)] w-5/6 h-[2.2rem] border-2 border-[var(--color-primary)] rounded-[7px] p-3">
+                </div>
+                <div class="flex flex-col items-center mb-3">
+                    <label for="" class="mb-3 font-bold text-sm">Mot de passe</label>
+                    <input type="password"
+                        class="bg-neutral-200 text-[var(--color-primary)] w-5/6 h-[2.2rem] border-2 border-[var(--color-primary)] rounded-[7px] p-3">
+                </div>
+                <div class="flex justify-center">
+                    <input type="submit" name="" id="" class="main-button mt-7">
+                </div>
+            </form>
+            <div class="flex justify-center">
+                <h3 class="pr-7 py-7">Pas encore inscrit ?</h3>
+                <a [routerLink]="['/register']" class="flex items-center text-2xl text-[var(--color-primary)]">Créer un compte<img
+                        src="/icons/login-green.svg" alt="logo d'enregistrement de compte" class="w-10"></a>
+            </div>
+        </div>
+    </section>
+</main>
