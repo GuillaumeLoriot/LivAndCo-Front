@@ -1,62 +1,129 @@
-<section id="gallery"></section>
-<section id="announcement-infos">
-    <div>
-        <hgroup>
+<section id="gallery" class="px-4 py-7">
+    <!-- MOBILE: slider 1 image -->
+    <!-- <div class="block lg:hidden">
+        <swiper-container slides-per-view="1" space-between="12" pagination="true" class="w-full">
+            <swiper-slide><img src="/uploads/images/generic-announcement-1.jpg"
+                    class="w-full h-[40vh] object-cover object-center rounded-xl" alt=""></swiper-slide>
+            <swiper-slide><img src="/uploads/images/generic-lyon-1.jpg"
+                    class="w-full h-[40vh] object-cover object-center rounded-xl" alt=""></swiper-slide>
+            <swiper-slide><img src="/uploads/images/generic-accomodation-25.jpg"
+                    class="w-full h-[40vh] object-cover object-center rounded-xl" alt=""></swiper-slide>
+            <swiper-slide><img src="/uploads/images/generic-accomodation-25.jpg"
+                    class="w-full h-[40vh] object-cover object-center rounded-xl" alt=""></swiper-slide>
+            <swiper-slide><img src="/uploads/images/generic-accomodation-25.jpg"
+                    class="w-full h-[40vh] object-cover object-center rounded-xl" alt=""></swiper-slide>
+        </swiper-container>
+    </div> -->
+
+    <!-- DESKTOP: grille 2/3 + 1/3 -->
+    <div class="hidden lg:grid lg:grid-cols-[2fr_1fr] gap-3 h-[60vh]">
+        <!-- Colonne gauche (2/3) -->
+        <figure class="relative rounded-xl overflow-hidden">
+            <img src="/uploads/images/generic-announcement-1.jpg" alt="image de couverture de l'annonce"
+                class="absolute inset-0 w-full h-full object-cover object-center">
+        </figure>
+
+        <!-- Colonne droite (1/3) : grille 2×2 -->
+        <div class="grid grid-cols-2 grid-rows-2 gap-3 h-full">
+            <figure class="relative rounded-xl overflow-hidden">
+                <img src="/uploads/images/generic-lyon-1.jpg" alt=""
+                    class="absolute inset-0 w-full h-full object-cover object-center">
+            </figure>
+            <figure class="relative rounded-xl overflow-hidden">
+                <img src="/uploads/images/generic-accomodation-25.jpg" alt=""
+                    class="absolute inset-0 w-full h-full object-cover object-center">
+            </figure>
+            <figure class="relative rounded-xl overflow-hidden">
+                <img src="/uploads/images/generic-accomodation-25.jpg" alt=""
+                    class="absolute inset-0 w-full h-full object-cover object-center">
+            </figure>
+            <figure class="relative rounded-xl overflow-hidden">
+                <img src="/uploads/images/generic-accomodation-25.jpg" alt=""
+                    class="absolute inset-0 w-full h-full object-cover object-center">
+            </figure>
+        </div>
+    </div>
+</section>
+<section id="announcement-infos" class="flex justify-around px-4">
+    <div class="w-2/3 px-7">
+        <hgroup class="mb-7">
             <h1>Suite zen pour esprit curieux</h1>
-            <p></p>
+            <h3>Lyon</h3>
         </hgroup>
-        <div>
-            <p>1 place</p>
-            <p>1 salle de bain</p>
-            <p>250 m²</p>
-            <div>
+        <div class="flex justify-between mb-7">
+            <div class="flex justify-between w-2/3">
+                <p>1 place</p>
+                <p>1 salle de bain</p>
+                <p>250 m²</p>
+            </div>
+            <div class="flex justify-end w-1/3">
                 <img src="/icons/star.svg" alt="icone d'un étoile de notation">
                 <p>4.83 - 37 avis</p>
             </div>
         </div>
         <h2>Description</h2>
-        <p></p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt doloribus ducimus voluptate rem quas deserunt. Dolor voluptas vero voluptatem atque ipsam quae minima commodi fuga reiciendis modi est, dolores quasi.Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt doloribus ducimus voluptate rem quas deserunt. Dolor
+        voluptas vero voluptatem atque ipsam quae minima commodi fuga reiciendis modi est, dolores quasi.Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt doloribus ducimus voluptate rem quas deserunt. Dolor
+        voluptas vero voluptatem atque ipsam quae minima commodi fuga reiciendis modi est, dolores quasi.Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt doloribus ducimus voluptate rem quas deserunt. Dolor
+        voluptas vero voluptatem atque ipsam quae minima commodi fuga reiciendis modi est, dolores quasi.Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt doloribus ducimus voluptate rem quas deserunt. Dolor
+        voluptas vero voluptatem atque ipsam quae minima commodi fuga reiciendis modi est, dolores quasi.</p>
     </div>
-    <aside>
-        <p>encart de réservation</p>
+    <aside class="w-1/3">
+        <app-reservation-card></app-reservation-card>
     </aside>
 </section>
-<section id="commodity">
-    <h2>Commodités</h2>
-    <ul>
-        <li>
+<section id="commodity" class="flex flex-col mx-4 my-24 px-7">
+    <h2 class="text-center mb-16">Commodités</h2>
+    <h3 class="pb-14">Partagées</h3>
+    <ul class="flex justify-evenly mb-16">
+        <li class="flex justify-between w-1/4">
             <p>Télévision</p>
             <img src="/icons/tv.svg" alt="">
         </li>
-        <li>
+        <li class="flex justify-between w-1/4">
             <p>Télévision</p>
             <img src="/icons/tv.svg" alt="">
         </li>
-        <li>
+        <li class="flex justify-between w-1/4">
             <p>Télévision</p>
             <img src="/icons/tv.svg" alt="">
         </li>
     </ul>
-    <h2>Services possibles</h2>
-    <ul>
-        <li>
+        <h3 class="pb-14">Privatives</h3>
+        <ul class="flex justify-evenly">
+            <li class="flex justify-between w-1/4">
+                <p>Télévision</p>
+                <img src="/icons/tv.svg" alt="">
+            </li>
+            <li class="flex justify-between w-1/4">
+                <p>Télévision</p>
+                <img src="/icons/tv.svg" alt="">
+            </li>
+            <li class="flex justify-between w-1/4">
+                <p>Télévision</p>
+                <img src="/icons/tv.svg" alt="">
+            </li>
+        </ul>
+    <h2 class="text-center my-16">Services possibles</h2>
+    <ul class="flex justify-evenly">
+        <li class="flex justify-between w-1/4">
             <p>Télévision</p>
             <img src="/icons/tv.svg" alt="">
         </li>
-        <li>
+        <li class="flex justify-between w-1/4">
             <p>Télévision</p>
             <img src="/icons/tv.svg" alt="">
         </li>
-        <li>
+        <li class="flex justify-between w-1/4">
             <p>Télévision</p>
             <img src="/icons/tv.svg" alt="">
         </li>
     </ul>
 </section>
-<section id="map">
+<section id="map" class="mb-24">
 <app-results-map></app-results-map>
 </section>
-<section id="city-infos" class="bg-[var(--color-secondary)] p-7">
+<section id="city-infos" class="bg-[var(--color-secondary)] p-7 mb-24">
     <h2 class="text-center mb-7">A propos de nom de la ville</h2>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit quasi ea debitis, iusto dolorum exercitationem
         ratione, nostrum adipisci dolorem sit aspernatur numquam fugiat cum. Quod at quia temporibus sunt
@@ -70,6 +137,7 @@
         ratione,
         nostrum adipisci dolorem sit aspernatur numquam fugiat cum. Quod at quia temporibus sunt perferendis?</p>
 </section>
-<section id="review">
+<section id="review" class="mb-24">
+    <h2 class="text-center mb-14">Avis</h2>
     <app-review-slider></app-review-slider>
 </section>
