@@ -1,33 +1,33 @@
-<nav class="px-6 py-3 flex items-center justify-between shadow-lg">
-    <a [routerLink]="['/']" class="flex items-center transform mx-4 tracking-wide hover:text-slate-400 hover:scale-110 transition-all duration-500">
+<nav class="main-nav px-6 py-3 flex items-center justify-between shadow-lg">
+    <a [routerLink]="['/']"
+        class="flex items-center transform mx-4 tracking-wide hover:text-slate-400 hover:scale-110 transition-all duration-500">
         <img src="logos/logoVert2.png" alt="Logo" class="h-12 mr-3">
     </a>
 
     <div class="w-4/6 flex justify-end">
         <ul class="w-full flex justify-evenly items-center">
             <li>
-                <a [routerLink]="['/']"
-                    class="nav-link">Home</a>
+                <a [routerLink]="['/']" class="nav-link">Home</a>
             </li>
             <li>
-                <a [routerLink]="['announcements']"
-                    class="nav-link">Annonces</a>
+                <a [routerLink]="['announcements']" class="nav-link">Annonces</a>
             </li>
             <li>
-                <a [routerLink]="['help']"
-                    class="nav-link">Aide</a>
+                <a [routerLink]="['help']" class="nav-link">Aide</a>
             </li>
             <li>
-                <a [routerLink]="['contact']"
-                    class="nav-link">Contact</a>
+                <a [routerLink]="['contact']" class="nav-link">Contact</a>
             </li>
             <li>
-                <a [routerLink]="['contact']"
-                    class="main-button">Déposer
+                <a [routerLink]="['profile']" class="nav-link">profil</a>
+            </li>
+            <li>
+                <a [routerLink]="['contact']" class="main-button">Déposer
                     une annonce</a>
             </li>
             <li>
-                <a [routerLink]="['login']"><img class="nav-link w-10"  src="/icons/login-green.svg" alt="symbole de connexion"></a>
+                <a [routerLink]="['login']"><img class="nav-link w-10" src="/icons/login-green.svg"
+                        alt="symbole de connexion"></a>
             </li>
         </ul>
     </div>

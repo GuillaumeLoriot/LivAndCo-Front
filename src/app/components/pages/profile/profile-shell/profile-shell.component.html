@@ -1,0 +1,16 @@
+<main class="flex">
+    <!-- Barre latérale -->
+    <aside class="">
+        <app-nav-bar-secondary></app-nav-bar-secondary>
+    </aside>
+
+    <!-- Panneau latéral -->
+    <aside class="">
+        <router-outlet name="panel"></router-outlet>
+    </aside>
+
+    <!-- Contenu principal -->
+    <section class="flex-1 min-w-0">
+        <router-outlet></router-outlet>
+    </section>
+</main>

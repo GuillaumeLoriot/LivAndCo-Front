@@ -18,12 +18,24 @@ body {
     background-color: var(--color-background);
 }
 
-nav {
-    background-color: var(--color-background);
+.main-nav{
+    background-color: var(--color-background);    
+    border-bottom: 2px solid #064749;
 }
 
-nav .nav-link {
+.nav-link {
     @apply inline-block transform text-[1.1rem] font-medium mx-4 tracking-wide hover:text-slate-400 hover:scale-125 transition-all duration-500;
+}
+
+.panel-link {
+    @apply text-neutral-400 font-bold mx-4 hover:text-[var(--color-text)] transition-all duration-500;
+}
+
+.menu {
+    background-color: var(--color-background);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 h1 {
