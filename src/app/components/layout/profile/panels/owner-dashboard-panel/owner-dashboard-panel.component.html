@@ -2,22 +2,22 @@
     <h2 class="small-h2-title pt-4">Tableau de bord</h2>
     <ul class="p-4">
         <li class="panel-link py-5">
-            <a href="">Mes logements</a>
+            <a [routerLink]="['/profile/accomodations']" routerLinkActive="text-[var(--color-text)]">Mes logements</a>
         </li>
         <li class="panel-link py-5">
-            <a href="">Mes annonces</a>
+            <a [routerLink]="['/profile/announcements']" routerLinkActive="text-[var(--color-text)]">Mes annonces</a>
         </li>
         <li class="panel-link py-5">
-            <a href="">Demandes de location</a>
+            <a [routerLink]="['/profile/rental-requests']" routerLinkActive="text-[var(--color-text)]">Demandes de location</a>
         </li>
         <li class="panel-link py-5">
-            <a href="">Planning des locations</a>
+            <a [routerLink]="['/profile/rental-schedule']" routerLinkActive="text-[var(--color-text)]">Planning des locations</a>
         </li>
         <li class="panel-link py-5">
-            <a href="">Ajouter un logement</a>
+            <a [routerLink]="['/profile/add-accomodation']" routerLinkActive="text-[var(--color-text)]">Ajouter un logement</a>
         </li>
         <li class="panel-link py-5">
-            <a href="">Ajouter une annonce</a>
+            <a [routerLink]="['/profile/add-announcement']" routerLinkActive="text-[var(--color-text)]">Ajouter une annonce</a>
         </li>
     </ul>
 </nav>

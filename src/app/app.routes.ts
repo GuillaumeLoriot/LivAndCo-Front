@@ -56,7 +56,7 @@ export const routes: Routes = [
 
                 // Informations utilisateur
                 { path: 'overview', component: OverviewComponent },
-                { path: 'edit-profile', component: EditProfileComponent },
+                { path: 'edit', component: EditProfileComponent },
                 { path: 'change-password', component: ChangePasswordComponent },
 
                 // Réservations utilisateur
@@ -67,7 +67,7 @@ export const routes: Routes = [
                 // Dashboard propriétaire
                 { path: 'accomodations', component: AccomodationsComponent },
                 { path: 'announcements', component: AnnouncementsComponent },
-                { path: 'rental-request', component: RentalRequestsComponent },
+                { path: 'rental-requests', component: RentalRequestsComponent },
                 { path: 'rental-schedule', component: RentalScheduleComponent },
                 { path: 'add-accomodation', component: AddAccommodationComponent },
                 { path: 'add-announcement', component: AddAnnouncementComponent },
