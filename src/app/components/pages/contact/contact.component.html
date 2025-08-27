@@ -1,1 +1,130 @@
-<p>contact works!</p>
+<!-- <main class>
+    <form action=""></form>
+    <div>
+        <hgroup>
+            <h3></h3>
+            <p></p>
+        </hgroup>
+        <div></div>
+    </div>
+</main> -->
+
+<main class="max-w-screen-xl mx-auto px-4">
+    <!-- Titre principal de la page -->
+    <h1 class="mt-8 mb-10">Dites nous en plus</h1>
+
+    <section class="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-12" aria-labelledby="contact-form-title">
+        <!-- Formulaire -->
+        <div>
+            <h2 id="contact-form-title" class="small-h2-title mb-6">
+                Pour quelle raison souhaitez vous nous contacter&nbsp;?
+            </h2>
+
+            <form action="" method="post" novalidate aria-describedby="contact-note">
+                <!-- Groupe de choix (radios) -->
+                <fieldset class="mb-6">
+                    <legend class="sr-only">Votre profil</legend>
+                    <div class="space-y-3">
+                        <label class="flex items-center gap-3" for="role-resident">
+                            <input id="role-resident" type="radio" name="role" value="resident" required
+                                class="[accent-color:var(--color-primary)] w-5 h-5">
+                            <span>Je suis un résident</span>
+                        </label>
+                        <label class="flex items-center gap-3" for="role-owner">
+                            <input id="role-owner" type="radio" name="role" value="proprietaire"
+                                class="[accent-color:var(--color-primary)] w-5 h-5">
+                            <span>Je suis un propriétaire</span>
+                        </label>
+                        <label class="flex items-center gap-3" for="role-other">
+                            <input id="role-other" type="radio" name="role" value="autre"
+                                class="[accent-color:var(--color-primary)] w-5 h-5">
+                            <span>Autre chose</span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <!-- Nom -->
+                <div class="flex flex-col items-center mb-4">
+                    <label for="contact-name" class="mb-2 font-bold text-sm w-5/6">Nom</label>
+                    <input id="contact-name" name="name" type="text" required autocomplete="name" class="bg-neutral-200 text-[var(--color-primary)] w-5/6 h-[2.2rem]
+                        border-2 border-[var(--color-primary)] rounded-[7px] px-3">
+                </div>
+
+                <!-- Email -->
+                <div class="flex flex-col items-center mb-4">
+                    <label for="contact-email" class="mb-2 font-bold text-sm w-5/6">Email</label>
+                    <input id="contact-email" name="email" type="email" required autocomplete="email" class="bg-neutral-200 text-[var(--color-primary)] w-5/6 h-[2.2rem]
+                        border-2 border-[var(--color-primary)] rounded-[7px] px-3">
+                </div>
+
+                <!-- Téléphone -->
+                <div class="flex flex-col items-center mb-4">
+                    <label for="contact-phone" class="mb-2 font-bold text-sm w-5/6">Numéro de téléphone</label>
+                    <input id="contact-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" class="bg-neutral-200 text-[var(--color-primary)] w-5/6 h-[2.2rem]
+                        border-2 border-[var(--color-primary)] rounded-[7px] px-3">
+                </div>
+
+                <!-- Message -->
+                <div class="flex flex-col items-center mb-2">
+                    <label for="contact-message" class="mb-2 font-bold text-sm w-5/6">Message</label>
+                    <textarea id="contact-message" name="message" rows="6" required class="bg-neutral-200 text-[var(--color-primary)] w-5/6
+                           border-2 border-[var(--color-primary)] rounded-[7px] p-3"></textarea>
+                </div>
+
+                <p id="contact-note" class="sr-only">Tous les champs marqués requis doivent être remplis.</p>
+
+                <div class="flex justify-center my-7">
+                    <input type="submit" value="Envoyer" class="main-button mt-4">
+                </div>
+            </form>
+        </div>
+
+        <!-- Infos de contact (texte simple) -->
+        <aside aria-labelledby="direct-contacts-title">
+            <h2 id="direct-contacts-title" class="text-lg font-semibold mb-4">Contacts directs</h2>
+
+            <!-- On utilise une liste de définitions pour regrouper libellés et coordonnées -->
+            <section aria-labelledby="reservations-title" class="mb-6">
+                <h3 id="reservations-title" class="font-semibold mb-1">Reservations&nbsp;:</h3>
+                <dl>
+                    <div class="flex gap-6">
+                        <dt class="sr-only">Email</dt>
+                        <dd>reservations&#64;livandco.com</dd>
+                    </div>
+                    <div class="flex gap-6">
+                        <dt class="sr-only">Téléphone</dt>
+                        <dd>0123456701</dd>
+                    </div>
+                </dl>
+            </section>
+
+            <section aria-labelledby="owners-title" class="mb-6">
+                <h3 id="owners-title" class="font-semibold mb-1">Pour les propriétaires</h3>
+                <dl>
+                    <div class="flex gap-6">
+                        <dt class="sr-only">Email</dt>
+                        <dd>supply&#64;livandco.com</dd>
+                    </div>
+                    <div class="flex gap-6">
+                        <dt class="sr-only">Téléphone</dt>
+                        <dd>0123456702</dd>
+                    </div>
+                </dl>
+            </section>
+
+            <section aria-labelledby="residents-title">
+                <h3 id="residents-title" class="font-semibold mb-1">Pour les résidents</h3>
+                <dl>
+                    <div class="flex gap-6">
+                        <dt class="sr-only">Email</dt>
+                        <dd>maintenance&#64;livandco.com</dd>
+                    </div>
+                    <div class="flex gap-6">
+                        <dt class="sr-only">Téléphone</dt>
+                        <dd>0123456803</dd>
+                    </div>
+                </dl>
+            </section>
+        </aside>
+    </section>
+</main>
