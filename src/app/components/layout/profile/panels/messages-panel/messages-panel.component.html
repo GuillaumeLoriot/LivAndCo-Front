@@ -1,4 +1,4 @@
-<section class="max-w-md md:max-w-none md:w-96 mx-auto md:mx-0 px-4 py-8" aria-labelledby="conversations-title">
+<section class="max-w-md md:max-w-none md:w-96 mx-auto md:mx-0 px-4 py-8" [class.panel-hidden]="!(panelState.isOpen$ | async)" aria-labelledby="conversations-title">
     <h2 class="small-h1-title mb-6">Messagerie</h2>
 
     <div >
