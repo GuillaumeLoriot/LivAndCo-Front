@@ -5,6 +5,7 @@
     --color-primary: #064749;
     --color-secondary: #c6d7cd;
     --color-secondary-button: #52725C;
+    --color-secondary-cancel: #8a6161;
     --color-secondary-card: #d8d8d8;
     --color-text: #282828;
     --color-background: #f6f6f6;
@@ -80,11 +81,31 @@ h3 {
     transition: all 150ms ease-out;
 }
 
+.main-button-secondary {
+    display: inline-block;
+    background-color: var(--color-background);
+    font-size: 1.1rem;
+    color: var(--color-primary) !important;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border: 2px solid var(--color-primary);
+    border-radius: 1.3rem;
+    transition: all 150ms ease-out;
+}
+
 .main-button:hover {
     background-color: var(--color-secondary-button);
 }
 
+.main-button-secondary:hover {
+    background-color: var(--color-secondary-cancel);
+}
+
 .main-button:active {
+    transform: scale(0.95);
+}
+
+.main-button-secondary:active {
     transform: scale(0.95);
 }
 

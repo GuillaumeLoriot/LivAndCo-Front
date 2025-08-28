@@ -1,1 +1,57 @@
-<p>edit-profile works!</p>
+<main class="max-w-4xl mx-auto px-6 py-10">
+    <h1 class="small-h1-title mb-8">Modifier le profil</h1>
+
+    <section aria-labelledby="profile-edit-form">
+        <h2 id="profile-edit-form" class="sr-only">Formulaire de modification du profil</h2>
+
+        <form action="" method="post" novalidate class="flex flex-col gap-6">
+
+            <div class="flex justify-end">
+                <img src="/uploads/profile-pictures/profil.png" alt="Photo de profil"
+                    class="w-20 h-20 rounded-full object-cover" />
+            </div>
+            <div class="flex flex-col md:flex-row gap-6">
+                <div class="flex flex-col flex-1">
+                    <label for="first-name" class="font-bold text-sm mb-2">Prénom</label>
+                    <input id="first-name" type="text" name="firstName" value="Guillaume"
+                        class="bg-[var(--color-background)] border-2 border-[var(--color-primary)] rounded px-3 py-2" />
+                </div>
+                <div class="flex flex-col flex-1">
+                    <label for="last-name" class="font-bold text-sm mb-2">Nom</label>
+                    <input id="last-name" type="text" name="lastName" value="Loriot"
+                        class="bg-[var(--color-background)] border-2 border-[var(--color-primary)] rounded px-3 py-2" />
+                </div>
+            </div>
+            <div class="flex flex-col">
+                <label for="email" class="font-bold text-sm mb-2">Email</label>
+                <div class="flex items-center border-2 border-[var(--color-primary)] rounded">
+                    <input id="email" type="email" name="email" value="adresse@mail.com"
+                        class="flex-1 bg-[var(--color-background)] px-3 py-2 rounded-l" />
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row gap-6">
+                <div class="flex flex-col flex-1">
+                    <label for="phone" class="font-bold text-sm mb-2">Numéro de téléphone</label>
+                    <input id="phone" type="tel" name="phone" value="07 82 96 35 14"
+                        class="bg-[var(--color-background)] border-2 border-[var(--color-primary)] rounded px-3 py-2" />
+                </div>
+                <div class="flex flex-col flex-1">
+                    <label for="profession" class="font-bold text-sm mb-2">Profession</label>
+                    <input id="profession" type="text" name="profession" value="Freelancer"
+                        class="bg-[var(--color-background)] border-2 border-[var(--color-primary)] rounded px-3 py-2" />
+                </div>
+            </div>
+            <div class="flex flex-col">
+                <label for="address" class="font-bold text-sm mb-2">Adresse</label>
+                <input id="address" type="text" name="address" value="8 boulevard gambetta"
+                    class="bg-[var(--color-background)] border-2 border-[var(--color-primary)] rounded px-3 py-2" />
+            </div>
+            <div class="flex justify-center md:justify-end gap-6 mt-6">
+                <button type="submit" class="main-button">
+                    Enregistrer
+                </button>
+            </div>
+        </form>
+    </section>
+</main>
+

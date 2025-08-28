@@ -1,1 +1,159 @@
-<p>add-accommodation works!</p>
+<main class="max-w-4xl mx-auto px-6 py-10">
+    <h1 class="small-h1-title mb-8">Ajouter un logement</h1>
+
+    <section aria-labelledby="add-accommodation-form">
+        <h2 id="add-accommodation-form" class="sr-only">Formulaire d'ajout de logement</h2>
+
+        <form action="" method="post" novalidate class="flex flex-col gap-6">
+
+            <!-- Code postal + Ville -->
+            <div class="flex flex-col md:flex-row gap-6">
+                <div class="flex flex-col flex-1">
+                    <label for="zip" class="font-bold text-sm mb-2">Code postal</label>
+                    <input id="zip" name="zip" type="text" placeholder="69001"
+                        class="bg-[var(--color-background)] border-2 border-[var(--color-primary)] rounded px-3 py-2" />
+                </div>
+                <div class="flex flex-col flex-1">
+                    <label for="city" class="font-bold text-sm mb-2">Ville</label>
+                    <input id="city" name="city" type="text" placeholder="LYON"
+                        class="bg-[var(--color-background)] border-2 border-[var(--color-primary)] rounded px-3 py-2" />
+                </div>
+            </div>
+
+            <!-- Adresse -->
+            <div class="flex flex-col">
+                <label for="address" class="font-bold text-sm mb-2">Adresse</label>
+                <input id="address" name="address" type="text" placeholder="8 boulevard Gambetta"
+                    class="bg-[var(--color-background)] border-2 border-[var(--color-primary)] rounded px-3 py-2" />
+            </div>
+
+            <!-- Surface -->
+            <div class="flex flex-col">
+                <label for="surface" class="font-bold text-sm mb-2">Surface (m²)</label>
+                <input id="surface" name="surface" type="number" inputmode="decimal" step="0.1" min="0" placeholder="45"
+                    class="bg-[var(--color-background)] border-2 border-[var(--color-primary)] rounded px-3 py-2" />
+            </div>
+
+            <!-- Équipements (collection de checkboxes) -->
+            <fieldset class="flex flex-col">
+                <legend class="font-bold text-sm mb-2">Équipements partagés dans le logement</legend>
+            
+                <div class="flex flex-wrap gap-x-6 gap-y-3">
+                    <label class="inline-flex items-center gap-2">
+                        <input type="checkbox" name="sharedEquipments[]" value="wifi" class="[accent-color:var(--color-primary)] w-5 h-5">
+                        <span>Wi-Fi</span>
+                    </label>
+            
+                    <label class="inline-flex items-center gap-2">
+                        <input type="checkbox" name="sharedEquipments[]" value="climatisation"
+                            class="[accent-color:var(--color-primary)] w-5 h-5">
+                        <span>Climatisation</span>
+                    </label>
+            
+                    <label class="inline-flex items-center gap-2">
+                        <input type="checkbox" name="sharedEquipments[]" value="chauffage"
+                            class="[accent-color:var(--color-primary)] w-5 h-5">
+                        <span>Chauffage</span>
+                    </label>
+            
+                    <label class="inline-flex items-center gap-2">
+                        <input type="checkbox" name="sharedEquipments[]" value="lave_linge"
+                            class="[accent-color:var(--color-primary)] w-5 h-5">
+                        <span>Machine à laver</span>
+                    </label>
+            
+                    <label class="inline-flex items-center gap-2">
+                        <input type="checkbox" name="sharedEquipments[]" value="lave_vaisselle"
+                            class="[accent-color:var(--color-primary)] w-5 h-5">
+                        <span>Lave-vaisselle</span>
+                    </label>
+            
+                    <label class="inline-flex items-center gap-2">
+                        <input type="checkbox" name="sharedEquipments[]" value="television"
+                            class="[accent-color:var(--color-primary)] w-5 h-5">
+                        <span>Télévision</span>
+                    </label>
+            
+                    <label class="inline-flex items-center gap-2">
+                        <input type="checkbox" name="sharedEquipments[]" value="parking"
+                            class="[accent-color:var(--color-primary)] w-5 h-5">
+                        <span>Parking</span>
+                    </label>
+            
+                    <label class="inline-flex items-center gap-2">
+                        <input type="checkbox" name="sharedEquipments[]" value="ascenseur"
+                            class="[accent-color:var(--color-primary)] w-5 h-5">
+                        <span>Ascenseur</span>
+                    </label>
+            
+                    <label class="inline-flex items-center gap-2">
+                        <input type="checkbox" name="sharedEquipments[]" value="pmr" class="[accent-color:var(--color-primary)] w-5 h-5">
+                        <span>Accessible PMR</span>
+                    </label>
+            
+                    <label class="inline-flex items-center gap-2">
+                        <input type="checkbox" name="sharedEquipments[]" value="animaux"
+                            class="[accent-color:var(--color-primary)] w-5 h-5">
+                        <span>Animaux acceptés</span>
+                    </label>
+            
+                    <label class="inline-flex items-center gap-2">
+                        <input type="checkbox" name="sharedEquipments[]" value="exterieur"
+                            class="[accent-color:var(--color-primary)] w-5 h-5">
+                        <span>Espace extérieur (balcon/jardin)</span>
+                    </label>
+            
+                    <label class="inline-flex items-center gap-2">
+                        <input type="checkbox" name="sharedEquipments[]" value="bureau"
+                            class="[accent-color:var(--color-primary)] w-5 h-5">
+                        <span>Bureau / coin travail</span>
+                    </label>
+                </div>
+            </fieldset>
+
+
+            <!-- Mixte (boolean) -->
+            <div class="flex flex-col">
+                <span class="font-bold text-sm mb-2">Mixte</span>
+                <label for="mixed" class="inline-flex items-center gap-3 cursor-pointer">
+                    <input id="mixed" name="mixed" type="checkbox" checked
+                        class="[accent-color:var(--color-primary)] w-5 h-5" />
+                    <span>Oui</span>
+                </label>
+            </div>
+
+            <!-- !!!! Attention, champs présents juste pour le style, étudier l'upload vers une API avant finalisation -->
+            <!-- Upload photo de couverture -->
+            <div class="flex flex-col gap-2">
+
+                <label for="cover" class="inline-flex items-center gap-3 cursor-pointer hover:opacity-80 w-fit">
+                    <span class="font-bold text-sm">Télécharger une photo de couverture</span>
+                    <img src="/icons/upload.svg" alt="" aria-hidden="true" class="w-6 h-6" />
+                </label>
+                <input id="cover" name="cover" type="file" accept="image/*" class="sr-only" />
+            </div>
+
+            <!-- Upload gallerie photo -->
+            <div class="flex flex-col gap-2">
+
+                <label for="cover" class="inline-flex items-center gap-3 cursor-pointer hover:opacity-80 w-fit">
+                    <span class="font-bold text-sm">Télécharger une gallerie d'image</span>
+                    <img src="/icons/upload.svg" alt="" aria-hidden="true" class="w-6 h-6" />
+                </label>
+                <input id="cover" name="cover" type="file" accept="image/*" class="sr-only" />
+            </div>
+
+
+
+            <!-- Boutons -->
+            <div class="flex justify-start gap-6 mt-2">
+                <button type="button" class="main-button-secondary">
+                    Cancel
+                </button>
+                <button type="submit" class="main-button">
+                    Ajouter le logement
+                </button>
+            </div>
+        </form>
+    </section>
+</main>

@@ -26,6 +26,7 @@ import { RentalRequestsComponent } from './components/pages/profile/owner-dashbo
 import { RentalScheduleComponent } from './components/pages/profile/owner-dashboard/rental-schedule/rental-schedule.component';
 import { AddAccommodationComponent } from './components/pages/profile/owner-dashboard/add-accommodation/add-accommodation.component';
 import { AddAnnouncementComponent } from './components/pages/profile/owner-dashboard/add-announcement/add-announcement.component';
+import { ReviewsComponent } from './components/pages/profile/owner-dashboard/reviews/reviews.component';
 
 
 export const routes: Routes = [
@@ -71,6 +72,7 @@ export const routes: Routes = [
                 { path: 'rental-schedule', component: RentalScheduleComponent },
                 { path: 'add-accomodation', component: AddAccommodationComponent },
                 { path: 'add-announcement', component: AddAnnouncementComponent },
+                { path: 'reviews', component: ReviewsComponent }
 
                 // Messagerie Utilisateur
 
