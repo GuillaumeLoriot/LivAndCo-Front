@@ -27,6 +27,7 @@ import { RentalScheduleComponent } from './components/pages/profile/owner-dashbo
 import { AddAccommodationComponent } from './components/pages/profile/owner-dashboard/add-accommodation/add-accommodation.component';
 import { AddAnnouncementComponent } from './components/pages/profile/owner-dashboard/add-announcement/add-announcement.component';
 import { ReviewsComponent } from './components/pages/profile/owner-dashboard/reviews/reviews.component';
+import { ConversationComponent } from './components/pages/profile/messages/conversation/conversation.component';
 
 
 export const routes: Routes = [
@@ -40,8 +41,9 @@ export const routes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'privacy-policy', component: PrivacyPolicyComponent },
     { path: 'terms-of-use', component: TermsOfUseComponent },
+
+    // La page profil contiens une nagigation secondaire avec toutes les vues liées au profil de l'utilisateur connecté
     {
-        // La page profil contien une nagigation secondaire avec toute les vue liées au profil de l'utilisateur connecté
         path: 'profile', component: ProfileShellComponent, children:
             [
                 // Contenu principal par défaut du profil
@@ -72,9 +74,10 @@ export const routes: Routes = [
                 { path: 'rental-schedule', component: RentalScheduleComponent },
                 { path: 'add-accomodation', component: AddAccommodationComponent },
                 { path: 'add-announcement', component: AddAnnouncementComponent },
-                { path: 'reviews', component: ReviewsComponent }
+                { path: 'reviews', component: ReviewsComponent },
 
                 // Messagerie Utilisateur
+                { path: 'conversation/:id', component: ConversationComponent }
 
             ],
     },
