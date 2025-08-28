@@ -1,23 +1,30 @@
-<nav class="menu">
+<nav class="menu" [class.panel-hidden]="!(panelState.isOpen$ | async)">
     <h2 class="small-h2-title pt-4">Tableau de bord</h2>
     <ul class="p-4">
         <li class="py-5">
-            <a [routerLink]="['/profile/accomodations']" routerLinkActive="panel-link-selected" class="panel-link" class="panel-link">Mes logements</a>
+            <a [routerLink]="['/profile/accomodations']" routerLinkActive="panel-link-selected" class="panel-link"
+                (click)="panelState.closeIfMobile()">Mes logements</a>
         </li>
         <li class="py-5">
-            <a [routerLink]="['/profile/announcements']" routerLinkActive="panel-link-selected" class="panel-link">Mes annonces</a>
+            <a [routerLink]="['/profile/announcements']" routerLinkActive="panel-link-selected" class="panel-link"
+                (click)="panelState.closeIfMobile()">Mes
+                annonces</a>
         </li>
         <li class="py-5">
-            <a [routerLink]="['/profile/rental-requests']" routerLinkActive="panel-link-selected" class="panel-link">Demandes de location</a>
+            <a [routerLink]="['/profile/rental-requests']" routerLinkActive="panel-link-selected" class="panel-link"
+                (click)="panelState.closeIfMobile()">Demandes de location</a>
         </li>
         <li class="py-5">
-            <a [routerLink]="['/profile/rental-schedule']" routerLinkActive="panel-link-selected" class="panel-link">Planning des locations</a>
+            <a [routerLink]="['/profile/rental-schedule']" routerLinkActive="panel-link-selected" class="panel-link"
+                (click)="panelState.closeIfMobile()">Planning des locations</a>
         </li>
         <li class="py-5">
-            <a [routerLink]="['/profile/add-accomodation']" routerLinkActive="panel-link-selected" class="panel-link">Ajouter un logement</a>
+            <a [routerLink]="['/profile/add-accomodation']" routerLinkActive="panel-link-selected" class="panel-link"
+                (click)="panelState.closeIfMobile()">Ajouter un logement</a>
         </li>
         <li class="py-5">
-            <a [routerLink]="['/profile/add-announcement']" routerLinkActive="panel-link-selected" class="panel-link">Ajouter une annonce</a>
+            <a [routerLink]="['/profile/add-announcement']" routerLinkActive="panel-link-selected" class="panel-link"
+                (click)="panelState.closeIfMobile()">Ajouter une annonce</a>
         </li>
     </ul>
 </nav>

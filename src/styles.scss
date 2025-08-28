@@ -42,6 +42,10 @@ body {
     align-items: center;
 }
 
+.panel-hidden {
+    display: none !important;
+}
+
 h1 {
     font-size: 2.4rem;
     font-weight: bold;
@@ -115,4 +119,67 @@ footer {
 
 .small-h2-title {
     font-size: 1.2rem;
+}
+
+
+
+@media (max-width: 767.98px) {
+    main.flex {
+        flex-direction: column !important;
+    }
+
+    /* Réorganisation : contenu d'abord, panel ensuite, nav en bas */
+    main.flex>section.flex-1 {
+        order: 1 !important;
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    main.flex>aside:nth-of-type(2) {
+        /* Panneau latéral */
+        order: 2 !important;
+        width: 100% !important;
+    }
+
+    main.flex>aside:first-of-type {
+        /* Barre latérale */
+        order: 3 !important;
+        width: 100% !important;
+    }
+
+    .nav-secondary {
+        width: 100% !important;
+        height: 80px !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background-color: var(--color-secondary);
+            position: fixed !important;
+                bottom: 0;
+                left: 0;
+                right: 0;
+    }
+
+    .nav-secondary>ul {
+        display: flex !important;
+        width: 100% !important;
+        justify-content: space-around !important;
+        align-items: center !important;
+        margin: 0 !important;
+        padding: 0.25rem 0.5rem !important;
+        list-style: none;
+    }
+
+    .nav-secondary>ul>li {
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+    }
+
+    .menu{
+        position: fixed;
+            z-index: 40;
+            left: 0;
+            right: 0;
+            bottom: 80px;
+    }
 }

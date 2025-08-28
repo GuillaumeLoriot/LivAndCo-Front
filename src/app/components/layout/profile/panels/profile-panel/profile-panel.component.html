@@ -1,14 +1,17 @@
-<nav class="menu">
+<nav class="menu" [class.panel-hidden]="!(panelState.isOpen$ | async)">
     <h2 class="small-h2-title pt-4">Profil</h2>
     <ul class="p-4">
         <li class="py-5">
-            <a [routerLink]="['/profile/overview']" routerLinkActive="panel-link-selected" class="panel-link">Informations</a>
+            <a [routerLink]="['/profile/overview']" routerLinkActive="panel-link-selected" class="panel-link"
+                (click)="panelState.closeIfMobile()">Informations</a>
         </li>
         <li class="py-5">
-            <a [routerLink]="['/profile/edit']" routerLinkActive="panel-link-selected" class="panel-link">Modifier le profil</a>
+            <a [routerLink]="['/profile/edit']" routerLinkActive="panel-link-selected" class="panel-link"
+                (click)="panelState.closeIfMobile()">Modifier le profil</a>
         </li>
         <li class="py-5">
-            <a [routerLink]="['/profile/change-password']" routerLinkActive="panel-link-selected" class="panel-link">Modifier le mot de passe</a>
+            <a [routerLink]="['/profile/change-password']" routerLinkActive="panel-link-selected" class="panel-link"
+                (click)="panelState.closeIfMobile()">Modifier le mot de passe</a>
         </li>
     </ul>
 </nav>

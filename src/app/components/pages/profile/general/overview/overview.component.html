@@ -1,4 +1,46 @@
-<main>
-    <p>overview works!</p>
+<main class="max-w-4xl mx-auto px-6 py-10">
+    <h1 class="small-h1-title mb-6">Username</h1>
 
+    <section aria-labelledby="user-profile-title">
+        <h2 id="user-profile-title" class="sr-only">Profil utilisateur</h2>
+
+        <article class="bg-[var(--color-background)] border-2 border-[var(--color-primary)] rounded-xl p-6 md:p-8">
+            <!-- En-tête visuel -->
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-8 gap-4">
+                <!-- Avatar + statut -->
+                <div class="relative flex items-start gap-4">
+                    <img src="/uploads/profile-pictures/profil.png" alt="Photo de profil de l'utilisateur"
+                        class="w-28 h-28 rounded-full object-cover" />
+                    <p class="text-sm text-[var(--color-primary)] self-end">Vérifié</p>
+                </div>
+
+                <!-- Membre depuis -->
+                <p class="text-neutral-500 font-semibold">Membre depuis le 23 juillet 2025</p>
+            </div>
+
+            <!-- Détails (labels / valeurs) -->
+            <dl class="flex flex-wrap">
+                <dt class="basis-full sm:basis-1/3 pr-4 py-2 font-bold text-[var(--color-text)]">Nom:</dt>
+                <dd class="basis-full sm:basis-2/3 py-2">Loriot</dd>
+
+                <dt class="basis-full sm:basis-1/3 pr-4 py-2 font-bold text-[var(--color-text)]">Prénom:</dt>
+                <dd class="basis-full sm:basis-2/3 py-2">Guillaume</dd>
+
+                <dt class="basis-full sm:basis-1/3 pr-4 py-2 font-bold text-[var(--color-text)]">Email:</dt>
+                <dd class="basis-full sm:basis-2/3 py-2">Adresseamail.com</dd>
+
+                <dt class="basis-full sm:basis-1/3 pr-4 py-2 font-bold text-[var(--color-text)]">Adresse:</dt>
+                <dd class="basis-full sm:basis-2/3 py-2">8 Boulevard Gambetta 69001 Lyon</dd>
+
+                <dt class="basis-full sm:basis-1/3 pr-4 py-2 font-bold text-[var(--color-text)]">Date de naissance:</dt>
+                <dd class="basis-full sm:basis-2/3 py-2">12 octobre 1990</dd>
+
+                <dt class="basis-full sm:basis-1/3 pr-4 py-2 font-bold text-[var(--color-text)]">Genre:</dt>
+                <dd class="basis-full sm:basis-2/3 py-2">Homme</dd>
+
+                <dt class="basis-full sm:basis-1/3 pr-4 py-2 font-bold text-[var(--color-text)]">Profession:</dt>
+                <dd class="basis-full sm:basis-2/3 py-2">Freelancer</dd>
+            </dl>
+        </article>
+    </section>
 </main>

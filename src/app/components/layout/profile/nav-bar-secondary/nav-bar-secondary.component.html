@@ -1,8 +1,21 @@
 <nav class="nav-secondary min-h-full">
     <ul>
-        <li class="py-7"><a [routerLink]="[{ outlets: { panel: ['profile-menu'] } }]" class="flex flex-col items-center"><img src="/icons/profile.svg" alt=""><p class="text-xs text-[var(--color-primary)]">Profil</p></a></li>
-        <li class="py-7"><a [routerLink]="[{ outlets: { panel: ['reservations-menu'] } }]" class="flex flex-col items-center"><img src="/icons/reservations.svg" alt=""><p class="text-xs text-[var(--color-primary)]">Reservations</p></a></li>
-        <li class="py-7"><a [routerLink]="[{ outlets: { panel: ['messages-menu'] } }]" class="flex flex-col items-center"><img src="/icons/messages.svg" alt=""><p class="text-xs text-[var(--color-primary)]">Messagerie</p></a></li>
-        <li class="py-7"><a [routerLink]="[{ outlets: { panel: ['owner-menu'] } }]" class="flex flex-col items-center"><img src="/icons/dashboard.svg" alt=""><p class="text-xs text-[var(--color-primary)]">Dashboard</p></a></li>
+        <li class="py-7"><a [routerLink]="[{ outlets: { panel: ['profile-menu'] } }]" class="flex flex-col items-center"
+                (click)="panelState.toggle()"><img src="/icons/profile.svg" alt="">
+                <p class="text-xs text-[var(--color-primary)]">Profil</p>
+            </a></li>
+        <li class="py-7"><a [routerLink]="[{ outlets: { panel: ['reservations-menu'] } }]"
+                class="flex flex-col items-center" (click)="panelState.toggle()"><img src="/icons/reservations.svg"
+                    alt="">
+                <p class="text-xs text-[var(--color-primary)]">Reservations</p>
+            </a></li>
+        <li class="py-7"><a [routerLink]="[{ outlets: { panel: ['messages-menu'] } }]"
+                class="flex flex-col items-center" (click)="panelState.toggle()"><img src="/icons/messages.svg" alt="">
+                <p class="text-xs text-[var(--color-primary)]">Messagerie</p>
+            </a></li>
+        <li class="py-7"><a [routerLink]="[{ outlets: { panel: ['owner-menu'] } }]" class="flex flex-col items-center"
+                (click)="panelState.toggle()"><img src="/icons/dashboard.svg" alt="">
+                <p class="text-xs text-[var(--color-primary)]">Dashboard</p>
+            </a></li>
     </ul>
 </nav>

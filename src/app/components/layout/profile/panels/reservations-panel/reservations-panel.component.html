@@ -1,14 +1,17 @@
-<nav class="menu">
+<nav class="menu" [class.panel-hidden]="!(panelState.isOpen$ | async)">
     <h2 class="small-h2-title pt-4">Réservations</h2>
     <ul class="p-4">
         <li class="py-5">
-            <a [routerLink]="['/profile/upcoming-reservations']" routerLinkActive="panel-link-selected" class="panel-link">Mes réservation à venir</a>
+            <a [routerLink]="['/profile/upcoming-reservations']" routerLinkActive="panel-link-selected"
+                class="panel-link" (click)="panelState.closeIfMobile()">Mes réservation à venir</a>
         </li>
         <li class="py-5">
-            <a [routerLink]="['/profile/ongoing-reservations']" routerLinkActive="panel-link-selected" class="panel-link">Mes réservations en cours</a>
+            <a [routerLink]="['/profile/ongoing-reservations']" routerLinkActive="panel-link-selected"
+                class="panel-link" (click)="panelState.closeIfMobile()">Mes réservations en cours</a>
         </li>
         <li class="py-5">
-            <a [routerLink]="['/profile/past-reservations']" routerLinkActive="panel-link-selected" class="panel-link">Mes réservations terminée</a>
+            <a [routerLink]="['/profile/past-reservations']" routerLinkActive="panel-link-selected"
+                class="panel-link" (click)="panelState.closeIfMobile()">Mes réservations terminée</a>
         </li>
     </ul>
 </nav>

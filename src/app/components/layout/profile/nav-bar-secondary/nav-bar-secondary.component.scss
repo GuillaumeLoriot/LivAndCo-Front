@@ -5,5 +5,34 @@ align-items: center;
 justify-content: flex-start;
 width: 90px;
 background-color: var(--color-secondary);
-margin: 0;
-}
+margin: 0;}
+
+
+@media (max-width: 767.98px) {
+        .nav-secondary {
+            width: 100% !important;
+            min-height: auto !important;
+            flex-direction: row !important;
+            /* de colonne -> ligne */
+            align-items: center !important;
+            justify-content: center !important;
+        }
+
+        .nav-secondary>ul {
+            display: flex !important;
+            /* items côte à côte */
+            width: 100% !important;
+            justify-content: space-around !important;
+            align-items: center !important;
+            margin: 0 !important;
+            padding: 0.25rem 0.5rem !important;
+            list-style: none;
+            /* au cas où */
+        }
+
+        .nav-secondary>ul>li {
+            padding-top: 0.5rem !important;
+            /* un peu moins d’espace en mobile */
+            padding-bottom: 0.5rem !important;
+        }
+    }
