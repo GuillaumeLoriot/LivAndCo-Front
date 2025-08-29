@@ -1,9 +1,11 @@
 <div class="h-[70vh] w-full sticky top-6">
-    <mgl-map [style]="mapStyle" [zoom]="[3]" [center]="[2.35, 48.85]" 
+    <mgl-map [style]="mapStyle" [zoom]="[5]" [center]="[2.35, 46.85]" 
         class="w-full h-[500px] rounded-2xl overflow-hidden">
         <mgl-control mglNavigation position="top-right"></mgl-control>
-        <mgl-marker [lngLat]="[2.35, 48.85]">
-            <img src="/icons/marker.png" alt="">
-        </mgl-marker>
+        @for (announcement of announcements; track announcement.id) {
+            <mgl-marker [lngLat]="[+announcement.accomodation.longitude,+announcement.accomodation.latitude]">
+                <a [routerLink]="['/announcements', announcement.id]"><img src="/icons/marker.png" alt="Icone de repère de carte"></a>
+            </mgl-marker>
+        }
     </mgl-map>
 </div>

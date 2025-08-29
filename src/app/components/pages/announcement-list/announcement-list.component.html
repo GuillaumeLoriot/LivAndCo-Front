@@ -3,24 +3,17 @@
     <section id="search-results" class="flex mb-32 mt-14">
         <div class="w-7/12">
             <ul class="w-full">
-                <li>
-                    <app-announcement-list-card></app-announcement-list-card>
-                </li>
-                <li>
-                    <app-announcement-list-card></app-announcement-list-card>
-                </li>
-                <li>
-                    <app-announcement-list-card></app-announcement-list-card>
-                </li>
-                <li>
-                    <app-announcement-list-card></app-announcement-list-card>
-                </li>
+                @for (announcement of announcements; track announcement.id) {
+                    <li>
+                        <app-announcement-list-card [announcement]=announcement></app-announcement-list-card>
+                    </li>
+                }
             </ul>
             <div class="flex justify-center mt-24">
                 <button class="main-button">Voir plus d'annonces</button>
             </div>
         </div>
-        <app-results-map class="w-5/12 self-stretch"></app-results-map>
+        <app-results-map class="w-5/12 self-stretch" [announcements]=announcements></app-results-map>
     </section>
     <section id="city-infos" class="bg-[var(--color-secondary)] p-7">
         <h2 class="text-center mb-7">A propos de nom de la ville</h2>

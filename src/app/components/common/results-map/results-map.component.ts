@@ -1,16 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgxMapLibreGLModule } from '@maplibre/ngx-maplibre-gl';
 import type { StyleSpecification } from 'maplibre-gl';
+import Announcement from '../../../models/announcement.interface';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-results-map',
   standalone: true,
-  imports: [NgxMapLibreGLModule],
+  imports: [CommonModule, NgxMapLibreGLModule, RouterLink],
   templateUrl: './results-map.component.html',
   styleUrl: './results-map.component.scss'
 })
 export class ResultsMapComponent {
 
+  // Initialisation de la map et de son style
   mapStyle: StyleSpecification = {
     version: 8,
     sources: {
@@ -35,5 +39,8 @@ export class ResultsMapComponent {
       },
     ],
   };
+
+
+  @Input() announcements: Announcement[] = [];
 
 }

@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { SearchBarComponent } from '../../common/search-bar/search-bar.component';
 import { CommonModule } from '@angular/common';
 import { AnnouncementListCardComponent } from "../../common/announcement-list-card/announcement-list-card.component";
 import { ResultsMapComponent } from "../../common/results-map/results-map.component";
+import { AnnouncementService } from '../../../services/announcement/announcement.service';
+import Announcement from '../../../models/announcement.interface';
 
 
 @Component({
@@ -13,8 +15,31 @@ import { ResultsMapComponent } from "../../common/results-map/results-map.compon
   styleUrl: './announcement-list.component.scss'
 })
 export class AnnouncementListComponent {
+  
+private announcementService = inject(AnnouncementService);
+announcements: Announcement[] = [];
 answerIsOpen = false;
 
+  ngOnInit(): void {
+    this.loadAnnouncements();
+  }
+
+  loadAnnouncements() {
+
+    this.announcementService.getAnnouncements().subscribe({
+      next: (data) => {
+
+        this.announcements = data;
+        console.log(this.announcements);
+      },
+      error: () => {
+
+        console.log("Une erreur est survenue")
+        this.announcements = [];
+
+      },
+    });
+  }
 
 switchOpenClosedAnswer(){
   this.answerIsOpen = !this.answerIsOpen;
