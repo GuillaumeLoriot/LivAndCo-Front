@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import 'swiper/swiper-bundle.css';
 
 :root {
@@ -202,5 +204,28 @@ footer {
             left: 0;
             right: 0;
             bottom: 80px;
+    }
+}
+
+@layer utilities {
+    .fade-clamp {
+        // Nombre de lignes visibles (modifiable via --lines)
+        --lines: 4;
+
+        display: -webkit-box;
+        line-clamp: var(--lines);
+        -webkit-line-clamp: var(--lines);
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+
+        // Dégradé sur les 2 dernières lignes visibles
+        -webkit-mask-image: linear-gradient(to bottom,
+                black calc((var(--lines) - 2) / var(--lines) * 100%),
+                transparent 100%);
+        mask-image: linear-gradient(to bottom,
+                black calc((var(--lines) - 2) / var(--lines) * 100%),
+                transparent 100%);
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
     }
 }

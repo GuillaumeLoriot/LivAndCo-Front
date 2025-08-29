@@ -1,1 +1,9 @@
-<img src="/test-map.webp" alt="" class="h-[70vh] w-full sticky top-6">
+<div class="h-[70vh] w-full sticky top-6">
+    <mgl-map [style]="'https://demotiles.maplibre.org/style.json'" [zoom]="[3]" [center]="[2.35, 48.85]"
+        class="w-full h-[500px] rounded-2xl overflow-hidden">
+        <mgl-control mglNavigation position="top-right"></mgl-control>
+        <mgl-marker [lngLat]="[2.35, 48.85]">
+            <div class="w-4 h-4 rounded-full bg-red-500 ring-2 ring-white"></div>
+        </mgl-marker>
+    </mgl-map>
+</div>
