@@ -1,32 +1,44 @@
-<footer class="flex justify-around py-7 border-t-2 border-t-gray-600">
-    <div class="flex flex-col items-center justify-evenly w-2/12">
-        <a [routerLink]="['/']">
-            <img src="/logos/logoVert2.png" alt="logo de liv and co" class="h-12">
-        </a>
-        <p class="my-5">Contact: 01 23 45 67 89</p>
-        <div class="flex">
-            <img src="/icons/linkedin.svg" alt="logo linkedin" class="px-3">
-            <img src="/icons/facebook.svg" alt="logo facebook" class="px-3">
-            <img src="/icons/X.svg" alt="logo X" class="px-3">
+<footer class="border-t-2 border-gray-600">
+    <div class="mx-auto max-w-7xl px-4 py-7 flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
+
+        <!-- Bloc logo + contact -->
+        <div class="flex flex-col items-center lg:items-start text-center lg:text-left gap-4 lg:basis-1/3">
+            <a [routerLink]="['/']" class="inline-flex">
+                <img src="/logos/logoVert2.png" alt="logo de liv and co" class="h-12">
+            </a>
+
+            <p class="text-sm sm:text-base">Contact: 01 23 45 67 89</p>
+
+            <div class="flex items-center gap-4">
+                <img src="/icons/linkedin.svg" alt="logo linkedin" class="h-6 w-6">
+                <img src="/icons/facebook.svg" alt="logo facebook" class="h-6 w-6">
+                <img src="/icons/X.svg" alt="logo X" class="h-6 w-6">
+            </div>
         </div>
-    </div>
-    <div class="flex w-8/12 justify-evenly">
-        <div class="flex flex-col w-1/4">
-            <h3>Entreprise</h3>
-            <a [routerLink]="['/']">Home</a>
-            <a href="">A propos</a>
-            <a href="">Notre équipe</a>
-        </div>
-        <div class="flex flex-col w-1/4">
-            <h3>Utilisateurs</h3>
-            <a [routerLink]="['contact']">Assistance</a>
-            <a [routerLink]="['help']">FAQ</a>
-        </div>
-        <div class="flex flex-col w-1/4">
-            <h3>infos légales</h3>
-            <a href="">Mentions légales</a>
-            <a href="" [routerLink]="['terms-of-use']">Conditions générales d'utilisation</a>
-            <a href="" [routerLink]="['privacy-policy']">Politique de confidentialité</a>
+
+        <!-- Liens -->
+        <div class="flex flex-wrap gap-y-8 lg:basis-2/3">
+
+            <div class="flex flex-col w-1/2 sm:w-1/3 lg:w-auto min-w-[180px]">
+                <h3 class="mb-3 font-semibold">Entreprise</h3>
+                <a [routerLink]="['/']" class="py-1">Home</a>
+                <a [routerLink]="['/about']" class="py-1">A propos</a>
+                <a [routerLink]="['/team']" class="py-1">Notre équipe</a>
+            </div>
+
+            <div class="flex flex-col w-1/2 sm:w-1/3 lg:w-auto min-w-[180px]">
+                <h3 class="mb-3 font-semibold">Utilisateurs</h3>
+                <a [routerLink]="['/contact']" class="py-1">Assistance</a>
+                <a [routerLink]="['/help']" class="py-1">FAQ</a>
+            </div>
+
+            <div class="flex flex-col w-1/2 sm:w-1/3 lg:w-auto min-w-[220px]">
+                <h3 class="mb-3 font-semibold">Infos légales</h3>
+                <a [routerLink]="['/legal-notice']" class="py-1">Mentions légales</a>
+                <a [routerLink]="['/terms-of-use']" class="py-1">Conditions générales d'utilisation</a>
+                <a [routerLink]="['/privacy-policy']" class="py-1">Politique de confidentialité</a>
+            </div>
+
         </div>
     </div>
 </footer>
