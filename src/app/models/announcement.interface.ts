@@ -15,8 +15,8 @@ export default interface Announcement {
 
     owner: User;
     accomodation: Accomodation;
-    reservations?: Reservation[];
-    unavailabilities?: Unavailability[];
-    conveniences?: Convenience[];
-    services?: Service[];
+    reservations: Reservation[];
+    unavailabilities: Unavailability[];
+    conveniences: Convenience[];
+    services: Service[];
 }

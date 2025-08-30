@@ -42,5 +42,6 @@ export class ResultsMapComponent {
 
 
   @Input() announcements: Announcement[] = [];
+  @Input() announcement: Announcement | null = null;
 
 }

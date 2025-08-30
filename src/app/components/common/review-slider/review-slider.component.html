@@ -1,32 +1,60 @@
 <div class="m-auto w-auto">
-    <swiper-container slides-per-view="4" space-between="28" navigation="true" pagination="true" [centerInsufficientSlides]="true" class="review-slider">
-        @for (test of tests; track test) {
-            <swiper-slide class="review-card">
+    <swiper-container slides-per-view="4" space-between="28" navigation="true" pagination="true"
+        [centerInsufficientSlides]="true" class="review-slider">
+        @if (announcement) {
+        @for (review of reviews; track review.id) {
+        <swiper-slide class="review-card">
 
-                    <div class="flex mb-5">
-                        <img src="/uploads/profile-pictures/profil.png" alt="photo de profil">
-                        <hgroup class="pl-4">
-                            <h3>Nom</h3>
-                            <p>digital nomad</p>
-                        </hgroup>
-                    </div>
-                    <div class="flex mb-5">
-                        <img src="/icons/star.svg" alt="">
-                        <img src="/icons/star.svg" alt="">
-                        <img src="/icons/star.svg" alt="">
-                        <img src="/icons/star.svg" alt="">
-                        <img src="/icons/star.svg" alt="">
-                    </div>
-                    <p   class="fade-clamp">“ceci est le commentaire de test test test test test test test test test test test testtest test test
-                        testceci est le commentaire de test test test test test test test test test test test testtest test test
-                        te test test test testtest test test
-                        testceci est le commentaire de test test test test test test test test test test test testtest test test
-                        testceci est le commentaire de test test test test test test test test test test test testtest test test
-                        test”</p>
+            <div class="flex mb-5">
+                <img src="/uploads/profile-pictures/profil.png" alt="photo de profil">
+                <hgroup class="pl-4">
+                    <h3>{{review.user.firstName}}</h3>
+                    <p class="text-xs">{{review.user.occupation}}</p>
+                </hgroup>
+            </div>
+            <div class="flex mb-5">
+                @for (star of (review.rating | times); track $index) {
+                    <img src="/icons/star.svg" alt="">                  
+                }
+            </div>
+            <p class="fade-clamp">“{{review.comment}}”</p>
 
-            </swiper-slide>
-            
+        </swiper-slide>
+
         }
+        }@else {
+        @for (test of tests; track test) {
+        <swiper-slide class="review-card">
+
+            <div class="flex mb-5">
+                <img src="/uploads/profile-pictures/profil.png" alt="photo de profil">
+                <hgroup class="pl-4">
+                    <h3>Nom</h3>
+                    <p>digital nomad</p>
+                </hgroup>
+            </div>
+            <div class="flex mb-5">
+                <img src="/icons/star.svg" alt="">
+                <img src="/icons/star.svg" alt="">
+                <img src="/icons/star.svg" alt="">
+                <img src="/icons/star.svg" alt="">
+                <img src="/icons/star.svg" alt="">
+            </div>
+            <p class="fade-clamp">“ceci est le commentaire de test test test test test test test test test test test
+                testtest
+                test test
+                testceci est le commentaire de test test test test test test test test test test test testtest test test
+                te test test test testtest test test
+                testceci est le commentaire de test test test test test test test test test test test testtest test test
+                testceci est le commentaire de test test test test test test test test test test test testtest test test
+                test”</p>
+
+        </swiper-slide>
+
+        }
+
+        }
+
     </swiper-container>
 
 </div>

@@ -7,7 +7,7 @@
             <h3>{{announcement.title}}</h3>
             <div class="mb-3">
                 <div class="flex w-full">
-                    <p>{{announcement.nbPlace}} place</p>
+                    <p>{{ announcement.nbPlace }} {{ announcement.nbPlace > 1 ? 'résidents' : 'résident' }}</p>
                     @if (announcement.accomodation.conveniences) {
                         <p class="px-7">{{announcement.accomodation.conveniences[1].name |titlecase}}</p>
                         <p>{{announcement.accomodation.conveniences[0].name}}</p>

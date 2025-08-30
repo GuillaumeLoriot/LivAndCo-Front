@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { SearchBarComponent } from '../../common/search-bar/search-bar.component';
 import { CommonModule } from '@angular/common';
 import { AnnouncementListCardComponent } from "../../common/announcement-list-card/announcement-list-card.component";
@@ -14,7 +14,7 @@ import Announcement from '../../../models/announcement.interface';
   templateUrl: './announcement-list.component.html',
   styleUrl: './announcement-list.component.scss'
 })
-export class AnnouncementListComponent {
+export class AnnouncementListComponent implements OnInit {
 
   private announcementService = inject(AnnouncementService);
   announcements: Announcement[] = [];

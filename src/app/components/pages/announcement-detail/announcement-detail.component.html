@@ -1,68 +1,63 @@
 <main>
+    @if (announcement) {
     <section id="gallery" class="px-4 py-7">
         <!-- MOBILE: slider 1 image -->
         <!-- <div class="block lg:hidden">
-            <swiper-container slides-per-view="1" space-between="12" pagination="true" class="w-full">
-                <swiper-slide><img src="/uploads/images/generic-announcement-1.jpg"
-                        class="w-full h-[40vh] object-cover object-center rounded-xl" alt=""></swiper-slide>
-                <swiper-slide><img src="/uploads/images/generic-lyon-1.jpg"
-                        class="w-full h-[40vh] object-cover object-center rounded-xl" alt=""></swiper-slide>
-                <swiper-slide><img src="/uploads/images/generic-accomodation-25.jpg"
-                        class="w-full h-[40vh] object-cover object-center rounded-xl" alt=""></swiper-slide>
-                <swiper-slide><img src="/uploads/images/generic-accomodation-25.jpg"
-                        class="w-full h-[40vh] object-cover object-center rounded-xl" alt=""></swiper-slide>
-                <swiper-slide><img src="/uploads/images/generic-accomodation-25.jpg"
-                        class="w-full h-[40vh] object-cover object-center rounded-xl" alt=""></swiper-slide>
-            </swiper-container>
-        </div> -->
+                <swiper-container slides-per-view="1" space-between="12" pagination="true" class="w-full">
+                    <swiper-slide><img src="/uploads/images/generic-announcement-1.jpg"
+                            class="w-full h-[40vh] object-cover object-center rounded-xl" alt=""></swiper-slide>
+                    <swiper-slide><img src="/uploads/images/generic-lyon-1.jpg"
+                            class="w-full h-[40vh] object-cover object-center rounded-xl" alt=""></swiper-slide>
+                    <swiper-slide><img src="/uploads/images/generic-accomodation-25.jpg"
+                            class="w-full h-[40vh] object-cover object-center rounded-xl" alt=""></swiper-slide>
+                    <swiper-slide><img src="/uploads/images/generic-accomodation-25.jpg"
+                            class="w-full h-[40vh] object-cover object-center rounded-xl" alt=""></swiper-slide>
+                    <swiper-slide><img src="/uploads/images/generic-accomodation-25.jpg"
+                            class="w-full h-[40vh] object-cover object-center rounded-xl" alt=""></swiper-slide>
+                </swiper-container>
+            </div> -->
 
-        <!-- DESKTOP: grille 2/3 + 1/3 -->
-        <div class="hidden lg:grid lg:grid-cols-[2fr_1fr] gap-3 h-[60vh]">
-            <!-- Colonne gauche (2/3) -->
-            <figure class="relative rounded-xl overflow-hidden">
-                <img src="/uploads/images/generic-announcement-1.jpg" alt="image de couverture de l'annonce"
-                    class="absolute inset-0 w-full h-full object-cover object-center">
+        <!-- Gallerie -->
+        <div class="hidden lg:grid lg:grid-cols-[2fr_1fr] h-[60vh]">
+            <!-- Grande image à gauche -->
+            <figure class="relative overflow-hidden h-full p-2">
+                <img src="/uploads/images/{{announcement.coverPicture}}" alt="image de couverture de l'annonce"
+                    class="rounded-xl w-full h-full object-cover object-center" />
             </figure>
 
-            <!-- Colonne droite (1/3) : grille 2×2 -->
-            <div class="grid grid-cols-2 grid-rows-2 gap-3 h-full">
-                <figure class="relative rounded-xl overflow-hidden">
-                    <img src="/uploads/images/generic-lyon-1.jpg" alt=""
-                        class="absolute inset-0 w-full h-full object-cover object-center">
+            <!-- Colonne droite avec overflow masqué -->
+            <div class="flex flex-wrap h-full overflow-hidden">
+                <figure class="h-1/2 w-1/2 p-2">
+                    <img src="/uploads/images/{{announcement.accomodation.coverPicture}}" alt="Image du logement"
+                        class="w-full h-full rounded-xl object-cover object-center" />
                 </figure>
-                <figure class="relative rounded-xl overflow-hidden">
-                    <img src="/uploads/images/generic-accomodation-25.jpg" alt=""
-                        class="absolute inset-0 w-full h-full object-cover object-center">
+                @for (image of announcement.accomodation.images; track image.id) {
+                <figure class="h-1/2 w-1/2 p-2">
+                    <img src="/uploads/images/{{image.path}}" alt="Image de l'annonce"
+                        class="w-full h-full rounded-xl object-cover object-center" />
                 </figure>
-                <figure class="relative rounded-xl overflow-hidden">
-                    <img src="/uploads/images/generic-accomodation-25.jpg" alt=""
-                        class="absolute inset-0 w-full h-full object-cover object-center">
-                </figure>
-                <figure class="relative rounded-xl overflow-hidden">
-                    <img src="/uploads/images/generic-accomodation-25.jpg" alt=""
-                        class="absolute inset-0 w-full h-full object-cover object-center">
-                </figure>
+                }
             </div>
         </div>
     </section>
     <section id="announcement-infos" class="px-4">
         <div class="mx-auto flex flex-col lg:flex-row lg:justify-between gap-8">
-            <!-- Colonne infos -->
+
             <div class="w-full lg:w-2/3 lg:px-7">
                 <hgroup class="mb-7">
-                    <h1>Suite zen pour esprit curieux</h1>
-                    <h3>Lyon</h3>
+                    <h1>{{announcement.title}}</h1>
+                    <h3>{{announcement.accomodation.city}}</h3>
                 </hgroup>
 
                 <div class="mb-7 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     <!-- Caractéristiques -->
                     <div class="w-full lg:w-2/3 flex flex-wrap gap-x-6 gap-y-2">
-                        <p>1 place</p>
-                        <p>1 salle de bain</p>
-                        <p>250 m²</p>
+                        <p>Conseillé pour {{ announcement.nbPlace }} {{ announcement.nbPlace > 1 ? 'résidents' : 'résident' }}</p>
+                       <p>|</p>
+                        <p>Surface commune du logement: {{announcement.accomodation.surface}} m²</p>
                     </div>
 
-                    <!-- Note -->
+                    <!-- Avis -->
                     <div class="w-full sm:w-auto lg:w-1/3 flex items-center justify-start sm:justify-end gap-2">
                         <img src="/icons/star.svg" alt="icone d'un étoile de notation" class="h-5 w-5">
                         <p>4.83 - 37 avis</p>
@@ -70,30 +65,10 @@
                 </div>
 
                 <h2>Description</h2>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt doloribus ducimus voluptate rem quas
-                    deserunt. Dolor voluptas vero voluptatem atque ipsam quae minima commodi fuga reiciendis modi est,
-                    dolores quasi.Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt doloribus ducimus
-                    voluptate
-                    rem quas deserunt. Dolor voluptas vero voluptatem atque ipsam quae minima commodi fuga reiciendis
-                    modi est,
-                    dolores quasi.Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt doloribus ducimus
-                    voluptate rem
-                    quas deserunt. Dolor voluptas vero voluptatem atque ipsam quae minima commodi fuga reiciendis modi
-                    est,
-                    dolores quasi.Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt doloribus ducimus
-                    voluptate rem
-                    quas deserunt. Dolor voluptas vero voluptatem atque ipsam quae minima commodi fuga reiciendis modi
-                    est,
-                    dolores quasi.Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt doloribus ducimus
-                    voluptate rem
-                    quas deserunt. Dolor voluptas vero voluptatem atque ipsam quae minima commodi fuga reiciendis modi
-                    est,
-                    dolores quasi.
-                </p>
+                <p>{{announcement.description}}</p>
             </div>
 
-            <!-- Colonne réservation -->
+            <!-- Card de réservation -->
             <aside class="w-full lg:w-1/3">
                 <app-reservation-card></app-reservation-card>
             </aside>
@@ -103,58 +78,55 @@
         <button class="main-button my-14" (click)="toggleModal()">Voir les disponibilités</button>
         @if (modalIsOpen) {
         <app-calendar [unavailableRanges]="[
-                    { start: '2025-08-12', end: '2025-09-02' },
-            { start: '2025-09-03', end: '2025-09-06' },
-            { start: '2025-09-12', end: '2025-09-15' }
-          ]" class="flex justify-center"></app-calendar>
+                        { start: '2025-08-12', end: '2025-09-02' },
+                { start: '2025-09-03', end: '2025-09-06' },
+                { start: '2025-09-12', end: '2025-09-15' }
+              ]" class="flex justify-center"></app-calendar>
         }
 
     </section>
-<section id="commodity" class="flex flex-col mx-4 my-7 px-4 sm:px-7">
-    <h2 class="text-center mb-10 sm:mb-16">Commodités</h2>
+    <section id="conveniences" class="flex flex-col mx-4 my-7 px-4 sm:px-7">
+        <h2 class="text-center mb-10 sm:mb-16">Commodités</h2>
 
-    <h3 class="pb-6 sm:pb-10">Partagées</h3>
-    <ul class="flex flex-wrap justify-between mx-3 mb-10 sm:mb-16">
-        <li class="w-full sm:w-1/2 md:w-1/4 px-3 mb-6 flex items-center justify-between">
-            <p>Télévision</p><img src="/icons/tv.svg" alt="" class="h-6 w-6 sm:h-7 sm:w-7">
-        </li>
-        <li class="w-full sm:w-1/2 md:w-1/4 px-3 mb-6 flex items-center justify-between">
-            <p>Télévision</p><img src="/icons/tv.svg" alt="" class="h-6 w-6 sm:h-7 sm:w-7">
-        </li>
-        <li class="w-full sm:w-1/2 md:w-1/4 px-3 mb-6 flex items-center justify-between">
-            <p>Télévision</p><img src="/icons/tv.svg" alt="" class="h-6 w-6 sm:h-7 sm:w-7">
-        </li>
-    </ul>
+        <h3 class="pb-6 sm:pb-10">Partagées</h3>
+        <ul class="flex flex-wrap justify-between mx-3 mb-10 sm:mb-16">
+            @for (convenience of announcement.accomodation.conveniences; track convenience.id) {
+            <li class="w-full sm:w-1/2 md:w-1/3 px-16 mb-6 flex items-center justify-between">
+                <div class="w-full px-4 py-2 flex items-center justify-between rounded-xl shadow-lg">
+                    <p>{{convenience.name}}</p><img src="/icons/{{convenience.icon}}" alt="Icone de l'équipement {{convenience.name}}"
+                        class="h-6 w-6 sm:h-7 sm:w-7">
+                </div>
+            </li>
+            }
+        </ul>
 
-    <h3 class="pb-6 sm:pb-10">Privatives</h3>
-    <ul class="flex flex-wrap justify-between mx-3 mb-10 sm:mb-16">
-        <li class="w-full sm:w-1/2 md:w-1/4 px-3 mb-6 flex items-center justify-between">
-            <p>Télévision</p><img src="/icons/tv.svg" alt="" class="h-6 w-6 sm:h-7 sm:w-7">
-        </li>
-        <li class="w-full sm:w-1/2 md:w-1/4 px-3 mb-6 flex items-center justify-between">
-            <p>Télévision</p><img src="/icons/tv.svg" alt="" class="h-6 w-6 sm:h-7 sm:w-7">
-        </li>
-        <li class="w-full sm:w-1/2 md:w-1/4 px-3 mb-6 flex items-center justify-between">
-            <p>Télévision</p><img src="/icons/tv.svg" alt="" class="h-6 w-6 sm:h-7 sm:w-7">
-        </li>
-    </ul>
+        <h3 class="pb-6 sm:pb-10">Privatives</h3>
+        <ul class="flex flex-wrap justify-between mx-3 mb-10 sm:mb-16">
+            @for (convenience of announcement.conveniences; track convenience.id) {
+            <li class="w-full sm:w-1/2 md:w-1/3 px-16 mb-6 flex items-center justify-between">
+                <div class="w-full px-4 py-2 flex items-center justify-between rounded-xl shadow-lg">
+                    <p>{{convenience.name}}</p><img src="/icons/{{convenience.icon}}" alt="Icone de {{convenience.name}}"
+                        class="h-6 w-6 sm:h-7 sm:w-7">
+                </div>
+            </li>
+            }
+        </ul>
 
-    <h2 class="text-center my-10 sm:my-16">Services possibles</h2>
-    <ul class="flex flex-wrap justify-between mx-3">
-        <li class="w-full sm:w-1/2 md:w-1/4 px-3 mb-6 flex items-center justify-between">
-            <p>Télévision</p><img src="/icons/tv.svg" alt="" class="h-6 w-6 sm:h-7 sm:w-7">
-        </li>
-        <li class="w-full sm:w-1/2 md:w-1/4 px-3 mb-6 flex items-center justify-between">
-            <p>Télévision</p><img src="/icons/tv.svg" alt="" class="h-6 w-6 sm:h-7 sm:w-7">
-        </li>
-        <li class="w-full sm:w-1/2 md:w-1/4 px-3 mb-6 flex items-center justify-between">
-            <p>Télévision</p><img src="/icons/tv.svg" alt="" class="h-6 w-6 sm:h-7 sm:w-7">
-        </li>
-    </ul>
-</section>
+        <h2 class="text-center my-10 sm:my-16">Services possibles</h2>
+        <ul class="flex flex-wrap justify-between mx-3">
+            @for (service of announcement.services; track service.id) {
+            <li class="w-full sm:w-1/2 md:w-1/3 px-16 mb-6 flex items-center justify-between">
+                <div class="w-full px-4 py-2">
+                    <p class="text-lg text-center font-bold py-4">{{service.name}}</p>
+                    <p>{{service.description}}</p>
+                </div>
+            </li>
+            }
+        </ul>
+    </section>
     <section id="map" class="mb-24">
         <h2 class="text-center my-14">Localisation</h2>
-        <app-results-map class=""></app-results-map>
+        <app-results-map [announcement]=announcement></app-results-map>
     </section>
     <section id="city-infos" class="bg-[var(--color-secondary)] p-7 mb-24">
         <h2 class="text-center mb-7">A propos de nom de la ville</h2>
@@ -172,7 +144,8 @@
     </section>
     <section id="review" class="mb-24">
         <h2 class="text-center mb-14">Avis</h2>
-        <app-review-slider></app-review-slider>
+        <app-review-slider [announcement]=announcement></app-review-slider>
     </section>
+    }
 
 </main>
