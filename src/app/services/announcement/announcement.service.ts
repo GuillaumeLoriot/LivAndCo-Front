@@ -1,8 +1,9 @@
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import Announcement from '../../models/announcement.interface';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+import { HydraCollection } from '../../models/hydra-collection.interface';
 
 
 @Injectable({
@@ -19,6 +20,14 @@ export class AnnouncementService {
   
   getAnnouncements(): Observable<Announcement[]> {
     return this.http.get<Announcement[]>(this.apiUrl, { headers: { 'accept': 'application/json' } });
+  }
+
+  getAnnouncementsPage(page = 1, itemsPerPage = 10): Observable<HydraCollection<Announcement>> {
+    const params = new HttpParams()
+      .set('page', page)
+      .set('itemsPerPage', itemsPerPage);
+
+    return this.http.get<HydraCollection<Announcement>>(this.apiUrl, { params, headers: { Accept: 'application/ld+json' } });
   }
 
   getAnnouncement(id: Number): Observable<Announcement> {

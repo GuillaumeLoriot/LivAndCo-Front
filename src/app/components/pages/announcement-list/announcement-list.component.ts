@@ -15,35 +15,75 @@ import Announcement from '../../../models/announcement.interface';
   styleUrl: './announcement-list.component.scss'
 })
 export class AnnouncementListComponent {
-  
-private announcementService = inject(AnnouncementService);
-announcements: Announcement[] = [];
-answerIsOpen = false;
+
+  private announcementService = inject(AnnouncementService);
+  announcements: Announcement[] = [];
+  answerIsOpen = false;
+
+  // Pagination hydra
+  page = 1;
+  itemsPerPage = 10;
+  total = 0;
+
+  hasNext = false;
+  hasPrev = false;
 
   ngOnInit(): void {
     this.loadAnnouncements();
   }
 
   loadAnnouncements() {
-
-    this.announcementService.getAnnouncements().subscribe({
+    this.announcementService.getAnnouncementsPage(this.page, this.itemsPerPage).subscribe({
       next: (data) => {
-
-        this.announcements = data;
-        console.log(this.announcements);
+        this.announcements = data['member'];
+        this.total = data['totalItems'];
+        this.hasNext = Boolean(data.view?.next);
+        this.hasPrev = Boolean(data.view?.previous);
+        console.log(data);
       },
       error: () => {
-
-        console.log("Une erreur est survenue")
+        console.log('Une erreur est survenue');
         this.announcements = [];
-
-      },
+      }
     });
   }
 
-switchOpenClosedAnswer(){
-  this.answerIsOpen = !this.answerIsOpen;
-}
+  goNext(): void {
+    if (this.hasNext) {
+      this.page++;
+      this.loadAnnouncements();
+    }
+  }
+
+  goPrev(): void {
+    if (this.hasPrev && this.page > 1) {
+      this.page--;
+      this.loadAnnouncements();
+    }
+  }
+
+
+
+  // loadAnnouncements() {
+
+  //   this.announcementService.getAnnouncements().subscribe({
+  //     next: (data) => {
+
+  //       this.announcements = data;
+  //       console.log(this.announcements);
+  //     },
+  //     error: () => {
+
+  //       console.log("Une erreur est survenue")
+  //       this.announcements = [];
+
+  //     },
+  //   });
+  // }
+
+  switchOpenClosedAnswer() {
+    this.answerIsOpen = !this.answerIsOpen;
+  }
 
 
 

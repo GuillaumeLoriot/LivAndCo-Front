@@ -4,13 +4,15 @@
         <div class="w-7/12">
             <ul class="w-full">
                 @for (announcement of announcements; track announcement.id) {
-                    <li>
-                        <app-announcement-list-card [announcement]=announcement></app-announcement-list-card>
-                    </li>
+                <li>
+                    <app-announcement-list-card [announcement]=announcement></app-announcement-list-card>
+                </li>
                 }
             </ul>
-            <div class="flex justify-center mt-24">
-                <button class="main-button">Voir plus d'annonces</button>
+            <div class="flex justify-around mt-24">
+                <button class="main-button" (click)="goPrev()">prev</button>
+                <button class="main-button" (click)="goNext()">next</button>
+
             </div>
         </div>
         <app-results-map class="w-5/12 self-stretch" [announcements]=announcements></app-results-map>
