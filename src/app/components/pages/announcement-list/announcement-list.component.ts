@@ -62,25 +62,6 @@ export class AnnouncementListComponent implements OnInit {
     }
   }
 
-
-
-  // loadAnnouncements() {
-
-  //   this.announcementService.getAnnouncements().subscribe({
-  //     next: (data) => {
-
-  //       this.announcements = data;
-  //       console.log(this.announcements);
-  //     },
-  //     error: () => {
-
-  //       console.log("Une erreur est survenue")
-  //       this.announcements = [];
-
-  //     },
-  //   });
-  // }
-
   switchOpenClosedAnswer() {
     this.answerIsOpen = !this.answerIsOpen;
   }
