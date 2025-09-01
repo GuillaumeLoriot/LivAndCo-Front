@@ -1,0 +1,8 @@
+<div class="w-full flex items-center justify-end gap-2">
+    @if (announcement) {
+        <img src="/icons/star.svg" alt="icone d'un étoile de notation" class="h-5 w-5">
+        <p>{{averageRating | number:'1.2-2'}}/5 - {{reviewCount}} avis</p>
+    }@else {
+        <p>Pas encore d'avis</p>
+    }
+</div>

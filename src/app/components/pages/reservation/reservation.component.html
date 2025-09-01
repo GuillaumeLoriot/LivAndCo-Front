@@ -1,36 +1,93 @@
 <main>
     <h1 class="text-center mb-7 mt-7">Réservation</h1>
+    <section id="calendar" class="w-full">
+        <h2 class="mb-4 text-center">Sélectionnez la date de début du séjour</h2>
+        <app-calendar class="flex justify-center" [announcement]="announcement"></app-calendar>
+    </section>
     <section id="reservation-detail" class="flex">
-        <form action="" class="w-2/3 p-7">
-            <h2 class="mb-4 text-center">Détails résident</h2>
-            <div class="flex flex-col items-center mb-5">
-                <label for="" class="mb-3 font-bold">Date de naissance</label>
-                <input type="date" class="bg-neutral-200 text-[var(--color-primary)] w-5/6 h-[3rem] border-2 border-[var(--color-primary)] rounded-[7px] p-3">
+        <form [formGroup]="reservationForm" class="w-2/3 p-7" (ngSubmit)="onSubmit()">
+            <h2 class="mb-4 text-center">Détails de la réservation</h2>
+            <div class="flex justify-between justify-self-center w-5/6">
+                <div class="flex flex-col items-center mb-5 w-5/12">
+                    <label for="duration" class="mb-3 font-bold">Durée du séjour</label>
+                    <input formControlName="duration" type="number"
+                        class="bg-neutral-200 text-[var(--color-primary)] w-full h-[3rem] border-2 border-[var(--color-primary)] rounded-[7px] p-3">
+                    @if (isFieldInvalid('duration')) {
+                    <div class="mt-1 text-sm text-red-600">
+                        <!-- Affiche le résultat de getFieldError('duration') -->
+                        <!-- Cette méthode TS retourne le message d'erreur approprié -->
+                        {{ getFieldError('duration') }}
+                    </div>
+                    }
+                </div>
+
+                <div class="flex flex-col items-center mb-5 w-5/12">
+                    <label for="birthdate" class="mb-3 font-bold">Date de naissance</label>
+                    <input formControlName="birthdate" type="date"
+                        class="bg-neutral-200 text-[var(--color-primary)] w-full h-[3rem] border-2 border-[var(--color-primary)] rounded-[7px] p-3">
+                    @if (isFieldInvalid('birthdate')) {
+                    <div class="mt-1 text-sm text-red-600">
+                        <!-- Affiche le résultat de getFieldError('birthdate') -->
+                        <!-- Cette méthode TS retourne le message d'erreur approprié -->
+                        {{ getFieldError('birthdate') }}
+                    </div>
+                    }
+                </div>
             </div>
             <div class="flex justify-between justify-self-center w-5/6">
                 <div class="flex flex-col items-center w-5/12 mb-5">
-                    <label for="" class="mb-3 font-bold">Profession</label>
-                    <input type="text"
+                    <label for="occupation" class="mb-3 font-bold">Profession</label>
+                    <input formControlName="occupation" type="text"
                         class="bg-neutral-200 text-[var(--color-primary)] w-full h-[3rem] border-2 border-[var(--color-primary)] rounded-[7px] p-3">
+                    @if (isFieldInvalid('occupation')) {
+                    <div class="mt-1 text-sm text-red-600">
+                        <!-- Affiche le résultat de getFieldError('occupation') -->
+                        <!-- Cette méthode TS retourne le message d'erreur approprié -->
+                        {{ getFieldError('occupation') }}
+                    </div>
+                    }
                 </div>
                 <div class="flex flex-col items-center w-5/12 mb-5">
-                    <label for="" class="mb-3 font-bold">Genre</label>
-                    <select name="gender" id="gender" class="bg-neutral-200 text-[var(--color-primary)] w-full h-[3rem] border-2 border-[var(--color-primary)] rounded-[7px] p-3">
-                        <option value="">Homme</option>
-                        <option value="">Femme</option>
-                        <option value="">Autre</option>
+                    <label for="gender" class="mb-3 font-bold">Genre</label>
+                    <select formControlName="gender" name="gender" id="gender"
+                        class="bg-neutral-200 text-[var(--color-primary)] w-full h-[3rem] border-2 border-[var(--color-primary)] rounded-[7px] p-3">
+                        <option [ngValue]="null" disabled>— Sélectionnez —</option>
+                        <option value="male">Homme</option>
+                        <option value="female">Femme</option>
+                        <option value="other">Autre</option>
                     </select>
+                    @if (isFieldInvalid('gender')) {
+                    <div class="mt-1 text-sm text-red-600">
+                        <!-- Affiche le résultat de getFieldError('gender') -->
+                        <!-- Cette méthode TS retourne le message d'erreur approprié -->
+                        {{ getFieldError('gender') }}
+                    </div>
+                    }
                 </div>
             </div>
             <div class="flex flex-col items-center mb-5">
-                <label for="" class="mb-3 font-bold">Adresse</label>
-                <input type="text"
+                <label for="address" class="mb-3 font-bold">Adresse</label>
+                <input formControlName="address" type="text"
                     class="bg-neutral-200 text-[var(--color-primary)] w-5/6 h-[3rem] border-2 border-[var(--color-primary)] rounded-[7px] p-3">
+                @if (isFieldInvalid('address')) {
+                <div class="mt-1 text-sm text-red-600">
+                    <!-- Affiche le résultat de getFieldError('address') -->
+                    <!-- Cette méthode TS retourne le message d'erreur approprié -->
+                    {{ getFieldError('address') }}
+                </div>
+                }
             </div>
             <div class="flex flex-col items-center mb-5">
-                <label for="" class="mb-3 font-bold">Numéro de téléphone</label>
-                <input type="text"
+                <label for="phoneNumber" class="mb-3 font-bold">Numéro de téléphone</label>
+                <input formControlName="phoneNumber" type="text"
                     class="bg-neutral-200 text-[var(--color-primary)] w-5/6 h-[3rem] border-2 border-[var(--color-primary)] rounded-[7px] p-3">
+                @if (isFieldInvalid('phoneNumber')) {
+                <div class="mt-1 text-sm text-red-600">
+                    <!-- Affiche le résultat de getFieldError('phoneNumber') -->
+                    <!-- Cette méthode TS retourne le message d'erreur approprié -->
+                    {{ getFieldError('phoneNumber') }}
+                </div>
+                }
             </div>
             <div class="flex justify-center">
                 <input type="submit" name="" id="" class="main-button mt-7">

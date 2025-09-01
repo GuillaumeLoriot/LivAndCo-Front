@@ -7,12 +7,14 @@ import { CommonModule } from '@angular/common';
 import { AnnouncementService } from '../../../services/announcement/announcement.service';
 import { ActivatedRoute } from '@angular/router';
 import Announcement from '../../../models/announcement.interface';
+import { RatingComponent } from "../../common/rating/rating.component";
+import { AverageMonthlyPipe } from '../../../pipes/average-monthly.pipe';
 
 
 @Component({
   selector: 'app-announcement-detail',
   standalone: true,
-  imports: [CommonModule, ResultsMapComponent, ReviewSliderComponent, ReservationCardComponent, CalendarComponent],
+  imports: [CommonModule, ResultsMapComponent, ReviewSliderComponent, ReservationCardComponent, CalendarComponent, RatingComponent],
   templateUrl: './announcement-detail.component.html',
   styleUrls: ['./announcement-detail.component.scss']
 })

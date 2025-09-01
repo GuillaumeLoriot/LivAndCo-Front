@@ -1,23 +1,24 @@
 <div class="flex flex-col items-center">
     <swiper-container slides-per-view="5" space-between="28" navigation="true" autoplay="true" loop="true" role="list"
         aria-label="Liste défilante d'annonces" class="w-[95%]">
-        @for (test of tests2; track test) {
-        <swiper-slide class="w-1/6 mb-16">
+        @for (announcement of announcements | slice:0:10; track announcement.id) {
+        <swiper-slide class="w-1/6 mb-16 p-4">
             <article role="listitem">
-                <img src="/uploads/images/generic-paris-3.jpg" alt="photo d'une annonce de coliving" class="rounded-[30px]">
+                <img src="/uploads/images/{{announcement.coverPicture}}" alt="photo d'une annonce de coliving"
+                    class="h-48 object-cover object-center rounded-[30px]">
                 <div class="flex flex-col">
-                    <h3>Cocon zen</h3>
-                    <div class="flex justify-between mb-5">
-                        <p class="text-[1.1rem]">Paris</p>
-                        <div class="flex">
-                            <p>200 m² | </p>
-                            <img src="/icons/star.svg" alt="image d'une étoile de notation" class="w-4 mx-1">
-                            <p>4,83 - 37 Avis</p>
+                    <h3>{{announcement.title}}</h3>
+                    <div class="flex flex-col justify-between h-36 mb-5">
+                        <p class="text-[1rem] font-bold">{{announcement.accomodation.city}}</p>
+                        <div class="flex justify-between">
+                            <p>{{announcement.accomodation.surface}} m²</p>
+                            <p>|</p>
+                            <app-rating [announcement]=announcement></app-rating>
                         </div>
+                        <p class="font-medium">A partir de {{announcement.dailyPrice | averageMonthly}}€ / mois</p>
                     </div>
-                    <p>A partir de 800 € / mois</p>
                 </div>
-            </article>    
+            </article>
 
         </swiper-slide>
 
