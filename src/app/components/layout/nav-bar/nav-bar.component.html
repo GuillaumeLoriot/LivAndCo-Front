@@ -9,7 +9,6 @@
         <li><a [routerLink]="['announcements']" class="nav-link">Annonces</a></li>
         <li><a [routerLink]="['help']" class="nav-link">Aide</a></li>
         <li><a [routerLink]="['contact']" class="nav-link">Contact</a></li>
-        <li><a [routerLink]="['profile']" class="nav-link">Profil</a></li>
         <li><a [routerLink]="['/profile/add-announcement']" class="main-button">Déposer une annonce</a></li>
     </ul>
 
@@ -24,9 +23,20 @@
             }
         </button>
 
+        @if (authService.isAuthenticated) {
+        <button [routerLink]="['profile']" class="nav-link">
+            <img src="/uploads/profile-pictures/{{authService.user?.profilePicture}}"
+                alt="Image de profil de l'utilisateur" class="w-10 rounded-full">
+        </button>
+
+        <button class="inline-flex" (click)="authService.logout()">
+            <img class="w-10" src="/icons/logout.svg" alt="symbole de déconnexion">
+        </button>
+        }@else {
         <a [routerLink]="['login']" class="inline-flex">
             <img class="w-10" src="/icons/login-green.svg" alt="symbole de connexion">
         </a>
+        }
     </div>
 </nav>
 

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, inject, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../../services/user/auth.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,8 +10,11 @@ import { RouterLink } from '@angular/router';
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.scss'
 })
-export class NavBarComponent {
+export class NavBarComponent{
+
+  authService = inject(AuthService);
   isOpen = false;
+
 
   toggleNav() {
     this.isOpen = !this.isOpen;

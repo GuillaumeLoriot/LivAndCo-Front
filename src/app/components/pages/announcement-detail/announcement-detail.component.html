@@ -1,4 +1,10 @@
 <main>
+                @if (isLoading) {
+                    <div class="h-[60vh] flex justify-center items-start">
+
+                        <app-loading></app-loading>
+                    </div>
+                }
     @if (announcement) {
     <section id="gallery" class="px-4 py-7">
         <!-- MOBILE: slider 1 image -->

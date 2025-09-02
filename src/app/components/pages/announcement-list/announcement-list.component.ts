@@ -5,12 +5,13 @@ import { AnnouncementListCardComponent } from "../../common/announcement-list-ca
 import { ResultsMapComponent } from "../../common/results-map/results-map.component";
 import { AnnouncementService } from '../../../services/announcement/announcement.service';
 import Announcement from '../../../models/announcement.interface';
+import { LoadingComponent } from "../../common/loading/loading.component";
 
 
 @Component({
   selector: 'app-announcement-list',
   standalone: true,
-  imports: [CommonModule, SearchBarComponent, AnnouncementListCardComponent, ResultsMapComponent],
+  imports: [CommonModule, SearchBarComponent, AnnouncementListCardComponent, ResultsMapComponent, LoadingComponent],
   templateUrl: './announcement-list.component.html',
   styleUrl: './announcement-list.component.scss'
 })
@@ -19,6 +20,7 @@ export class AnnouncementListComponent implements OnInit {
   private announcementService = inject(AnnouncementService);
   announcements: Announcement[] = [];
   answerIsOpen = false;
+  isLoading = false;
 
   // Pagination hydra
   page = 1;
@@ -33,15 +35,17 @@ export class AnnouncementListComponent implements OnInit {
   }
 
   loadAnnouncements() {
+    this.isLoading = true;
     this.announcementService.getAnnouncementsPage(this.page, this.itemsPerPage).subscribe({
       next: (data) => {
+        this.isLoading = false;
         this.announcements = data['member'];
         this.total = data['totalItems'];
         this.hasNext = Boolean(data.view?.next);
         this.hasPrev = Boolean(data.view?.previous);
-        console.log(data);
       },
       error: () => {
+        this.isLoading = false;
         console.log('Une erreur est survenue');
         this.announcements = [];
       }

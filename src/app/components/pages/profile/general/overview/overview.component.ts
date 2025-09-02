@@ -4,11 +4,12 @@ import { Router } from '@angular/router';
 import User from '../../../../../models/user.interface';
 import { enableAuthContext } from '../../../../../interceptors/authentification/auth.interceptor';
 import { CommonModule } from '@angular/common';
+import { LoadingComponent } from "../../../../common/loading/loading.component";
 
 @Component({
   selector: 'app-overview',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, LoadingComponent],
   templateUrl: './overview.component.html',
   styleUrl: './overview.component.scss'
 })

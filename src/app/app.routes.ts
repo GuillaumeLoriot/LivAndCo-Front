@@ -28,6 +28,7 @@ import { AddAccommodationComponent } from './components/pages/profile/owner-dash
 import { AddAnnouncementComponent } from './components/pages/profile/owner-dashboard/add-announcement/add-announcement.component';
 import { ReviewsComponent } from './components/pages/profile/owner-dashboard/reviews/reviews.component';
 import { ConversationComponent } from './components/pages/profile/messages/conversation/conversation.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 export const routes: Routes = [
@@ -35,7 +36,10 @@ export const routes: Routes = [
     { path: 'contact', component: ContactComponent },
     { path: 'announcements', component: AnnouncementListComponent },
     { path: 'announcements/:id', component: AnnouncementDetailComponent },
-    { path: 'announcements/:id/reservation', component: ReservationComponent },
+    {
+        path: 'announcements/:id/reservation', component: ReservationComponent,
+        canActivate: [AuthGuard],
+    },
     { path: 'help', component: HelpComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
@@ -44,11 +48,13 @@ export const routes: Routes = [
 
     // La page profil contiens une nagigation secondaire avec toutes les vues liées au profil de l'utilisateur connecté
     {
-        path: 'profile', component: ProfileShellComponent, children:
+        path: 'profile', component: ProfileShellComponent,
+        canActivate: [AuthGuard],
+        children:
             [
                 // Contenu principal par défaut du profil
                 { path: '', redirectTo: 'overview', pathMatch: 'full' },
-                
+
                 // Panneaux latéral suplémenaire nommé "panel"
                 { path: 'profile-menu', outlet: 'panel', component: ProfilePanelComponent },
                 { path: 'reservations-menu', outlet: 'panel', component: ReservationsPanelComponent },

@@ -2,6 +2,9 @@
     <app-search-bar class="flex justify-center my-7"></app-search-bar>
     <section id="search-results" class="flex mb-32 mt-14">
         <div class="w-7/12">
+            @if (isLoading) {
+            <app-loading></app-loading>
+            }
             <ul class="w-full">
                 @for (announcement of announcements; track announcement.id) {
                 <li>

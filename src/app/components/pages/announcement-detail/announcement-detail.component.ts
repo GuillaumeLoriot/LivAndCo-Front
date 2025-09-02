@@ -9,12 +9,13 @@ import { ActivatedRoute } from '@angular/router';
 import Announcement from '../../../models/announcement.interface';
 import { RatingComponent } from "../../common/rating/rating.component";
 import { AverageMonthlyPipe } from '../../../pipes/average-monthly.pipe';
+import { LoadingComponent } from "../../common/loading/loading.component";
 
 
 @Component({
   selector: 'app-announcement-detail',
   standalone: true,
-  imports: [CommonModule, ResultsMapComponent, ReviewSliderComponent, ReservationCardComponent, CalendarComponent, RatingComponent],
+  imports: [CommonModule, ResultsMapComponent, ReviewSliderComponent, ReservationCardComponent, CalendarComponent, RatingComponent, LoadingComponent],
   templateUrl: './announcement-detail.component.html',
   styleUrls: ['./announcement-detail.component.scss']
 })
@@ -26,6 +27,7 @@ export class AnnouncementDetailComponent implements OnInit {
   announcementid: Number | null = null;
   announcement: Announcement | null = null
   modalIsOpen = false;
+  isLoading = false;
 
   ngOnInit(): void {
     this.getId();
@@ -47,13 +49,16 @@ export class AnnouncementDetailComponent implements OnInit {
 
   loadAnnouncement() {
     if (this.announcementid) {
+      this.isLoading = true;
       this.announcementService.getAnnouncement(this.announcementid).subscribe({
         next: (data) => {
+          this.isLoading = false;
           this.announcement = data;
           console.log(this.announcement);
         },
-        error: () => {
-          console.log('Une erreur est survenue');
+        error: (error) => {
+          this.isLoading = false;
+          console.log(error);
         }
       });
     }
