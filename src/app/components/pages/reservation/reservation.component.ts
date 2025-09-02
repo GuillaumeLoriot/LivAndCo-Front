@@ -21,16 +21,18 @@ export class ReservationComponent implements OnInit{
   snapshotId: string | null = null;
   announcementid: Number | null = null;
   announcement: Announcement | null = null
+  tomorow: string = new Date().toISOString().split('T')[0];
   isSubmitted = false;
   isLoading = false;
 
   constructor() {
     this.reservationForm = this.formBuilder.group({
+      startDate: ['', [Validators.required]],
       duration: ['', [Validators.required, Validators.min(1), Validators.max(36)]],
       birthdate: ['', [Validators.required]],
       occupation: ['', [Validators.required, Validators.maxLength(50)]],
       gender: [null, [Validators.required]],
-      address: ['', [Validators.required, Validators.minLength(15)]],
+      address: ['', [Validators.required, Validators.minLength(10)]],
       phoneNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
     });
   }
@@ -56,8 +58,8 @@ export class ReservationComponent implements OnInit{
         next: (data) => {
           this.announcement = data;
         },
-        error: () => {
-          console.log('Une erreur est survenue');
+        error: (error) => {
+          console.log(error);
         }
       });
     }
@@ -105,4 +107,13 @@ export class ReservationComponent implements OnInit{
   }
 
 
+  // -------------UNE METHODE POUR RECUPERER LES UNAVAILABLE RANGE DE L'ANNONCE---------
+  // -------------UN INPUUT POUR LES ENVOYE DANS LE CALENDAR POUR AFFICHAGE---------
+  // -------------UNE METHODE POUR RECUPERER LA DATE DE DEBUT SELECTIONNEE AU INPUT CHANGE---------
+  // -------------UNE METHODE POUR RECUPERER LA DUREE SELECTIONNEE AU INPUT CHANGE---------
+  // -------------UNE METHODE QUI CALCULE LA DATE DE FIN A PARTIR DE LA DATE SELECTIONNER ET DE DUREE SI ELLE EST LA---------
+  // -------------UNE METHODE QUI BOUCLE SUR UNAVAILABLE RANGE ET VERIFIE LA DISPO VOIR POUR ERREUR A AFFICHER SI CHEVAUCHEMENT---------
+  // -------------UNE METHODE QUI PUSH DANS LES EVENTS SI PAS DE CHEVAUCHEMENT (autre couleur que unvaillable)---------
+
+  // si trop long, ne pa afficher, juste verifier les erreurs de chavauchement. voir si comme logique déja faite en symfony, utilisé l'erreur et ne pas réimplementé la logique dans le front
 }

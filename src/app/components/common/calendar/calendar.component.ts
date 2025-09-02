@@ -57,10 +57,6 @@ export class CalendarComponent implements OnChanges{
     eventBorderColor: '#fecaca',
     displayEventTime: false,
     events: [], // ← evenements à remplir pour afficher les indispo
-    // Options de sélection sur le calendar
-    selectable: true, // ← permet de sélectionner
-    selectMirror: true, // ← feedback visuel pendant le drag
-    unselectAuto: true, // ← clic à l'extérieur pour désélectionner
   };
   
   getUnavailableRanges() {
