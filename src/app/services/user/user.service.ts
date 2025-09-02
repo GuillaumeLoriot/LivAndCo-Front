@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import User from '../../models/user.interface';
 import JwtToken from '../../models/jwtToken.interface';
 import { environment } from '../../../environments/environment';
+import { enableAuthContext } from '../../interceptors/authentification/auth.interceptor';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,11 @@ export class UserService {
   private authApi = `${environment.apiUrl}/login_check`;
   private http = inject(HttpClient);
 
-  getUser(token: string): Observable<User> {
-    return this.http.get<User>(this.getUserApi, { headers: { 'accept': 'application/json', 'Authorization': `Bearer ${token}` } });
+  getUser(): Observable<User> {
+    return this.http.get<User>(this.getUserApi, {
+      headers: { 'accept': 'application/json' },
+      context: enableAuthContext()
+    });
   }
 
   login(user: Partial<User>): Observable<JwtToken> {
