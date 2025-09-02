@@ -10,7 +10,8 @@ export class AuthService {
 
   private userService: UserService = inject(UserService);
   private router: Router = inject(Router); // Pour la redirection
-  user :User |null = null; 
+  user :User |null = null;
+  roles : string[] = []; 
   isAuthenticated = false;
 
   constructor() {
@@ -27,6 +28,8 @@ export class AuthService {
         next: (data) => {
           this.isAuthenticated = true;
           this.user = data;
+          this.roles = data.roles || [];
+          console.log(this.roles);
           if (redirectRoute) {
             this.router.navigateByUrl(redirectRoute);
           }

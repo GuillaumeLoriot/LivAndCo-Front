@@ -29,6 +29,8 @@ import { AddAnnouncementComponent } from './components/pages/profile/owner-dashb
 import { ReviewsComponent } from './components/pages/profile/owner-dashboard/reviews/reviews.component';
 import { ConversationComponent } from './components/pages/profile/messages/conversation/conversation.component';
 import { AuthGuard } from './guards/auth.guard';
+import { RoleGuard } from './guards/role.guard';
+import { ForbiddenComponent } from './components/common/errors/forbidden/forbidden.component';
 
 
 export const routes: Routes = [
@@ -45,6 +47,7 @@ export const routes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'privacy-policy', component: PrivacyPolicyComponent },
     { path: 'terms-of-use', component: TermsOfUseComponent },
+    { path: 'forbidden', component: ForbiddenComponent },
 
     // La page profil contiens une nagigation secondaire avec toutes les vues liées au profil de l'utilisateur connecté
     {
@@ -59,7 +62,11 @@ export const routes: Routes = [
                 { path: 'profile-menu', outlet: 'panel', component: ProfilePanelComponent },
                 { path: 'reservations-menu', outlet: 'panel', component: ReservationsPanelComponent },
                 { path: 'messages-menu', outlet: 'panel', component: MessagesPanelComponent },
-                { path: 'owner-menu', outlet: 'panel', component: OwnerDashboardPanelComponent },
+                {
+                    path: 'owner-menu', outlet: 'panel', component: OwnerDashboardPanelComponent,
+                    canActivate: [RoleGuard],
+                    data: { roles: ['owner', 'admin'] }
+                },
 
                 // Vues principales dans le profil
 
@@ -73,13 +80,13 @@ export const routes: Routes = [
                 { path: 'ongoing-reservations', component: OngoingReservationsComponent },
                 { path: 'past-reservations', component: PastReservationsComponent },
 
-                // Dashboard propriétaire
-                { path: 'accomodations', component: AccomodationsComponent },
-                { path: 'announcements', component: AnnouncementsComponent },
-                { path: 'rental-requests', component: RentalRequestsComponent },
-                { path: 'rental-schedule', component: RentalScheduleComponent },
-                { path: 'add-accomodation', component: AddAccommodationComponent },
-                { path: 'add-announcement', component: AddAnnouncementComponent },
+                // Dashboard propriétaire protégé par le roleGuard
+                { path: 'accomodations', component: AccomodationsComponent, canActivate: [RoleGuard], data: { roles: ['owner', 'admin'] } },
+                { path: 'announcements', component: AnnouncementsComponent, canActivate: [RoleGuard], data: { roles: ['owner', 'admin'] } },
+                { path: 'rental-requests', component: RentalRequestsComponent, canActivate: [RoleGuard], data: { roles: ['owner', 'admin'] } },
+                { path: 'rental-schedule', component: RentalScheduleComponent, canActivate: [RoleGuard], data: { roles: ['owner', 'admin'] } },
+                { path: 'add-accomodation', component: AddAccommodationComponent, canActivate: [RoleGuard], data: { roles: ['owner', 'admin'] } },
+                { path: 'add-announcement', component: AddAnnouncementComponent, canActivate: [RoleGuard], data: { roles: ['owner', 'admin'] } },
                 { path: 'reviews', component: ReviewsComponent },
 
                 // Messagerie Utilisateur
