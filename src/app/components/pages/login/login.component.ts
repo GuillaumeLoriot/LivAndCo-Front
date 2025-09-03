@@ -55,8 +55,6 @@ export class LoginComponent {
           } else {
             this.errorMessage = "Une erreur est survenue. Veuillez réessayer.";
           }
-
-          console.log(error)
           this.error = true;
           this.isLoading = false;
 

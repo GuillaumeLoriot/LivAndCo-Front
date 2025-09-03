@@ -37,7 +37,7 @@ export class UserService {
     });
   }
 
-  update(id: number, changes: Partial<User>): Observable<User> {
+  edit(id: number, changes: Partial<User>): Observable<User> {
     return this.http.patch<User>(this.apiUrl + '/' + id, changes, {
       headers: {
         'content-type': 'application/merge-patch+json',
