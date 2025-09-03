@@ -22,7 +22,8 @@ export class RegisterComponent {
   private router = inject(Router);
   isSubmitted = false;
   isLoading = false;
-
+  success = false;
+  error = false;
 
   constructor() {
     this.registerForm = this.formBuilder.group({
@@ -30,8 +31,7 @@ export class RegisterComponent {
       lastName: ['', [Validators.required, Validators.maxLength(60)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
-      // confirmPassword: ['', Validators.required] }, { validators: passwordMatchValidator }
-    }
+      confirmPassword: ['', Validators.required] }, { validators: passwordMatchValidator }
     );
   }
 
@@ -40,17 +40,22 @@ export class RegisterComponent {
     this.isSubmitted = true;
     if (this.registerForm.valid) {
       this.isLoading = true;
-      this.userService.register(this.registerForm.value).subscribe({
-        next: (data) => {
-          console.log(data);
-          this.isLoading = false;
+      // Ici, je déstructure les data du form : je prend la clé "confirmPassword" à part et met TOUTES les autres propriétés dans "requestBody"
+      // → requestBody est une copie superficielle de this.registerForm.value SANS "confirmPassword" (l’objet d’origine n’est pas modifié).
+      const { confirmPassword, ...requestBody } = this.registerForm.value as any;
 
+      this.userService.register(requestBody).subscribe({
+        next: () => {
+          this.isLoading = false;
+          // J'affiche un message de confirmation avant redirection pour login 
+          this.success = true;             
+          this.registerForm.disable();     
+          setTimeout(() => this.router.navigate(['/login']), 1800); 
         },
         error: (error) => {
-
           console.log(error)
           this.isLoading = false;
-
+          this.error = true;
         },
       });
     }
