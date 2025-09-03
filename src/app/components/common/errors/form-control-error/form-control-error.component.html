@@ -1,0 +1,7 @@
+@if (isFieldInvalid()) {
+<p class="mt-1 text-sm text-red-600">
+    <!-- {{ }} interpolation - affiche le résultat de getFieldError('email') -->
+    <!-- Cette méthode TS retourne le message d'erreur approprié -->
+    {{ getFieldError() }}
+</p>
+}

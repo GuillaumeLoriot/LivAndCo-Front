@@ -4,11 +4,12 @@ import { AnnouncementService } from '../../../services/announcement/announcement
 import { ActivatedRoute } from '@angular/router';
 import Announcement from '../../../models/announcement.interface';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControlErrorComponent } from '../../common/errors/form-control-error/form-control-error.component';
 
 @Component({
   selector: 'app-reservation',
   standalone: true,
-  imports: [CalendarComponent, ReactiveFormsModule],
+  imports: [CalendarComponent, ReactiveFormsModule, FormControlErrorComponent],
   templateUrl: './reservation.component.html',
   styleUrl: './reservation.component.scss'
 })
@@ -33,7 +34,7 @@ export class ReservationComponent implements OnInit{
       occupation: ['', [Validators.required, Validators.maxLength(50)]],
       gender: [null, [Validators.required]],
       address: ['', [Validators.required, Validators.minLength(10)]],
-      phoneNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+      phoneNumber: ['', [Validators.required, Validators.pattern(/^(?:\+33|0)\s?[1-9](?:[\s.-]?\d{2}){4}$/)]],
     });
   }
 
@@ -87,24 +88,6 @@ export class ReservationComponent implements OnInit{
     }
   }
 
-  isFieldInvalid(fieldName: string): boolean {
-    const field = this.reservationForm.get(fieldName);
-    return Boolean(field && field.invalid && (field.dirty || field.touched || this.isSubmitted));
-  }
-
-  getFieldError(fieldName: string): string {
-    const field = this.reservationForm.get(fieldName);
-    if (field && field.errors) {
-      if (field.errors['required']) return `${fieldName} est obligatoire`;
-      if (field.errors['minlength']) { return `Minimum ${field.errors['minlength'].requiredLength} caractères`; }
-      if (field.errors['maxlength']) { return `Maximum ${field.errors['maxlength'].requiredLength} caractères`; }
-      if (field.errors['min']) { return `La durée minimum est de ${field.errors['min'].min} mois`; }
-      if (field.errors['max']) { return `La durée maximum est de ${field.errors['max'].max} mois`; }
-
-
-    }
-    return '';
-  }
 
 
   // -------------UNE METHODE POUR RECUPERER LES UNAVAILABLE RANGE DE L'ANNONCE---------

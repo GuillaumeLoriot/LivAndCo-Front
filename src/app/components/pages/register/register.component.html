@@ -2,42 +2,54 @@
     <section id="login" class="flex justify-center items-center">
         <div class="w-2/5 bg-neutral-200 rounded-[30px] my-7 p-7">
             <h1 class="small-h1-title text-center mb-7">Créer mon compte</h1>
-            <form action="">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                 <div class="flex flex-col items-center mb-3">
-                    <label for="" class="mb-3 font-bold text-sm">Nom</label>
-                    <input type="text"
+                    <label for="lastname" class="mb-3 font-bold text-sm">Nom</label>
+                    <input type="text" formControlName="lastName"
                         class="bg-neutral-200 text-[var(--color-primary)] w-5/6 h-[2.2rem] border-2 border-[var(--color-primary)] rounded-[7px] p-3">
+                    <app-form-control-error [field]="registerForm.get('lastName')"></app-form-control-error>
                 </div>
                 <div class="flex flex-col items-center mb-3">
-                    <label for="" class="mb-3 font-bold text-sm">Prénom</label>
-                    <input type="text"
+                    <label for="firstName" class="mb-3 font-bold text-sm">Prénom</label>
+                    <input type="text" formControlName="firstName"
                         class="bg-neutral-200 text-[var(--color-primary)] w-5/6 h-[2.2rem] border-2 border-[var(--color-primary)] rounded-[7px] p-3">
+                    <app-form-control-error [field]="registerForm.get('firstName')"></app-form-control-error>
                 </div>
                 <div class="flex flex-col items-center mb-3">
-                    <label for="" class="mb-3 font-bold text-sm">Email</label>
-                    <input type="text"
+                    <label for="email" class="mb-3 font-bold text-sm">Email</label>
+                    <input type="text" formControlName="email"
                         class="bg-neutral-200 text-[var(--color-primary)] w-5/6 h-[2.2rem] border-2 border-[var(--color-primary)] rounded-[7px] p-3">
+                    <app-form-control-error [field]="registerForm.get('email')"></app-form-control-error>
                 </div>
                 <div class="flex flex-col items-center mb-3">
-                    <label for="" class="mb-3 font-bold text-sm">Mot de passe</label>
-                    <input type="password"
+                    <label for="password" class="mb-3 font-bold text-sm">Mot de passe</label>
+                    <input type="password" formControlName="password"
                         class="bg-neutral-200 text-[var(--color-primary)] w-5/6 h-[2.2rem] border-2 border-[var(--color-primary)] rounded-[7px] p-3">
+                    <app-form-control-error [field]="registerForm.get('password')"></app-form-control-error>
                 </div>
-                <div class="flex flex-col items-center mb-3">
-                    <label for="" class="mb-3 font-bold text-sm">Vérifiez le mot de passe</label>
-                    <input type="password"
+                <!-- <div class="flex flex-col items-center mb-3">
+                    <label for="confirmPassword" class="mb-3 font-bold text-sm">Vérifiez le mot de passe</label>
+                    <input type="password" formControlName="confirmPassword"
                         class="bg-neutral-200 text-[var(--color-primary)] w-5/6 h-[2.2rem] border-2 border-[var(--color-primary)] rounded-[7px] p-3">
-                </div>
+                    @if (registerForm.hasError('passwordMismatch')) {
+                    <div class="mt-1 text-sm text-red-600">Les mots de passe ne correspondent pas.</div>
+                    }
+                </div> -->
+                @if (isLoading) {
+                <app-loading></app-loading>
+                }
                 <div class="flex justify-center">
                     <input type="submit" name="" id="" class="main-button mt-7">
                 </div>
                 <div class="flex justify-center">
                     <h3 class="pr-7 py-7">Déjà inscrit ?</h3>
-                    <a [routerLink]="['/login']" class="flex items-center text-2xl text-[var(--color-primary)]">Se connecter<img src="/icons/login-green.svg" alt="logo de connexion"
-                            class="w-10"></a>
+                    <a [routerLink]="['/login']" class="flex items-center text-2xl text-[var(--color-primary)]">Se
+                        connecter<img src="/icons/login-green.svg" alt="logo de connexion" class="w-10"></a>
                 </div>
-                <p class="text-center">En créant un compte vous acceptez nos <a href="" [routerLink]="['/terms-of-use']" class="text-[var(--color-primary)]">Conditions d'utilisation</a>
-                 et notre <a href="" [routerLink]="['/privacy-policy']" class="text-[var(--color-primary)]">Politique de confidentialité</a></p>
+                <p class="text-center">En créant un compte vous acceptez nos <a href="" [routerLink]="['/terms-of-use']"
+                        class="text-[var(--color-primary)]">Conditions d'utilisation</a>
+                    et notre <a href="" [routerLink]="['/privacy-policy']" class="text-[var(--color-primary)]">Politique
+                        de confidentialité</a></p>
             </form>
         </div>
     </section>

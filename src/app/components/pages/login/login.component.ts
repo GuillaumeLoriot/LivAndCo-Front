@@ -4,11 +4,12 @@ import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 import { UserService } from '../../../services/user/user.service';
 import { LoadingComponent } from "../../common/loading/loading.component";
 import { AuthService } from '../../../services/user/auth.service';
+import { FormControlErrorComponent } from "../../common/errors/form-control-error/form-control-error.component";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink, LoadingComponent],
+  imports: [ReactiveFormsModule, RouterLink, LoadingComponent, FormControlErrorComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -23,7 +24,6 @@ export class LoginComponent {
   private router = inject(Router);
   isSubmitted = false;
   isLoading = false;
-  token = '';
 
   constructor() {
     this.loginForm = this.formBuilder.group({
@@ -54,23 +54,6 @@ export class LoginComponent {
       });
     }
 
-
-  }
-
-
-  isFieldInvalid(fieldName: string): boolean {
-    const field = this.loginForm.get(fieldName);
-    return Boolean(field && field.invalid && (field.dirty || field.touched || this.isSubmitted));
-  }
-
-  getFieldError(fieldName: string): string {
-    const field = this.loginForm.get(fieldName);
-    if (field && field.errors) {
-      if (field.errors['email']) return `${fieldName} doit être au format email`;
-      if (field.errors['required']) return `${fieldName} est obligatoire`;
-      if (field.errors['minlength']) { return `Minimum ${field.errors['minlength'].requiredLength} caractères`; }
-    }
-    return '';
   }
 
 }

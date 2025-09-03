@@ -15,11 +15,13 @@ export class UserService {
 
   private getUserApi = `${environment.apiUrl}/me`;
   private authApi = `${environment.apiUrl}/login_check`;
+  private registerApi = `${environment.apiUrl}/users`;
   private http = inject(HttpClient);
 
   getUser(): Observable<User> {
     return this.http.get<User>(this.getUserApi, {
       headers: { 'accept': 'application/json' },
+      // Permet de dire qu'il faut que l'interceptor ajoute le token pour cette requète
       context: enableAuthContext()
     });
   }
@@ -28,4 +30,9 @@ export class UserService {
     return this.http.post<JwtToken>(this.authApi, user);
   }
 
+  register(user: Partial<User>): Observable<User> {
+    return this.http.post<User>(this.registerApi, user, {
+      headers: { 'accept': 'application/json' }
+    });
+  }
 }

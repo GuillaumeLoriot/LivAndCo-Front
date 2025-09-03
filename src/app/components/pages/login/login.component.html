@@ -4,30 +4,20 @@
             <h1 class="small-h1-title text-center mb-7">Se connecter</h1>
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <div class="flex flex-col items-center mb-3">
-                    <label for="" class="mb-3 font-bold text-sm">Email</label>
+                    <label for="email" class="mb-3 font-bold text-sm">Email</label>
                     <input type="email" formControlName="email"
                         class="bg-neutral-200 text-[var(--color-primary)] w-5/6 h-[2.2rem] border-2 border-[var(--color-primary)] rounded-[7px] p-3">
-                    @if (isFieldInvalid('email')) {
-                    <div class="mt-1 text-sm text-red-600">
-                        <!-- {{ }} interpolation - affiche le résultat de getFieldError('email') -->
-                        <!-- Cette méthode TS retourne le message d'erreur approprié -->
-                        {{ getFieldError('email') }}
-                    </div>
-                    }
+                    <app-form-control-error [field]="loginForm.get('email')"></app-form-control-error>
                 </div>
                 <div class="flex flex-col items-center mb-3">
-                    <label for="" class="mb-3 font-bold text-sm">Mot de passe</label>
+                    <label for="password" class="mb-3 font-bold text-sm">Mot de passe</label>
                     <input type="password" formControlName="password"
                         class="bg-neutral-200 text-[var(--color-primary)] w-5/6 h-[2.2rem] border-2 border-[var(--color-primary)] rounded-[7px] p-3">
-                    @if (isFieldInvalid('password')) {
-                    <div class="mt-1 text-sm text-red-600">
-                        {{ getFieldError('password') }}
-                    </div>
-                    }
+                    <app-form-control-error [field]="loginForm.get('password')"></app-form-control-error>
                 </div>
-                            @if (isLoading) {
-                            <app-loading></app-loading>
-                            }
+                @if (isLoading) {
+                <app-loading></app-loading>
+                }
                 <div class="flex justify-center">
                     <input type="submit" name="" id="" class="main-button mt-7">
                 </div>
