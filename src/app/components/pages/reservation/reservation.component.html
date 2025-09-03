@@ -22,43 +22,6 @@
                 <app-form-control-error [field]="reservationForm.get('duration')"></app-form-control-error>
                 </div>
 
-                <div class="flex flex-col items-center mb-5 w-full lg:w-3/12">
-                    <label for="birthdate" class="mb-3 font-bold">Date de naissance</label>
-                    <input formControlName="birthdate" type="date"
-                        class="bg-neutral-200 text-[var(--color-primary)] w-full h-[3rem] border-2 border-[var(--color-primary)] rounded-[7px] p-3">
-                <app-form-control-error [field]="reservationForm.get('birthdate')"></app-form-control-error>
-                </div>
-            </div>
-            <div class="flex flex-col lg:flex-row gap-4 lg:gap-0 justify-between justify-self-center w-5/6">
-                <div class="flex flex-col items-center w-full lg:w-5/12 mb-5">
-                    <label for="occupation" class="mb-3 font-bold">Profession</label>
-                    <input formControlName="occupation" type="text"
-                        class="bg-neutral-200 text-[var(--color-primary)] w-full h-[3rem] border-2 border-[var(--color-primary)] rounded-[7px] p-3">
-                <app-form-control-error [field]="reservationForm.get('occupation')"></app-form-control-error>
-                </div>
-                <div class="flex flex-col items-center w-full lg:w-5/12 mb-5">
-                    <label for="gender" class="mb-3 font-bold">Genre</label>
-                    <select formControlName="gender" name="gender" id="gender"
-                        class="bg-neutral-200 text-[var(--color-primary)] w-full h-[3rem] border-2 border-[var(--color-primary)] rounded-[7px] p-3">
-                        <option [ngValue]="null" disabled>— Sélectionnez —</option>
-                        <option value="male">Homme</option>
-                        <option value="female">Femme</option>
-                        <option value="other">Autre</option>
-                    </select>
-                <app-form-control-error [field]="reservationForm.get('gender')"></app-form-control-error>
-                </div>
-            </div>
-            <div class="flex flex-col items-center mb-5">
-                <label for="address" class="mb-3 font-bold">Adresse</label>
-                <input formControlName="address" type="text"
-                    class="bg-neutral-200 text-[var(--color-primary)] w-5/6 h-[3rem] border-2 border-[var(--color-primary)] rounded-[7px] p-3">
-                <app-form-control-error [field]="reservationForm.get('address')"></app-form-control-error>
-            </div>
-            <div class="flex flex-col items-center mb-5">
-                <label for="phoneNumber" class="mb-3 font-bold">Numéro de téléphone</label>
-                <input formControlName="phoneNumber" type="text"
-                    class="bg-neutral-200 text-[var(--color-primary)] w-5/6 h-[3rem] border-2 border-[var(--color-primary)] rounded-[7px] p-3">
-                <app-form-control-error [field]="reservationForm.get('phoneNumber')" [fieldKey]="'phone'"></app-form-control-error>
             </div>
             <div class="flex justify-center">
                 <input type="submit" name="" id="" class="main-button mt-7">

@@ -30,11 +30,6 @@ export class ReservationComponent implements OnInit{
     this.reservationForm = this.formBuilder.group({
       startDate: ['', [Validators.required]],
       duration: ['', [Validators.required, Validators.min(1), Validators.max(36)]],
-      birthdate: ['', [Validators.required]],
-      occupation: ['', [Validators.required, Validators.maxLength(50)]],
-      gender: [null, [Validators.required]],
-      address: ['', [Validators.required, Validators.minLength(10)]],
-      phoneNumber: ['', [Validators.required, Validators.pattern(/^(?:\+33|0)\s?[1-9](?:[\s.-]?\d{2}){4}$/)]],
     });
   }
 

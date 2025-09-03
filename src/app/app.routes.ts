@@ -65,7 +65,7 @@ export const routes: Routes = [
                 {
                     path: 'owner-menu', outlet: 'panel', component: OwnerDashboardPanelComponent,
                     canActivate: [RoleGuard],
-                    data: { roles: ['owner', 'admin'] }
+                    data: { roles: ['ROLE_OWNER', 'ROLE_ADMIN'] }
                 },
 
                 // Vues principales dans le profil
@@ -81,12 +81,12 @@ export const routes: Routes = [
                 { path: 'past-reservations', component: PastReservationsComponent },
 
                 // Dashboard propriétaire protégé par le roleGuard
-                { path: 'accomodations', component: AccomodationsComponent, canActivate: [RoleGuard], data: { roles: ['owner', 'admin'] } },
-                { path: 'announcements', component: AnnouncementsComponent, canActivate: [RoleGuard], data: { roles: ['owner', 'admin'] } },
-                { path: 'rental-requests', component: RentalRequestsComponent, canActivate: [RoleGuard], data: { roles: ['owner', 'admin'] } },
-                { path: 'rental-schedule', component: RentalScheduleComponent, canActivate: [RoleGuard], data: { roles: ['owner', 'admin'] } },
-                { path: 'add-accomodation', component: AddAccommodationComponent, canActivate: [RoleGuard], data: { roles: ['owner', 'admin'] } },
-                { path: 'add-announcement', component: AddAnnouncementComponent, canActivate: [RoleGuard], data: { roles: ['owner', 'admin'] } },
+                { path: 'accomodations', component: AccomodationsComponent, canActivate: [RoleGuard], data: { roles: ['ROLE_OWNER', 'ROLE_ADMIN'] } },
+                { path: 'announcements', component: AnnouncementsComponent, canActivate: [RoleGuard], data: { roles: ['ROLE_OWNER', 'ROLE_ADMIN'] } },
+                { path: 'rental-requests', component: RentalRequestsComponent, canActivate: [RoleGuard], data: { roles: ['ROLE_OWNER', 'ROLE_ADMIN'] } },
+                { path: 'rental-schedule', component: RentalScheduleComponent, canActivate: [RoleGuard], data: { roles: ['ROLE_OWNER', 'ROLE_ADMIN'] } },
+                { path: 'add-accomodation', component: AddAccommodationComponent, canActivate: [RoleGuard], data: { roles: ['ROLE_OWNER', 'ROLE_ADMIN'] } },
+                { path: 'add-announcement', component: AddAnnouncementComponent, canActivate: [RoleGuard], data: { roles: ['ROLE_OWNER', 'ROLE_ADMIN'] } },
                 { path: 'reviews', component: ReviewsComponent },
 
                 // Messagerie Utilisateur

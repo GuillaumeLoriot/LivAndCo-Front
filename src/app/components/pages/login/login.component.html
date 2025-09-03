@@ -18,6 +18,11 @@
                 @if (isLoading) {
                 <app-loading></app-loading>
                 }
+                @if (errorMessage) {
+                <div class="text-center mt-3 text-red-600">
+                    {{ errorMessage }}
+                </div>
+                }
                 <div class="flex justify-center">
                     <input type="submit" name="" id="" class="main-button mt-7">
                 </div>

@@ -18,7 +18,6 @@ export class RegisterComponent {
   registerForm: FormGroup;
   formBuilder: FormBuilder = inject(FormBuilder);
   private userService: UserService = inject(UserService);
-  private route = inject(ActivatedRoute);
   private router = inject(Router);
   isSubmitted = false;
   isLoading = false;
@@ -30,6 +29,11 @@ export class RegisterComponent {
       firstName: ['', [Validators.required, Validators.maxLength(60)]],
       lastName: ['', [Validators.required, Validators.maxLength(60)]],
       email: ['', [Validators.required, Validators.email]],
+      birthDate: ['', [Validators.required]],
+      occupation: ['', [Validators.required, Validators.maxLength(50)]],
+      gender: [null, [Validators.required]],
+      billingAddress: ['', [Validators.required, Validators.minLength(10)]],
+      phoneNumber: ['', [Validators.required, Validators.pattern(/^(?:\+33|0)\s?[1-9](?:[\s.-]?\d{2}){4}$/)]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', Validators.required] }, { validators: passwordMatchValidator }
     );
@@ -38,6 +42,10 @@ export class RegisterComponent {
 
   onSubmit() {
     this.isSubmitted = true;
+    // Je reinitialise les messages d'erreur si besoin
+    this.error = false;
+    this.success = false;
+    this.registerForm.markAllAsTouched();
     if (this.registerForm.valid) {
       this.isLoading = true;
       // Ici, je déstructure les data du form : je prend la clé "confirmPassword" à part et met TOUTES les autres propriétés dans "requestBody"
@@ -50,7 +58,7 @@ export class RegisterComponent {
           // J'affiche un message de confirmation avant redirection pour login 
           this.success = true;             
           this.registerForm.disable();     
-          setTimeout(() => this.router.navigate(['/login']), 1800); 
+          setTimeout(() => this.router.navigate(['/login']), 3000); 
         },
         error: (error) => {
           console.log(error)

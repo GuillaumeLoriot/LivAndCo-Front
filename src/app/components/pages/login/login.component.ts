@@ -24,6 +24,8 @@ export class LoginComponent {
   private router = inject(Router);
   isSubmitted = false;
   isLoading = false;
+  error = false;
+  errorMessage: string | null = null;
 
   constructor() {
     this.loginForm = this.formBuilder.group({
@@ -47,7 +49,15 @@ export class LoginComponent {
         },
         error: (error) => {
 
+          // Affichage de l'erreur dans la template
+          if (error.status === 401) {
+            this.errorMessage = error.error?.message || "Identifiants incorrects.";
+          } else {
+            this.errorMessage = "Une erreur est survenue. Veuillez réessayer.";
+          }
+
           console.log(error)
+          this.error = true;
           this.isLoading = false;
 
         },

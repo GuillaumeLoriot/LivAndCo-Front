@@ -15,8 +15,9 @@ export class UserService {
 
   private getUserApi = `${environment.apiUrl}/me`;
   private authApi = `${environment.apiUrl}/login_check`;
-  private registerApi = `${environment.apiUrl}/users`;
+  private apiUrl = `${environment.apiUrl}/users`;
   private http = inject(HttpClient);
+  id: Number | null = null;
 
   getUser(): Observable<User> {
     return this.http.get<User>(this.getUserApi, {
@@ -31,8 +32,20 @@ export class UserService {
   }
 
   register(user: Partial<User>): Observable<User> {
-    return this.http.post<User>(this.registerApi, user, {
+    return this.http.post<User>(this.apiUrl, user, {
       headers: { 'accept': 'application/json' }
     });
   }
+
+  update(id: number, changes: Partial<User>): Observable<User> {
+    return this.http.patch<User>(this.apiUrl + '/' + id, changes, {
+      headers: {
+        'content-type': 'application/merge-patch+json',
+        'accept': 'application/json'
+      },
+      context: enableAuthContext()
+    });
+  }
+
+
 }
