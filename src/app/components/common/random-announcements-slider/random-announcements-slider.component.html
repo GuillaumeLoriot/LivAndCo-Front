@@ -1,4 +1,10 @@
 <div class="flex flex-col items-center">
+    @if (isLoading) {
+    <div class="h-[60vh] flex justify-center items-start">
+
+        <app-loading></app-loading>
+    </div>
+    }
     <swiper-container slides-per-view="5" space-between="28" navigation="true" autoplay="true" loop="true" role="list"
         aria-label="Liste défilante d'annonces" class="w-[95%]">
         @for (announcement of announcements | slice:0:10; track announcement.id) {

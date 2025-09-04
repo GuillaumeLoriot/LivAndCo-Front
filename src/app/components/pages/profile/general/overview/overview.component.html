@@ -1,6 +1,6 @@
 <main class="max-w-4xl mx-auto px-6 py-10">
     @if (isLoading) {
-        <app-loading></app-loading>
+    <app-loading></app-loading>
     }
     @if(user){
     <h1 class="small-h1-title mb-6">{{user.firstName}} {{user.lastName}}</h1>
@@ -16,7 +16,8 @@
                         class="w-28 h-28 rounded-full object-cover" />
                     <p class="text-sm text-[var(--color-primary)] self-end">Vérifié</p>
                 </div>
-                <p class="text-neutral-500 font-semibold">Membre depuis le {{ user.createdAt | date:'d MMMM y' : '' : 'fr' }}</p>
+                <p class="text-neutral-500 font-semibold">Membre depuis le {{ user.createdAt | date:'d MMMM y' : '' :
+                    'fr' }}</p>
             </div>
 
             <!-- Détails (labels / valeurs) -->
@@ -33,16 +34,25 @@
                 <dt class="basis-full sm:basis-1/3 pr-4 py-2 font-bold text-[var(--color-text)]">Adresse:</dt>
                 <dd class="basis-full sm:basis-2/3 py-2">{{user.billingAddress}}</dd>
 
+                <dt class="basis-full sm:basis-1/3 pr-4 py-2 font-bold text-[var(--color-text)]">Numéro de téléphone:</dt>
+                <dd class="basis-full sm:basis-2/3 py-2">{{user.phoneNumber}}</dd>
+
                 <dt class="basis-full sm:basis-1/3 pr-4 py-2 font-bold text-[var(--color-text)]">Date de naissance:</dt>
                 <dd class="basis-full sm:basis-2/3 py-2">{{ user.birthDate | date:'d MMMM y' : '' : 'fr' }}</dd>
 
                 <dt class="basis-full sm:basis-1/3 pr-4 py-2 font-bold text-[var(--color-text)]">Genre:</dt>
-                <dd class="basis-full sm:basis-2/3 py-2">Homme</dd>
+                @if (user.gender == 'female') {
+                    <dd class="basis-full sm:basis-2/3 py-2">Femme</dd>
+                }@else if (user.gender == 'other') {
+                    <dd class="basis-full sm:basis-2/3 py-2">Autre</dd>
+                }@else {
+                    <dd class="basis-full sm:basis-2/3 py-2">Homme</dd>
+                }
 
                 <dt class="basis-full sm:basis-1/3 pr-4 py-2 font-bold text-[var(--color-text)]">Profession:</dt>
                 <dd class="basis-full sm:basis-2/3 py-2">{{user.occupation}}</dd>
             </dl>
         </article>
     </section>
-}
+    }
 </main>
