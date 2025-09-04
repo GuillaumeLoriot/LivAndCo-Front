@@ -1,12 +1,18 @@
-<h1 class="text-center my-14">Mes anciennes réservations</h1>
-<ul>
+<h1 class="text-center my-14">Mes réservations à venir</h1>
+@if (isLoading) {
+<app-loading></app-loading>
+}
+@if (reservations) {
+<ul class="w-full">
+    @for (reservation of reservations; track reservation.id) {
     <li>
-        <app-announcement-dashboard-card></app-announcement-dashboard-card>
+        <app-announcement-dashboard-card [reservation]=reservation></app-announcement-dashboard-card>
     </li>
-    <li>
-        <app-announcement-dashboard-card></app-announcement-dashboard-card>
-    </li>
-    <li>
-        <app-announcement-dashboard-card></app-announcement-dashboard-card>
-    </li>
+    }
 </ul>
+@if (reservations.length == 0 && !isLoading) {
+<div class="flex justify-center items-center w-full h-[40vh]">
+    <p class="text-xl text-center font-semibold">Aucune réservation</p>
+</div>
+}
+}
