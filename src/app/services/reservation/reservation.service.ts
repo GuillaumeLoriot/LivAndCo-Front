@@ -27,6 +27,13 @@ export class ReservationService {
 
   }
 
+  createReservation(reservation: { startDate: string; duration: number; announcement: string }): Observable<Reservation> {
+      return this.http.post<Reservation>(this.apiUrl, reservation, {
+        headers: { 'accept': 'application/json' },
+        context: enableAuthContext(),
+      });
+    }
+
 
   // Réservations en cours pour un user donné
   getOngoingUserReservations(userId: number): Observable<Reservation[]> {

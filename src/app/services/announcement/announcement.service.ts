@@ -36,6 +36,12 @@ export class AnnouncementService {
 
   }
 
+  getAnnouncementLd(id: Number): Observable<Announcement> {
+
+    return this.http.get<Announcement>(this.apiUrl + '/' + id, { headers: { 'accept': 'application/ld+json' } });
+
+  }
+
   // searchAnnouncements(filters: Partial<SearchFilters>): Observable<Announcement[]> {
   //   let params = new HttpParams;
 

@@ -97,9 +97,10 @@ export class ConversationComponent {
     }
   }
 
-onSubmit(){
+  onSubmit() {
 
-}
+
+  }
 
 
 }

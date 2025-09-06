@@ -24,8 +24,14 @@
                 'fr' }}</p>
         </div>
     </div>
-    <div class="flex justify-center items-center px-14">
+    <div class="flex flex-col justify-around items-center px-14">
         <button class="main-button" [routerLink]="['/profile/reviews']">Avis</button>
+        @if (reservation.status === 'pending') {
+            <p class="text-amber-500">Réservation En attente de validation</p>
+        }@else if (reservation.status ==='confirmed') {
+            <p class="text-green-700">Réservation confirmée</p>
+        }
+
     </div>
 </article>
 }
