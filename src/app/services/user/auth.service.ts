@@ -22,11 +22,14 @@ export class AuthService {
     //Vérifier si un token est présent dans le storage
     const token: string | null = localStorage.getItem("token");
     if (token) {
+      // Ici on passe à vrai avant de tester le token,sinon le guard nous redirige avant l'execution asynchrone de la requète
+      // si le token est la mais pas valide, je force le logout par la suite 
+      // Je fais ça car au rafraichissement de la page du coté privé, ça redirigerais même en ayant un token valide
+      this.isAuthenticated = true;
       // Je test le token en récupérant le User associé
       this.userService.getUser().subscribe({
         // Si un user à été récuperer
         next: (data) => {
-          this.isAuthenticated = true;
           this.user = data;
           this.roles = data.roles || [];
           console.log(this.roles);
