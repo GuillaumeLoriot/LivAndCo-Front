@@ -4,18 +4,22 @@
 
     <div>
         <h2 id="conversations-title" class="sr-only">Liste des conversations</h2>
+        @if (isLoading) {
+        <div class="h-[60vh] flex justify-center items-start">
 
+            <app-loading></app-loading>
+        </div>
+        }
         <ul class="flex flex-col gap-4">
             @for (peer of peers; track peer.id) {
 
             <li>
-                <a [routerLink]="['/profile/conversation', 1]"
+                <a [routerLink]="['/profile/conversation', peer.id]"
                     class="flex items-center gap-4 rounded-2xl px-4 py-3 bg-[var(--color-secondary)] hover:opacity-90 transition">
                     <img src="/uploads/profile-pictures/{{peer.profilePicture}}" alt="Photo de {{peer.firstName}}"
                         class="w-12 h-12 rounded-full object-cover">
                     <div class="flex flex-col min-w-0">
-                        <span class="font-bold">{{peer.firstName | titlecase}} {{peer.firstName | titlecase}}</span>
-                        <span class="text-sm text-neutral-600 truncate">Lorem ipsum dolor sit amet…</span>
+                        <span class="font-bold">{{peer.firstName | titlecase}} {{peer.lastName | titlecase}}</span>
                     </div>
                 </a>
             </li>

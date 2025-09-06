@@ -24,7 +24,7 @@ export class AnnouncementDetailComponent implements OnInit {
   private announcementService = inject(AnnouncementService);
   private route = inject(ActivatedRoute);
   snapshotId: string | null = null;
-  announcementid: Number | null = null;
+  announcementId: number | null = null;
   announcement: Announcement | null = null
   modalIsOpen = false;
   isLoading = false;
@@ -42,15 +42,15 @@ export class AnnouncementDetailComponent implements OnInit {
   getId() {
     this.snapshotId = this.route.snapshot.paramMap.get('id');
     if (this.snapshotId) {
-      this.announcementid = parseInt(this.snapshotId);
+      this.announcementId = parseInt(this.snapshotId);
    
     }
   }
 
   loadAnnouncement() {
-    if (this.announcementid) {
+    if (this.announcementId) {
       this.isLoading = true;
-      this.announcementService.getAnnouncement(this.announcementid).subscribe({
+      this.announcementService.getAnnouncement(this.announcementId).subscribe({
         next: (data) => {
           this.isLoading = false;
           this.announcement = data;
