@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import Accomodation from '../../../models/accomodation.interface';
 
 @Component({
   selector: 'app-accomodation-dashboard-card',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './accomodation-dashboard-card.component.scss'
 })
 export class AccomodationDashboardCardComponent {
-
+@Input() accomodation: Accomodation | null = null;
 }

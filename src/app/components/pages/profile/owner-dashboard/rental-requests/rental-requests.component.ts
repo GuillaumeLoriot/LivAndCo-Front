@@ -6,15 +6,17 @@ import User from '../../../../../models/user.interface';
 import Reservation from '../../../../../models/reservation.interface';
 import { CommonModule } from '@angular/common';
 import { AverageMonthlyPipe } from '../../../../../pipes/average-monthly.pipe';
+import { LoadingComponent } from "../../../../common/loading/loading.component";
 
 @Component({
   selector: 'app-rental-requests',
   standalone: true,
-  imports: [CommonModule ,AnnouncementDashboardCardComponent, AverageMonthlyPipe],
+  imports: [CommonModule, AnnouncementDashboardCardComponent, AverageMonthlyPipe, LoadingComponent],
   templateUrl: './rental-requests.component.html',
   styleUrl: './rental-requests.component.scss'
 })
 export class RentalRequestsComponent implements OnInit{
+
 
   reservationService = inject(ReservationService);
   userService = inject(UserService);
@@ -27,6 +29,7 @@ export class RentalRequestsComponent implements OnInit{
   error = false;
   errorMessage = '';
   isLoading = false;
+  success = false;
 
 
   ngOnInit(): void {
@@ -78,8 +81,6 @@ export class RentalRequestsComponent implements OnInit{
 
   }
 
-
-
   loadSelectedReservationRequest() {
 
     const requestId = this.selectedReservationRequestId;
@@ -100,6 +101,37 @@ export class RentalRequestsComponent implements OnInit{
         }
       });
     }
+  }
+
+  confirmReservation(id: number) {
+        if (id) {
+          this.isLoading = true;
+          const changes: Partial<Reservation> = {'status': 'confirmed'};
+          // Je lui donne l'id et lla clé dans l'objet reservation avec la nouvelle valeur pour édition
+          this.reservationService.confirmReservation(id, changes).subscribe({
+            next: () => {
+              this.isLoading = false;
+              this.success = true;
+              // Après la confirmation j'affiche le message de resussite 3secondes et recharge les réservations 
+              setTimeout(() => {
+                this.success = false;
+                this.loadReservationRequests();
+              }, 3000);
+
+            },
+            error: (error) => {
+              // Affichage de l'erreur dans la template
+              if (error.status) {
+                this.errorMessage = error.error?.message;
+              } else {
+                this.errorMessage = "Une erreur est survenue. Veuillez réessayer.";
+              }
+              this.error = true;
+              this.isLoading = false;
+            },
+          });
+        }
+    
 
   }
 

@@ -1,48 +1,58 @@
 <h1 class="text-center my-14">Demandes de location</h1>
+@if (isLoading) {
+<app-loading></app-loading>
+}
+@if (success) {
+<p class="text-green-700 bg-green-100 rounded-md px-3 py-5 my-5 text-center" aria-live="polite">
+    Réservation confirmée.
+</p>
+}
 <ul>
     @for (reservation of reservationRequests; track reservation.id) {
-        <li class="border-b-2 border-b-[var(--color-primary)] mb-14">
-            <app-announcement-dashboard-card [reservation]="reservation"></app-announcement-dashboard-card>
-            <div class="flex justify-around py-7">
-                <button class="main-button" (click)="openModal(reservation.id)">Voir la demande</button>
-                <button class="main-button">Accepter la demande</button>
-            </div>
-        </li>
+    <li class="border-b-2 border-b-[var(--color-primary)] mb-14">
+        <app-announcement-dashboard-card [reservation]="reservation"></app-announcement-dashboard-card>
+        <div class="flex justify-around py-7">
+            <button class="main-button" (click)="openModal(reservation.id)">Voir la demande</button>
+            <button class="main-button" (click)="confirmReservation(reservation.id)">Accepter la demande</button>
+        </div>
+
+    </li>
     }
 </ul>
 
 
 <!-- MODALE -->
 <div class="fixed inset-0 z-50 flex items-start md:items-center justify-center p-4 overflow-y-auto"
-[class.hidden]="!modalIsOpen" role="dialog" aria-modal="true" aria-labelledby="reservation-detail-title">
-<!-- Fond -->
-<div class="absolute inset-0 bg-black/50"></div>
+    [class.hidden]="!modalIsOpen" role="dialog" aria-modal="true" aria-labelledby="reservation-detail-title">
+    <!-- Fond -->
+    <div class="absolute inset-0 bg-black/50"></div>
 
-@if (selectedReservationRequest) {
-    
+    @if (selectedReservationRequest) {
+
     <!-- Card -->
     <article class="relative w-full max-w-5xl rounded-3xl overflow-hidden border-2 border-[var(--color-primary)] bg-[var(--color-background)]
     max-h-[90vh] md:max-h-[85vh] flex flex-col mt-8 mb-8">
-    <!-- Bouton fermer -->
-    <button type="button" aria-label="Fermer" (click)="closeModal()"
-    class="absolute top-3 right-3 px-3 py-1 rounded-full border-2 border-[var(--color-primary)] text-[var(--color-primary)] bg-[var(--color-background)] hover:opacity-80">
+        <!-- Bouton fermer -->
+        <button type="button" aria-label="Fermer" (click)="closeModal()"
+            class="absolute top-3 right-3 px-3 py-1 rounded-full border-2 border-[var(--color-primary)] text-[var(--color-primary)] bg-[var(--color-background)] hover:opacity-80">
             X
         </button>
         <figure class="w-full shrink-0">
-            <img src="/uploads/images/{{selectedReservationRequest.announcement.coverPicture}}" alt="Photo de la chambre sélectionnée"
-                class="w-full h-56 md:h-72 object-cover" />
+            <img src="/uploads/images/{{selectedReservationRequest.announcement.coverPicture}}"
+                alt="Photo de la chambre sélectionnée" class="w-full h-56 md:h-72 object-cover" />
         </figure>
 
         <!-- Corp (zone scrollable) -->
         <div class="px-6 py-8 md:px-10 md:py-10 flex-1 overflow-y-auto">
             <h2 id="reservation-detail-title" class="sr-only">Détails de la réservation et profil du locataire</h2>
-            
+
             <div class="flex flex-col md:flex-row md:items-start gap-8 md:gap-10">
                 <!-- Colonne gauche -->
                 <section class="flex-1">
                     <h3 class="text-2xl font-bold text-[var(--color-primary)] mb-4">Détails de la réservation</h3>
 
-                    <p class="text-2xl md:text-3xl font-bold mb-6">{{selectedReservationRequest.announcement.dailyPrice | averageMonthly}}€ / Mois</p>
+                    <p class="text-2xl md:text-3xl font-bold mb-6">{{selectedReservationRequest.announcement.dailyPrice
+                        | averageMonthly}}€ / Mois</p>
 
                     <div class="flex flex-col sm:flex-row gap-4 mb-5">
                         <div>
@@ -50,7 +60,9 @@
                             <div
                                 class="inline-flex items-center gap-2 bg-[var(--color-background)] border-2 border-[var(--color-primary)] rounded px-3 py-2">
                                 <img src="/icons/calendar.svg" alt="logo calendrier" aria-hidden="true" class="w-5 h-5">
-                                <time datetime="2025-12-31" class="whitespace-nowrap">{{selectedReservationRequest.startDate | date:'dd/MM/yyyy':'':'fr-FR'}}</time>
+                                <time datetime="2025-12-31"
+                                    class="whitespace-nowrap">{{selectedReservationRequest.startDate |
+                                    date:'dd/MM/yyyy':'':'fr-FR'}}</time>
                             </div>
                         </div>
                         <div>
@@ -58,7 +70,9 @@
                             <div
                                 class="inline-flex items-center gap-2 bg-[var(--color-background)] border-2 border-[var(--color-primary)] rounded px-3 py-2">
                                 <img src="/icons/calendar.svg" alt="" aria-hidden="true" class="w-5 h-5">
-                                <time datetime="2025-05-31" class="whitespace-nowrap">{{selectedReservationRequest.endDate | date:'dd/MM/yyyy':'':'fr-FR'}}</time>
+                                <time datetime="2025-05-31"
+                                    class="whitespace-nowrap">{{selectedReservationRequest.endDate |
+                                    date:'dd/MM/yyyy':'':'fr-FR'}}</time>
                             </div>
                         </div>
                     </div>
@@ -68,14 +82,17 @@
                         <dt class="basis-full sm:basis-1/2 py-2 pr-4 text-neutral-700">
                             Montant journalier <span class="text-xs text-neutral-500">prix indicatif</span>
                         </dt>
-                        <dd class="basis-full sm:basis-1/2 py-2 font-semibold">{{selectedReservationRequest.announcement.dailyPrice}} €</dd>
+                        <dd class="basis-full sm:basis-1/2 py-2 font-semibold">
+                            {{selectedReservationRequest.announcement.dailyPrice}} €</dd>
 
                         <dt class="basis-full sm:basis-1/2 py-2 pr-4 text-neutral-700">Prix total du séjour</dt>
-                        <dd class="basis-full sm:basis-1/2 py-2 font-semibold">{{selectedReservationRequest.totalPrice}} €</dd>
+                        <dd class="basis-full sm:basis-1/2 py-2 font-semibold">{{selectedReservationRequest.totalPrice}}
+                            €</dd>
 
                         <dt class="basis-full sm:basis-1/2 py-2 pr-4 text-neutral-700">Prix à régler à la réservation
                         </dt>
-                        <dd class="basis-full sm:basis-1/2 py-2 font-semibold">{{(selectedReservationRequest.announcement.dailyPrice | averageMonthly) * 2}} €</dd>
+                        <dd class="basis-full sm:basis-1/2 py-2 font-semibold">
+                            {{(selectedReservationRequest.announcement.dailyPrice | averageMonthly) * 2}} €</dd>
                     </dl>
                 </section>
 
@@ -88,12 +105,13 @@
 
                     <div class="flex items-start justify-between mb-6">
                         <div class="flex items-center gap-4">
-                            <img src="/uploads/profile-pictures/{{selectedReservationRequest.user.profilePicture}}" alt="Photo du locataire"
-                                class="w-16 h-16 rounded-full object-cover">
+                            <img src="/uploads/profile-pictures/{{selectedReservationRequest.user.profilePicture}}"
+                                alt="Photo du locataire" class="w-16 h-16 rounded-full object-cover">
                             <a href="#" class="text-[var(--color-primary)] text-sm">Vérifié</a>
                         </div>
-                        <p class="text-neutral-500 font-semibold text-sm">Membre depuis {{selectedReservationRequest.user.createdAt |date:'d MMMM y' : '' :
-                        'fr'}}</p>
+                        <p class="text-neutral-500 font-semibold text-sm">Membre depuis
+                            {{selectedReservationRequest.user.createdAt |date:'d MMMM y' : '' :
+                            'fr'}}</p>
                     </div>
 
                     <dl class="flex flex-wrap">
@@ -111,6 +129,5 @@
             </div>
         </div>
     </article>
-}
+    }
 </div>
-

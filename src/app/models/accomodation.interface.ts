@@ -20,5 +20,4 @@ export default interface Accomodation {
     owner: User;
     announcements?: Announcement[];
     conveniences?: Convenience[];
-
 }

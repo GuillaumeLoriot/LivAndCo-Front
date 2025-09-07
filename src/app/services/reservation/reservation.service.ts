@@ -25,10 +25,8 @@ export class ReservationService {
 
     return this.http.get<Reservation>(this.apiUrl + '/' + reservationId, {
       headers: { 'accept': 'application/json' },
-      context: enableAuthContext(), 
-      });
-    
-
+      context: enableAuthContext(),
+    });
   }
 
   // Réservations en attente de validation par le owner de l'annonce
@@ -45,19 +43,29 @@ export class ReservationService {
       context: enableAuthContext(),
     });
   }
-  
+
 
   createReservation(reservation: { startDate: string; duration: number; announcement: string }): Observable<Reservation> {
-      return this.http.post<Reservation>(this.apiUrl, reservation, {
-        headers: { 'accept': 'application/json' },
-        context: enableAuthContext(),
-      });
-    }
+    return this.http.post<Reservation>(this.apiUrl, reservation, {
+      headers: { 'accept': 'application/json' },
+      context: enableAuthContext(),
+    });
+  }
 
+
+  confirmReservation(id: number, changes: Partial<Reservation>): Observable<Reservation> {
+    return this.http.patch<Reservation>(this.apiUrl + '/' + id, changes, {
+      headers: {
+        'content-type': 'application/merge-patch+json',
+        'accept': 'application/json'
+      },
+      context: enableAuthContext()
+    });
+  }
 
   // Réservations en cours pour un user donné
   getOngoingUserReservations(userId: number): Observable<Reservation[]> {
-  
+
     const params = new HttpParams()
       .set('user.id', String(userId))
       .set('startDate[before]', this.today)
@@ -115,5 +123,5 @@ export class ReservationService {
 
     return year + '-' + month + '-' + day;
   }
-  
+
 }
