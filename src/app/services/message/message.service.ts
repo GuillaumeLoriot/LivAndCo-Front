@@ -39,5 +39,12 @@ export class MessageService {
     });
   }
 
+  sendMessage(message: { content: string; receiver: string }): Observable<Message> {
+      return this.http.post<Message>(this.apiUrl, message, {
+        headers: { 'accept': 'application/json' },
+        context: enableAuthContext(),
+      });
+    }
+
 
 }

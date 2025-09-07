@@ -1,25 +1,28 @@
-<article class="announcement-card flex h-52 mx-7 mb-7">
-    <div class="w-5/12 h-full shrink-0">
-        <img src="/uploads/images/generic-announcement-7.jpg" alt="image de l'annonce"
-            class="h-full w-full object-cover object-center rounded-bl-[60px] rounded-tl-[60px]">
-    </div>
-    <div class="flex flex-col justify-between w-7/12 px-4 py-3">
-        <h3>Nid cosy en plein centre</h3>
-        <div class="mb-3">
-            <div class="flex w-full">
-                <p>adresse</p>
-                <p class="px-7">69000 Lyon</p>
-            </div>
-            <div class="flex w-full">
-                <p>250 m² | </p>
-<p>| Mixte</p>
+@if (accomodation) {
+    <article class="announcement-card flex h-52 mx-7 mb-7">
+        <div class="w-5/12 h-full shrink-0">
+            <img src="/uploads/images/{{accomodation.coverPicture}}" alt="image du logement"
+                class="h-full w-full object-cover object-center rounded-bl-[60px] rounded-tl-[60px]">
+        </div>
+        <div class="flex flex-col justify-between w-7/12 px-4 py-3">
+            <h3>{{accomodation.city}}</h3>
+            <div class="mb-3">
+                <div class="flex w-full">
+                    <p>Adresse: {{accomodation.addressLine1}}</p>
+                    <p class="px-7">Code postal: {{accomodation.zipCode}}</p>
+                </div>
+                <div class="flex w-full">
+                    <p>{{accomodation.surface}} m² | </p>
+                    @if (!accomodation.mixedGender) {
+                        <p>| Non mixte</p>
+                    }@else {
+                        <p>| Mixte</p>
+                    }
+                </div>
             </div>
         </div>
-        <div class="flex justify-between items-center w-full">
-            <button class="main-button">Voir les annonces</button>
+        <div class="flex justify-center items-center px-14">
+            <button [routerLink]="['/profile/add-announcement']" class="main-button">Publier une annonce</button>
         </div>
-    </div>
-    <div class="flex justify-center items-center px-14">
-        <button class="main-button">Publier une annonce</button>
-    </div>
-</article>
+    </article>
+}

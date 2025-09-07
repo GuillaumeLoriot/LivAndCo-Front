@@ -30,7 +30,10 @@ export class ConversationComponent {
   connectedUserId: number | null = null;
   messages: Message[] = [];
   isLoading = false;
-
+  isSubmitted = false;
+  error = false;
+  errorMessage ='';
+  success = false;
 
   constructor() {
     this.messageForm = this.formBuilder.group({
@@ -99,9 +102,51 @@ export class ConversationComponent {
   }
 
   onSubmit() {
+    this.isSubmitted = true;
+    // Je reinitialise les messages d'erreur si besoin
+    this.error = false;
+    this.success = false;
+    this.messageForm.markAllAsTouched();
+    if (this.messageForm.valid) {
+      this.isLoading = true;
+      // Je vérifie bien je j'ai l'id du destinataire à créer un message d'erreur
+      if (!this.peerId) {
+        this.error = true;
+        this.errorMessage = 'Annonce introuvable.';
+        this.isLoading = false;
+        return;
+      }
 
+      // Je prépare les données que je vais transmettre à la méthode de mon service
+      const formValue = this.messageForm.value;
+      const message = {
+        content: formValue.message,
+        receiver: '/api/users/'+this.peerId,
+      };
+      // J'appel mon service pour créer une réservation
+      this.messageService.sendMessage(message).subscribe({
+        next: (created) => {
+          this.messages.push(created)
+          this.messageForm.reset();
+          this.isSubmitted = false;
+          this.isLoading = false;
+        },
+        error: (error) => {
+          // Affichage de l'erreur dans la template
+          if (error.status) {
+            this.errorMessage = error.error?.message;
+          } else {
+            this.errorMessage = "Une erreur est survenue lors de l'envoi du message.";
+          }
+          this.error = true;
+          this.isLoading = false;
+        },
+      });
+    }
+
+  }
 
   }
 
 
-}
+

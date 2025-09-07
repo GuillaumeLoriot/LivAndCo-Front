@@ -1,12 +1,12 @@
 <h1 class="text-center my-14">Mes logements</h1>
 <ul>
-    <li>
-        <app-accomodation-dashboard-card></app-accomodation-dashboard-card>
-    </li>
-    <li>
-        <app-accomodation-dashboard-card></app-accomodation-dashboard-card>
-    </li>
-    <li>
-        <app-accomodation-dashboard-card></app-accomodation-dashboard-card>
-    </li>
+    @if (isLoading) {
+    <app-loading></app-loading>
+    }
+    @for (accomodation of accomodations; track accomodation.id) {
+        <li>
+            <app-accomodation-dashboard-card [accomodation]="accomodation"></app-accomodation-dashboard-card>
+        </li>
+
+    }
 </ul>

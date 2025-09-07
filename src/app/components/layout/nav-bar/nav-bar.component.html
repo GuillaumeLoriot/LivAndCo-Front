@@ -26,7 +26,7 @@
         @if (authService.isAuthenticated) {
         <button [routerLink]="['profile']" class="nav-link">
             <img src="/uploads/profile-pictures/{{authService.user?.profilePicture}}"
-                alt="Image de profil de l'utilisateur" class="w-10 rounded-full">
+                alt="Photo de profil" class="w-10 rounded-full">
         </button>
 
         <button class="inline-flex" (click)="authService.logout()">
