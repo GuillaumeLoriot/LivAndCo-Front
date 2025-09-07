@@ -67,7 +67,13 @@ export class ReservationComponent implements OnInit{
           this.announcementIri = (data as any)['@id'];
         },
         error: (error) => {
-          console.log(error);
+          // Affichage de l'erreur dans la template
+          if (error.status) {
+            this.errorMessage = error.error?.message;
+          } else {
+            this.errorMessage = "Une erreur est survenue au chargement de l'annonce.";
+          }
+          this.error = true;
         }
       });
     }
@@ -110,7 +116,7 @@ export class ReservationComponent implements OnInit{
           if (error.status) {
             this.errorMessage = error.error?.message;
           } else {
-            this.errorMessage = "Une erreur est survenue. Veuillez réessayer.";
+            this.errorMessage = "Une erreur est survenue lors de la réservation. Veuillez réessayer.";
           }
           this.error = true;
           this.isLoading = false;

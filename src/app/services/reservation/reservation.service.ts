@@ -23,9 +23,29 @@ export class ReservationService {
 
   getReservation(reservationId: Number): Observable<Reservation> {
 
-    return this.http.get<Reservation>(this.apiUrl + '/' + reservationId, { headers: { 'accept': 'application/json' } });
+    return this.http.get<Reservation>(this.apiUrl + '/' + reservationId, {
+      headers: { 'accept': 'application/json' },
+      context: enableAuthContext(), 
+      });
+    
 
   }
+
+  // Réservations en attente de validation par le owner de l'annonce
+  getReservationRequests(userId: number): Observable<Reservation[]> {
+
+    const params = new HttpParams()
+      .set('announcement.accomodation.owner.id', String(userId))
+      .set('status', 'pending');
+
+    return this.http.get<Reservation[]>(this.apiUrl, {
+      params,
+      headers: { accept: 'application/json' },
+      // Permet de dire qu'il faut que l'interceptor ajoute le token pour cette requète
+      context: enableAuthContext(),
+    });
+  }
+  
 
   createReservation(reservation: { startDate: string; duration: number; announcement: string }): Observable<Reservation> {
       return this.http.post<Reservation>(this.apiUrl, reservation, {

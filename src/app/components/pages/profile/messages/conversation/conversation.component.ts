@@ -42,6 +42,7 @@ export class ConversationComponent {
   ngOnInit(): void {
     this.loadConnectedUser();
 
+    // Ici je regarde le changement d'id dans les paramètres pour charger la conversation corespondante si changement
     this.route.paramMap.subscribe(params => {
       const raw = params.get('id');
       if(raw){
