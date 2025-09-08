@@ -1,6 +1,7 @@
 {
     "version": 2,
-    "buildCommand": "npm ci && npm run build -- --configuration=production",
+    "installCommand": "npm ci",
+    "buildCommand": "npm run build -- --configuration=production",
     "outputDirectory": "dist/liv-and-co",
     "rewrites": [
         {
