@@ -6,6 +6,8 @@ import { ResultsMapComponent } from "../../common/results-map/results-map.compon
 import { AnnouncementService } from '../../../services/announcement/announcement.service';
 import Announcement from '../../../models/announcement.interface';
 import { LoadingComponent } from "../../common/loading/loading.component";
+import { HydraCollection } from '../../../models/hydra-collection.interface';
+import SearchFilters from '../../../models/search-filter.interface';
 
 
 @Component({
@@ -21,6 +23,8 @@ export class AnnouncementListComponent implements OnInit {
   announcements: Announcement[] = [];
   answerIsOpen = false;
   isLoading = false;
+  results: HydraCollection<Announcement> | null = null;
+
 
   // Pagination hydra
   page = 1;
@@ -70,6 +74,13 @@ export class AnnouncementListComponent implements OnInit {
     this.answerIsOpen = !this.answerIsOpen;
   }
 
+  onSearchResults(results: HydraCollection<Announcement>) {
+    this.results = results;
+    this.announcements = results['member'];
+    this.total = results['totalItems'];
+    this.hasNext = Boolean(results.view?.next);
+    this.hasPrev = Boolean(results.view?.previous);
 
+  }
 
 }

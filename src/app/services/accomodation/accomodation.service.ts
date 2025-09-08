@@ -31,4 +31,11 @@ export class AccomodationService {
     });
   }
 
+    postAccomodation(accomodation: Accomodation): Observable<Accomodation> {
+        return this.http.post<Accomodation>(this.apiUrl, accomodation, {
+          headers: { 'accept': 'application/json' },
+          context: enableAuthContext(),
+        });
+      }
+
 }

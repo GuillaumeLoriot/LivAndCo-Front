@@ -7,7 +7,7 @@ import { SearchBarComponent } from "../../common/search-bar/search-bar.component
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, ReviewSliderComponent, RandomAnnouncementsSliderComponent, SearchBarComponent],
+  imports: [RouterLink, ReviewSliderComponent, RandomAnnouncementsSliderComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

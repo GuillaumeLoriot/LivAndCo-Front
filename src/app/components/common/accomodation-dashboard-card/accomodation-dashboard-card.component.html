@@ -6,12 +6,12 @@
         </div>
         <div class="flex flex-col justify-between w-7/12 px-4 py-3">
             <h3>{{accomodation.city}}</h3>
-            <div class="mb-3">
-                <div class="flex w-full">
-                    <p>Adresse: {{accomodation.addressLine1}}</p>
-                    <p class="px-7">Code postal: {{accomodation.zipCode}}</p>
+            <div class="mb-7">
+                <div class="flex flex-col w-full">
+                    <p class="py-2">Adresse: {{accomodation.addressLine1}}</p>
+                    <p>Code postal: {{accomodation.zipCode}}</p>
                 </div>
-                <div class="flex w-full">
+                <div class="flex w-full py-5">
                     <p>{{accomodation.surface}} m² | </p>
                     @if (!accomodation.mixedGender) {
                         <p>| Non mixte</p>

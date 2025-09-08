@@ -4,6 +4,7 @@ import Announcement from '../../models/announcement.interface';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { HydraCollection } from '../../models/hydra-collection.interface';
+import SearchFilters from '../../models/search-filter.interface';
 
 
 @Injectable({
@@ -26,6 +27,30 @@ export class AnnouncementService {
     const params = new HttpParams()
       .set('page', page)
       .set('itemsPerPage', itemsPerPage);
+
+    return this.http.get<HydraCollection<Announcement>>(this.apiUrl, { params, headers: { Accept: 'application/ld+json' } });
+  }
+
+  getSearchedAnnouncementsPage(page = 1, itemsPerPage = 10, filters: Partial<SearchFilters> = {},): Observable<HydraCollection<Announcement>> {
+    let params = new HttpParams()
+      .set('page', String(page))
+      .set('itemsPerPage', String(itemsPerPage));
+
+    if (filters.city) {
+      params = params.set('accomodation.city', filters.city);
+    }
+    if (filters.dailyPrice) {
+      params = params.set('dailyPrice[lte]', String(filters.dailyPrice));
+    }
+    if (filters.nbPlace) {
+      params = params.set('nbPlace[gte]', String(filters.nbPlace));
+    }
+    if (filters.startDate) {
+      params = params.set('startDate', String(filters.startDate));
+    }
+    if (filters.months) {
+      params = params.set('months', String(filters.months));
+    }
 
     return this.http.get<HydraCollection<Announcement>>(this.apiUrl, { params, headers: { Accept: 'application/ld+json' } });
   }
