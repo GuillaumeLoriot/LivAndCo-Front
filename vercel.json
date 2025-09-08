@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "buildCommand": "npm ci && npm run build -- --configuration=production",
+    "outputDirectory": "dist/liv-and-co",
+    "rewrites": [
+        {
+            "source": "/api/:path*",
+            "destination": "http://51.38.35.219/api/:path*"
+        },
+        {
+            "source": "/(.*)",
+            "destination": "/index.html"
+        }
+    ]
+}

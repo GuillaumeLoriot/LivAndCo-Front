@@ -1,6 +1,6 @@
 export const environment = {
-    production: false,
-    apiUrl: 'http://51.38.35.219/api',
-    enableLogging: true,
-    version: '1.0.0-dev'
+    production: true,
+    apiUrl: '/api',              // utilisera le proxy Vercel (HTTPS → HTTP VPS) (vercel force le https mais n'ayant pas de nom de domaine en back, il est en http)
+    enableLogging: false,
+    version: '1.0.0'
 };
