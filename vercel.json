@@ -9,6 +9,22 @@
             "destination": "http://51.38.35.219/api/:path*"
         },
         {
+            "source": "/uploads/:path*",
+            "destination": "http://51.38.35.219/uploads/:path*"
+        },
+        {
+            "source": "/icons/:path*",
+            "destination": "http://51.38.35.219/icons/:path*"
+        },
+        {
+            "source": "/illustrations/:path*",
+            "destination": "http://51.38.35.219/illustrations/:path*"
+        },
+        {
+            "source": "/logos/:path*",
+            "destination": "http://51.38.35.219/logos/:path*"
+        },
+        {
             "source": "/(.*)",
             "destination": "/index.html"
         }
