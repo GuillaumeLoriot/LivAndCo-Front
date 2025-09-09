@@ -14,7 +14,7 @@
         },
         {
             "source": "/icons/:path*",
-            "destination": "http://51.38.35.219/icons/:path*"
+            "destination": "http://51.38.35.219/site-icons/:path*"
         },
         {
             "source": "/illustrations/:path*",
