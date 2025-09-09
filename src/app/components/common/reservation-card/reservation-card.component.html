@@ -26,10 +26,13 @@
                 <p>Loyer + Garantie</p>
             </div>
         </div>
-        <div class="flex justify-around">
-            <button class="main-button mb-4" [routerLink]="['/announcements', announcement.id, 'reservation']">Réserver</button>
-            <button class="main-button mb-4">Contacter l'hôte</button>
-        </div>
+        @if (announcement) {
+            <div class="flex justify-around">
+                <button class="main-button mb-4" [routerLink]="['/announcements', announcement.id, 'reservation']">Réserver</button>
+                <button class="main-button mb-4" [routerLink]="['/profile/conversation', announcement.accomodation.owner.id]">Contacter l'hôte</button>
+            </div>
+
+        }
         <p class="text-[0.8rem] text-center">Au moment de la réservation, le bien est réservé temporairement jusqu'à validation par le propriétaire</p>
     </div>
 }

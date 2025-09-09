@@ -8,11 +8,13 @@ import { FormControlErrorComponent } from '../../common/errors/form-control-erro
 import { ReservationService } from '../../../services/reservation/reservation.service';
 import Reservation from '../../../models/reservation.interface';
 import { LoadingComponent } from "../../common/loading/loading.component";
+import { CommonModule } from '@angular/common';
+import { AverageMonthlyPipe } from '../../../pipes/average-monthly.pipe';
 
 @Component({
   selector: 'app-reservation',
   standalone: true,
-  imports: [CalendarComponent, ReactiveFormsModule, FormControlErrorComponent, LoadingComponent],
+  imports: [CommonModule ,CalendarComponent, ReactiveFormsModule, FormControlErrorComponent, LoadingComponent, AverageMonthlyPipe],
   templateUrl: './reservation.component.html',
   styleUrl: './reservation.component.scss'
 })
