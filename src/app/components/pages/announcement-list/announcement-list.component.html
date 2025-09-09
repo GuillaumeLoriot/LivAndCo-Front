@@ -1,55 +1,46 @@
 <main>
     <app-search-bar class="flex justify-center my-7" (searchResults)="onSearchResults($event)"></app-search-bar>
-    <section id="search-results" class="flex mb-32 mt-14">
-        <div class="w-7/12">
-            @if (isLoading) {
-            <app-loading></app-loading>
-            }
+
+    <!-- liste + carte : colonne dès la tablette, côte à côte seulement en ≥ lg -->
+    <section id="search-results" class="flex flex-col lg:flex-row mb-32 mt-14 gap-6">
+        <div class="w-full lg:w-7/12">
+            @if (isLoading) { <app-loading></app-loading> }
             <ul class="w-full">
                 @for (announcement of announcements; track announcement.id) {
                 <li>
-                    <app-announcement-list-card [announcement]=announcement></app-announcement-list-card>
+                    <app-announcement-list-card [announcement]="announcement"></app-announcement-list-card>
                 </li>
                 }
             </ul>
             <div class="flex justify-around mt-24">
                 <button class="main-button" (click)="goPrev()">prev</button>
                 <button class="main-button" (click)="goNext()">next</button>
-
             </div>
         </div>
-        <app-results-map class="w-5/12 self-stretch" [announcements]=announcements></app-results-map>
+
+        <app-results-map class="w-full lg:w-5/12 self-stretch md:h-[50vh] lg:h-auto" [announcements]="announcements">
+        </app-results-map>
     </section>
-    <section id="city-infos" class="bg-[var(--color-secondary)] p-7">
-        <h2 class="text-center mb-7">A propos de nom de la ville</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit quasi ea debitis, iusto dolorum exercitationem
-            ratione, nostrum adipisci dolorem sit aspernatur numquam fugiat cum. Quod at quia temporibus sunt
-            perferendis? Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit quasi ea debitis, iusto dolorum
-            exercitationem ratione,
-            nostrum adipisci dolorem sit aspernatur numquam fugiat cum. Quod at quia temporibus sunt perferendis? Lorem
-            ipsum dolor sit amet consectetur adipisicing elit. Velit quasi ea debitis, iusto dolorum exercitationem
-            ratione,
-            nostrum adipisci dolorem sit aspernatur numquam fugiat cum. Quod at quia temporibus sunt perferendis? Lorem
-            ipsum dolor sit amet consectetur adipisicing elit. Velit quasi ea debitis, iusto dolorum exercitationem
-            ratione,
-            nostrum adipisci dolorem sit aspernatur numquam fugiat cum. Quod at quia temporibus sunt perferendis?</p>
-    </section>
+
     <section id="faq" class="mt-14">
         <h2 class="text-center my-7">Foire aux Questions</h2>
         <ul class="p-7">
             <li class="flex">
-                <div class="">
+                <div>
                     <p class="question">Lorem ipsum dolor sit amet consectetur adipisicing elit debitis corrupti.
-                        Voluptas obcaecati eligendi quidem asperiores ipsa debitis sunt dolore?</p>
-                    @if(answerIsOpen){
+                        Voluptas
+                        obcaecati eligendi quidem asperiores ipsa debitis sunt dolore?</p>
+                    @if (answerIsOpen) {
                     <p class="answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, impedit amet sed
                         consequuntur quia sint? Eveniet minima asperiores adipisci odit, voluptas, totam corporis nemo
-                        quaerat corrupti delectus ducimus architecto natus!</p>
+                        quaerat
+                        corrupti delectus ducimus architecto natus!</p>
                     }
                 </div>
-                <div class="flex items-start justify-center"><button
-                        [ngClass]="answerIsOpen ? 'rotate-90 text-2xl' : 'text-2xl'"
-                        (click)="switchOpenClosedAnswer()">➤</button></div>
+                <div class="flex items-start justify-center">
+                    <button [ngClass]="answerIsOpen ? 'rotate-90 text-2xl' : 'text-2xl'"
+                        (click)="switchOpenClosedAnswer()">➤</button>
+                </div>
             </li>
         </ul>
     </section>

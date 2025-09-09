@@ -1,29 +1,38 @@
 @if (announcement) {
-<article class="announcement-card flex h-52 mx-7 mb-7">
-    <div class="w-5/12 h-full shrink-0">
+<article
+    class="announcement-card flex flex-col sm:flex-row mx-4 sm:mx-7 mb-7 h-auto sm:h-52 rounded-[60px] overflow-hidden">
+    <!-- image -->
+    <div class="w-full sm:w-5/12 h-48 sm:h-full shrink-0">
         <img src="/uploads/images/{{announcement.coverPicture}}" alt="image de l'annonce"
-            class="h-full w-full object-cover object-center rounded-bl-[60px] rounded-tl-[60px]">
+            class="h-full w-full object-cover object-center">
     </div>
-    <div class="flex flex-col justify-between w-7/12 px-4 py-3">
+
+    <!-- contenu -->
+    <div class="flex flex-col justify-between w-full sm:w-7/12 px-4 py-3">
         <h3>{{announcement.title}}</h3>
+
         <div class="mb-3">
-            <div class="flex w-full">
-                <p>{{ announcement.nbPlace }} {{ announcement.nbPlace > 1 ? 'résidents' : 'résident' }}</p>
+            <div class="flex flex-wrap gap-3 w-full text-sm sm:text-base">
+                <p>
+                    {{ announcement.nbPlace }} {{ announcement.nbPlace > 1 ? 'résidents' : 'résident' }}
+                </p>
                 @if (announcement.accomodation.conveniences) {
-                <p class="px-7">{{announcement.accomodation.conveniences[1].name |titlecase}}</p>
+                <p>{{announcement.accomodation.conveniences[1].name | titlecase}}</p>
                 <p>{{announcement.accomodation.conveniences[0].name}}</p>
                 }
             </div>
-            <div class="flex w-full justify-between">
+
+            <div class="flex justify-between items-center w-full mt-2">
                 <p>{{announcement.accomodation.surface}} m²</p>
-
-                <app-rating [announcement]=announcement></app-rating>
-
+                <app-rating [announcement]="announcement"></app-rating>
             </div>
         </div>
-        <div class="flex justify-between items-center w-full">
-            <button class="main-button" [routerLink]="['/announcements', announcement.id]">Voir l'annonce</button>
-            <p>A partir de {{announcement.dailyPrice | averageMonthly}} / mois</p>
+
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 w-full">
+            <button class="main-button" [routerLink]="['/announcements', announcement.id]">
+                Voir l'annonce
+            </button>
+            <p class="sm:text-right">A partir de {{announcement.dailyPrice | averageMonthly}} / mois</p>
         </div>
     </div>
 </article>

@@ -1,37 +1,48 @@
 @if (reservation) {
-<article class="announcement-card flex h-52 mx-7 mb-7">
-    <div class="w-4/12 h-full shrink-0">
+<article
+    class="announcement-card flex flex-col lg:flex-row mx-4 sm:mx-7 mb-7 h-auto lg:h-52 rounded-[60px] overflow-hidden">
+    <!-- Image -->
+    <div class="w-full lg:w-4/12 h-48 lg:h-full shrink-0">
         <img src="/uploads/images/{{reservation.announcement.coverPicture}}" alt="image de l'annonce"
-            class="h-full w-full object-cover object-center rounded-bl-[60px] rounded-tl-[60px]">
+            class="h-full w-full object-cover object-center">
     </div>
-    <div class="flex flex-col justify-between w-8/12 px-4 py-3">
+
+    <!-- Contenu principal -->
+    <div class="flex flex-col justify-between w-full lg:w-8/12 px-4 py-3">
         <h3>{{reservation.announcement.title}}</h3>
-        <div class="mb-3">
-            <div class="flex w-full items-baseline">
-                <p class="text-lg font-semibold">{{reservation.announcement.accomodation.city |titlecase}}</p>
-                <p class="px-7">{{reservation.announcement.accomodation.addressLine1 |titlecase}}</p>
-                <p>{{reservation.announcement.accomodation.surface}} m²</p>
 
+        <div class="mb-3">
+            <div class="flex flex-wrap gap-x-4 gap-y-2 w-full items-baseline text-sm lg:text-base">
+                <p class="text-lg font-semibold">{{reservation.announcement.accomodation.city | titlecase}}</p>
+                <p>{{reservation.announcement.accomodation.addressLine1 | titlecase}}</p>
+                <p>{{reservation.announcement.accomodation.surface}} m²</p>
             </div>
-            <div class="flex w-full">
-                <p class="mt-4">Prix total de la réservation: <span
-                        class="text-lg font-semibold">{{reservation.totalPrice}} €</span></p>
+
+            <div class="flex w-full mt-3">
+                <p>
+                    Prix total de la réservation:
+                    <span class="text-lg font-semibold">{{reservation.totalPrice}} €</span>
+                </p>
             </div>
         </div>
-        <div class="flex justify-between items-center w-full">
-            <p class="main-no-button">Séjour du {{ reservation.startDate| date:'d MMMM y' : '' :
-                'fr' }} au {{ reservation.endDate| date:'d MMMM y' : '' :
-                'fr' }}</p>
+
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-2 w-full">
+            <p class="main-no-button">
+                Séjour du {{ reservation.startDate | date:'d MMMM y':'':'fr' }}
+                au {{ reservation.endDate | date:'d MMMM y':'':'fr' }}
+            </p>
         </div>
     </div>
-    <div class="flex flex-col justify-around items-center px-14">
-        <button class="main-button" [routerLink]="['/profile/reviews']">Avis</button>
-        @if (reservation.status === 'pending') {
-            <p class="text-amber-500">Réservation En attente de validation</p>
-        }@else if (reservation.status ==='confirmed') {
-            <p class="text-green-700">Réservation confirmée</p>
-        }
 
+    <!-- Colonne actions/statut -->
+    <div class="flex flex-col justify-around items-center px-6 py-4 lg:px-14">
+        <button class="main-button" [routerLink]="['/profile/reviews']">Avis</button>
+
+        @if (reservation.status === 'pending') {
+        <p class="text-amber-500 text-center">Réservation En attente de validation</p>
+        } @else if (reservation.status === 'confirmed') {
+        <p class="text-green-700 text-center">Réservation confirmée</p>
+        }
     </div>
 </article>
 }

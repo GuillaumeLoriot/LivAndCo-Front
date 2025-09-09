@@ -1,111 +1,117 @@
 <main>
-    <section id="hero">
-        <div class="flex justify-start items-center h-[65vh]">
-            <div id="hero-card" class="w-1/3 rounded-br-[60px] rounded-tr-[60px] p-14">
-                <h1 class="w-4/5 leading-tight mb-[1rem]">One Roof, Endless stories</h1>
-                <p>Écrivez chaque jour un nouveau chapitre : espaces privés, vie partagée et rencontres infinies sous un
-                    même toit.</p>
-            </div>
+<section id="hero">
+    <div class="flex items-center h-[65vh]">
+        <div id="hero-card" class="w-full sm:w-2/3 lg:w-1/3 rounded-br-[60px] rounded-tr-[60px] p-6 sm:p-10 lg:p-14">
+            <h1 class="w-full sm:w-4/5 leading-tight mb-[1rem]">One Roof, Endless stories</h1>
+            <p>
+                Écrivez chaque jour un nouveau chapitre : espaces privés, vie partagée et
+                rencontres infinies sous un même toit.
+            </p>
         </div>
-    </section>
-    <section id="advantages" class="flex flex-col items-center justify-center my-28">
-        <div class="flex w-5/6 justify-center bg-[var(--color-secondary-card)] rounded-[60px]">
-            <div class="flex flex-wrap w-1/2">
-                <img class="w-1/2 rounded-tl-[60px]" src="/illustrations/image-hg.png" alt="">
+    </div>
+</section>
+    <section id="advantages" class="flex flex-col items-center justify-center my-16 sm:my-24 lg:my-28 px-4">
+        <div
+            class="flex flex-col lg:flex-row w-full lg:w-5/6 justify-center bg-[var(--color-secondary-card)] rounded-[40px] sm:rounded-[60px] overflow-hidden">
+            <div class="flex flex-wrap w-full lg:w-1/2">
+                <img class="w-1/2 rounded-tl-[40px] sm:rounded-tl-[60px]" src="/illustrations/image-hg.png" alt="">
                 <img class="w-1/2" src="/illustrations/image-bd.png" alt="">
-                <img class="w-1/2 rounded-bl-[60px]" src="/illustrations/image-bg.png" alt="">
+                <img class="w-1/2 rounded-bl-[40px] sm:rounded-bl-[60px]" src="/illustrations/image-bg.png" alt="">
                 <img class="w-1/2" src="/illustrations/image-hd.png" alt="">
             </div>
-            <div class="flex flex-col justify-center items-center w-1/2">
-                <h2 class="w-3/4">The future is nomad</h2>
-                <p class="w-3/4">Nous croyons en un monde où le partage d'un logement crée des liens authentiques. Que
-                    vous soyez
-                    freelance, en
-                    découverte d'une nouvelle ville ou en quête d'inspiration, apportez simplement votre passion, et
-                    nous nous occupons du
-                    reste</p>
+            <div class="flex flex-col justify-center items-center text-center gap-4 w-full lg:w-1/2 p-6 sm:p-10">
+                <h2 class="w-full sm:w-3/4">The future is nomad</h2>
+                <p class="w-full sm:w-3/4">Nous croyons en un monde où le partage d'un logement crée des liens
+                    authentiques. Que
+                    vous soyez freelance, en découverte d'une nouvelle ville ou en quête d'inspiration, apportez
+                    simplement votre
+                    passion, et nous nous occupons du reste</p>
             </div>
         </div>
-        <div class="flex flex-col items-center w-1/2 mt-28 mb-16">
-            <h2>Tout votre confort, d'un simple clic</h2>
-            <p class="text-center">Posez vos valises et profitez d'espaces design, de services inclus et d'une
-                communauté vibrante — on
-                s'occupe de tout,
-                vous n'avez plus qu'à vivre.</p>
+
+        <div class="flex flex-col items-center w-full sm:w-4/5 lg:w-1/2 mt-16 sm:mt-24 lg:mt-28 mb-12 sm:mb-16">
+            <h2 class="text-center">Tout votre confort, d'un simple clic</h2>
+            <p class="text-center px-4">Posez vos valises et profitez d'espaces design, de services inclus et d'une
+                communauté vibrante — on s'occupe de tout, vous n'avez plus qu'à vivre.</p>
         </div>
-        <ul class="flex justify-around">
-            <li class="basic-card w-1/5">
+
+        <ul class="flex flex-wrap justify-center gap-6 sm:gap-8 px-4">
+            <li class="basic-card w-full sm:w-[48%] lg:w-[22%]">
                 <img src="/icons/calendar.svg" alt="">
                 <h3>Séjour modulable</h3>
                 <p>Restez le temps qu'il vous faut avec nos contrats mensuels flexibles</p>
             </li>
-            <li class="basic-card w-1/5">
+            <li class="basic-card w-full sm:w-[48%] lg:w-[22%]">
                 <img src="/icons/couch.svg" alt="">
                 <h3>Clé en main</h3>
                 <p>Emménagez en un instant, tout est prêt</p>
             </li>
-            <li class="basic-card w-1/5">
+            <li class="basic-card w-full sm:w-[48%] lg:w-[22%]">
                 <img src="/icons/wifi.svg" alt="">
                 <h3>Wi-Fi ultra-rapide</h3>
                 <p>Internet ultra-haut débit, optimisé pour travailler à domicile</p>
             </li>
-            <li class="basic-card w-1/5">
+            <li class="basic-card w-full sm:w-[48%] lg:w-[22%]">
                 <img src="/icons/support.svg" alt="">
                 <h3>Support 24/7</h3>
                 <p>Une équipe à votre disposition pour résoudre tous vos imprévus</p>
             </li>
         </ul>
+    </section>
 
+    <section id="random-announcements" class="mb-16 lg:mb-20 px-4">
+        <div>
+            <h2 class="text-center">Découvrez votre prochaine destination</h2>
+            <p class="text-center mb-10 lg:mb-16">Une sélection de coliving partout en France</p>
+        </div>
+        <app-random-announcements-slider></app-random-announcements-slider>
     </section>
-    <section id="random-announcements" class="mb-20">
-                <div>
-                    <h2 class="text-center">Découvrez votre prochaine destination</h2>
-                    <p class="text-center mb-16">Une sélection de coliving partout en France</p>
-                </div>
-<app-random-announcements-slider></app-random-announcements-slider>
-    </section>
-    <section id="teaser" class="flex items-center">
-        <div class="w-1/3 ml-[50%]">
+
+    <section id="teaser" class="flex items-center px-4 py-12 sm:py-16">
+        <div class="w-full lg:w-1/3 lg:ml-[50%] text-center lg:text-left">
             <h2 class="white">Des espaces d'exception</h2>
             <p class="white mb-7">Chaque logement répond aux normes d'excellence pour vous garantir une expérience
                 incomparable.</p>
             <a [routerLink]="['contact']" class="main-button">Déposer une annonce</a>
         </div>
     </section>
-    <section id="partners" class="flex flex-col justify-center items-center w-full my-16">
-        <h2>Des partenaires impliqués</h2>
-        <p class="mb-16">Nous collaborons avec des partenaires soigneusement sélectionnés pour vous proposer des services
-            complémentaires
-            d'excellence.</p>
-        <ul class="flex justify-around">
-            <li class="basic-card w-1/4">
+
+    <section id="partners" class="flex flex-col justify-center items-center w-full my-12 sm:my-16 px-4">
+        <h2 class="text-center">Des partenaires impliqués</h2>
+        <p class="mb-10 lg:mb-16 text-center">Nous collaborons avec des partenaires soigneusement sélectionnés pour vous
+            proposer des services
+            complémentaires d'excellence.</p>
+        <ul class="flex flex-wrap justify-center gap-6 sm:gap-8 w-full">
+            <li class="basic-card w-full sm:w-[48%] lg:w-[30%]">
                 <img src="/icons/cleanning.svg" alt="icone d'un balai'">
                 <h3>Ménage premium</h3>
                 <p>Ne vous souciez plus du ménage, on s'occupe de tout</p>
             </li>
-            <li class="basic-card w-1/4">
+            <li class="basic-card w-full sm:w-[48%] lg:w-[30%]">
                 <img src="/icons/chef.svg" alt="icone d'une toque de chef">
                 <h3>Chef à domicile</h3>
                 <p>Envie d'un repas Gastronomique?</p>
             </li>
-            <li class="basic-card w-1/4">
+            <li class="basic-card w-full sm:w-[48%] lg:w-[30%]">
                 <img src="/icons/massage.svg" alt="icone d'un massage">
                 <h3>Massage</h3>
                 <p>Relaxez vous après une longue journée de travail</p>
             </li>
         </ul>
     </section>
-    <section id="reviews" class="flex flex-col justify-center w-full">
+
+    <section id="reviews" class="flex flex-col justify-center w-full px-4">
         <div>
             <h2 class="text-center">Échos de Résidents</h2>
-            <p class="text-center mb-16">Parcourez les avis de ceux qui ont déjà vécu l'aventure</p>
+            <p class="text-center mb-10 lg:mb-16">Parcourez les avis de ceux qui ont déjà vécu l'aventure</p>
         </div>
         <app-review-slider></app-review-slider>
     </section>
-    <section id="second-teaser" class="flex justify-center items-center">
-        <div class="teaser-card flex flex-col items-center max-w-3/12">
-            <h2>N'attendez plus</h2>
-            <p class="mb-7">Un simple clic vous ouvre les portes d'une expérience inoubliable</p>
+
+    <section id="second-teaser" class="flex justify-center items-center px-4 py-12 sm:py-16">
+        <div class="teaser-card flex flex-col items-center w-full sm:w-3/4 lg:w-1/2 xl:w-1/3">
+            <h2 class="text-center">N'attendez plus</h2>
+            <p class="mb-7 text-center">Un simple clic vous ouvre les portes d'une expérience inoubliable</p>
             <button class="main-button">Choisissez une ville ▼</button>
         </div>
     </section>

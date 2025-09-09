@@ -1,17 +1,22 @@
 <div class="flex flex-col items-center">
     @if (isLoading) {
     <div class="h-[60vh] flex justify-center items-start">
-
         <app-loading></app-loading>
     </div>
     }
-    <swiper-container slides-per-view="5" space-between="28" navigation="true" autoplay="true" loop="true" role="list"
-        aria-label="Liste défilante d'annonces" class="w-[95%]">
+
+    <swiper-container centered-slides="true" [breakpoints]="{
+      '0':    { slidesPerView: 1, spaceBetween: 16 },
+      '640':  { slidesPerView: 2, spaceBetween: 20 },
+      '1024': { slidesPerView: 3, spaceBetween: 24 },
+      '1280': { slidesPerView: 5, spaceBetween: 28 }
+    }" navigation="true" autoplay="true" loop="true" role="list" aria-label="Liste défilante d'annonces"
+        class="w-[95%]">
         @for (announcement of announcements | slice:0:10; track announcement.id) {
-        <swiper-slide class="w-1/6 mb-16 p-4">
-            <article role="listitem">
+        <swiper-slide class="mb-16 p-4 flex justify-center">
+            <article role="listitem" class="w-full max-w-xs">
                 <img src="/uploads/images/{{announcement.coverPicture}}" alt="photo d'une annonce de coliving"
-                    class="h-48 object-cover object-center rounded-[30px]">
+                    class="h-48 w-full object-cover object-center rounded-[30px]">
                 <div class="flex flex-col">
                     <h3>{{announcement.title}}</h3>
                     <div class="flex flex-col justify-between h-36 mb-5">
@@ -19,18 +24,17 @@
                         <div class="flex justify-between">
                             <p>{{announcement.accomodation.surface}} m²</p>
                             <p>|</p>
-                            <app-rating [announcement]=announcement></app-rating>
+                            <app-rating [announcement]="announcement"></app-rating>
                         </div>
-                        <p class="font-medium">A partir de {{announcement.dailyPrice | averageMonthly}}€ / mois</p>
+                        <p class="font-medium">
+                            A partir de {{announcement.dailyPrice | averageMonthly}}€ / mois
+                        </p>
                     </div>
                 </div>
             </article>
-
         </swiper-slide>
-
         }
     </swiper-container>
 
     <button class="main-button">Voir les annonces</button>
-
 </div>

@@ -1,27 +1,39 @@
 <main>
-                @if (isLoading) {
-                    <div class="h-[60vh] flex justify-center items-start">
+    @if (isLoading) {
+    <div class="h-[60vh] flex justify-center items-start">
 
-                        <app-loading></app-loading>
-                    </div>
-                }
+        <app-loading></app-loading>
+    </div>
+    }
     @if (announcement) {
     <section id="gallery" class="px-4 py-7">
-        <!-- MOBILE: slider 1 image -->
-        <!-- <div class="block lg:hidden">
-                <swiper-container slides-per-view="1" space-between="12" pagination="true" class="w-full">
-                    <swiper-slide><img src="/uploads/images/generic-announcement-1.jpg"
-                            class="w-full h-[40vh] object-cover object-center rounded-xl" alt=""></swiper-slide>
-                    <swiper-slide><img src="/uploads/images/generic-lyon-1.jpg"
-                            class="w-full h-[40vh] object-cover object-center rounded-xl" alt=""></swiper-slide>
-                    <swiper-slide><img src="/uploads/images/generic-accomodation-25.jpg"
-                            class="w-full h-[40vh] object-cover object-center rounded-xl" alt=""></swiper-slide>
-                    <swiper-slide><img src="/uploads/images/generic-accomodation-25.jpg"
-                            class="w-full h-[40vh] object-cover object-center rounded-xl" alt=""></swiper-slide>
-                    <swiper-slide><img src="/uploads/images/generic-accomodation-25.jpg"
-                            class="w-full h-[40vh] object-cover object-center rounded-xl" alt=""></swiper-slide>
-                </swiper-container>
-            </div> -->
+
+        <!-- Slider (mobile & tablette) -->
+        <swiper-container class="block lg:hidden h-[50vh]" centered-slides="true" pagination="true" navigation="true"
+            [breakpoints]="{
+              '0':   { slidesPerView: 1, spaceBetween: 12 },
+              '640': { slidesPerView: 1, spaceBetween: 16 }
+            }">
+            <!-- 1) cover -->
+            <swiper-slide class="h-full">
+                <img src="/uploads/images/{{announcement.coverPicture}}" alt="image de couverture de l'annonce"
+                    class="w-full h-full object-cover rounded-xl">
+            </swiper-slide>
+        
+            <!-- 2) image logement -->
+            <swiper-slide class="h-full">
+                <img src="/uploads/images/{{announcement.accomodation.coverPicture}}" alt="Image du logement"
+                    class="w-full h-full object-cover rounded-xl">
+            </swiper-slide>
+        
+            <!-- 3) autres images -->
+            @for (image of announcement.accomodation.images; track image.id) {
+            <swiper-slide class="h-full">
+                <img src="/uploads/images/{{image.path}}" alt="Image de l'annonce"
+                    class="w-full h-full object-cover rounded-xl">
+            </swiper-slide>
+            }
+        </swiper-container>
 
         <!-- Gallerie -->
         <div class="hidden lg:grid lg:grid-cols-[2fr_1fr] h-[60vh]">
@@ -58,13 +70,14 @@
                 <div class="mb-7 flex justify-between sm:flex-row sm:items-center sm:justify-between gap-4">
                     <!-- Caractéristiques -->
                     <div class="w-full lg:w-2/3 flex flex-wrap gap-x-6 gap-y-2">
-                        <p>Conseillé pour {{ announcement.nbPlace }} {{ announcement.nbPlace > 1 ? 'résidents' : 'résident' }}</p>
-                       <p>|</p>
+                        <p>Conseillé pour {{ announcement.nbPlace }} {{ announcement.nbPlace > 1 ? 'résidents' :
+                            'résident' }}</p>
+                        <p>|</p>
                         <p>Surface commune du logement: {{announcement.accomodation.surface}} m²</p>
                     </div>
 
                     <!-- Avis -->
-                     <app-rating class="w-full" [announcement]=announcement></app-rating>
+                    <app-rating class="w-full" [announcement]=announcement></app-rating>
                     <!-- <div class="w-full sm:w-auto lg:w-1/3 flex items-center justify-start sm:justify-end gap-2">
                         <img src="/icons/star.svg" alt="icone d'un étoile de notation" class="h-5 w-5">
                         <p>4.83 - 37 avis</p>
@@ -96,8 +109,8 @@
             @for (convenience of announcement.accomodation.conveniences; track convenience.id) {
             <li class="w-full sm:w-1/2 md:w-1/3 px-16 mb-6 flex items-center justify-between">
                 <div class="w-full px-4 py-2 flex items-center justify-between rounded-xl shadow-lg">
-                    <p>{{convenience.name}}</p><img src="/icons/{{convenience.icon}}" alt="Icone de l'équipement {{convenience.name}}"
-                        class="h-6 w-6 sm:h-7 sm:w-7">
+                    <p>{{convenience.name}}</p><img src="/icons/{{convenience.icon}}"
+                        alt="Icone de l'équipement {{convenience.name}}" class="h-6 w-6 sm:h-7 sm:w-7">
                 </div>
             </li>
             }
@@ -108,8 +121,8 @@
             @for (convenience of announcement.conveniences; track convenience.id) {
             <li class="w-full sm:w-1/2 md:w-1/3 px-16 mb-6 flex items-center justify-between">
                 <div class="w-full px-4 py-2 flex items-center justify-between rounded-xl shadow-lg">
-                    <p>{{convenience.name}}</p><img src="/icons/{{convenience.icon}}" alt="Icone de {{convenience.name}}"
-                        class="h-6 w-6 sm:h-7 sm:w-7">
+                    <p>{{convenience.name}}</p><img src="/icons/{{convenience.icon}}"
+                        alt="Icone de {{convenience.name}}" class="h-6 w-6 sm:h-7 sm:w-7">
                 </div>
             </li>
             }

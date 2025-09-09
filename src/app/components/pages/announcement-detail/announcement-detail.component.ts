@@ -10,12 +10,14 @@ import Announcement from '../../../models/announcement.interface';
 import { RatingComponent } from "../../common/rating/rating.component";
 import { AverageMonthlyPipe } from '../../../pipes/average-monthly.pipe';
 import { LoadingComponent } from "../../common/loading/loading.component";
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
 @Component({
   selector: 'app-announcement-detail',
   standalone: true,
   imports: [CommonModule, ResultsMapComponent, ReviewSliderComponent, ReservationCardComponent, CalendarComponent, RatingComponent, LoadingComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './announcement-detail.component.html',
   styleUrls: ['./announcement-detail.component.scss']
 })
