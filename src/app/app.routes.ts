@@ -85,7 +85,7 @@ export const routes: Routes = [
                 { path: 'announcements', component: AnnouncementsComponent, canActivate: [RoleGuard], data: { roles: ['ROLE_OWNER', 'ROLE_ADMIN'] } },
                 { path: 'rental-requests', component: RentalRequestsComponent, canActivate: [RoleGuard], data: { roles: ['ROLE_OWNER', 'ROLE_ADMIN'] } },
                 { path: 'rental-schedule', component: RentalScheduleComponent, canActivate: [RoleGuard], data: { roles: ['ROLE_OWNER', 'ROLE_ADMIN'] } },
-                { path: 'add-accomodation', component: AddAccommodationComponent, canActivate: [RoleGuard], data: { roles: ['ROLE_OWNER', 'ROLE_ADMIN'] } },
+                { path: 'add-accomodation', component: AddAccommodationComponent, canActivate: [RoleGuard], data: { roles: ['ROLE_USER', 'ROLE_ADMIN'] } },
                 { path: 'add-announcement', component: AddAnnouncementComponent, canActivate: [RoleGuard], data: { roles: ['ROLE_OWNER', 'ROLE_ADMIN'] } },
                 { path: 'reviews', component: ReviewsComponent },
 
