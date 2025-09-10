@@ -87,7 +87,7 @@ export class AddAccommodationComponent implements OnInit {
         next: () => {
           this.isLoading = false;
           this.success = true;
-          this.accomodationForm.disable();  
+          this.accomodationForm.disable();
         },
         error: (error) => {
           // Affichage de l'erreur dans la template

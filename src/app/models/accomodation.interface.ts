@@ -19,5 +19,5 @@ export default interface Accomodation {
     images?: Image[];
     owner?: User;
     announcements?: Announcement[];
-    conveniences?: Convenience[] | string[];
+    conveniences?: Convenience[];
 }
