@@ -17,7 +17,7 @@ export default interface Accomodation {
     coverPicture: string;
 
     images?: Image[];
-    owner: User;
+    owner?: User;
     announcements?: Announcement[];
-    conveniences?: Convenience[];
+    conveniences?: Convenience[] | string[];
 }

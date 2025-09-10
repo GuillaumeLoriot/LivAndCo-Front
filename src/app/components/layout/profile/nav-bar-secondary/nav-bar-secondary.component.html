@@ -13,9 +13,11 @@
                 class="flex flex-col items-center" (click)="panelState.toggle()"><img src="/icons/messages.svg" alt="">
                 <p class="text-xs text-[var(--color-primary)]">Messagerie</p>
             </a></li>
-        <li class="py-7"><a [routerLink]="[{ outlets: { panel: ['owner-menu'] } }]" class="flex flex-col items-center"
-                (click)="panelState.toggle()"><img src="/icons/dashboard.svg" alt="">
-                <p class="text-xs text-[var(--color-primary)]">Dashboard</p>
-            </a></li>
+            @if (hasRole('ROLE_OWNER')) {
+                <li class="py-7"><a [routerLink]="[{ outlets: { panel: ['owner-menu'] } }]" class="flex flex-col items-center"
+                        (click)="panelState.toggle()"><img src="/icons/dashboard.svg" alt="">
+                        <p class="text-xs text-[var(--color-primary)]">Dashboard</p>
+                    </a></li>
+            }
     </ul>
 </nav>

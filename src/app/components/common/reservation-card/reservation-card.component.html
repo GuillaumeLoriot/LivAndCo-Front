@@ -29,7 +29,7 @@
         @if (announcement) {
             <div class="flex justify-around">
                 <button class="main-button mb-4" [routerLink]="['/announcements', announcement.id, 'reservation']">Réserver</button>
-                <button class="main-button mb-4" [routerLink]="['/profile/conversation', announcement.accomodation.owner.id]">Contacter l'hôte</button>
+                <button class="main-button mb-4" [routerLink]="['/profile/conversation', announcement.accomodation.owner?.id]">Contacter l'hôte</button>
             </div>
 
         }

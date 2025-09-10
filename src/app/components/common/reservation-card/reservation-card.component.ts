@@ -17,7 +17,7 @@ export class ReservationCardComponent implements OnInit{
   ownerId:number | null = null;
 
 ngOnInit(): void {
-  if(this.announcement){
+  if(this.announcement?.accomodation.owner){
     this.ownerId = this.announcement.accomodation.owner.id;
   }
   

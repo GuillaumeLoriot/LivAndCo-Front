@@ -20,10 +20,10 @@
             <div class="flex flex-wrap items-baseline gap-2 w-full py-4 lg:py-5">
                 <p>{{accomodation.surface}} m²</p>
                 <p>|</p>
-                @if (!accomodation.mixedGender) {
-                <p>Non mixte</p>
+                @if (accomodation.mixedGender) {
+                    <p>Mixte</p>
                 } @else {
-                <p>Mixte</p>
+                    <p>Non mixte</p>
                 }
             </div>
         </div>

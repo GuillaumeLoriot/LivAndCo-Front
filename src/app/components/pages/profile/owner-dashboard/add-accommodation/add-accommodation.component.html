@@ -4,110 +4,96 @@
     <section aria-labelledby="add-accommodation-form">
         <h2 id="add-accommodation-form" class="sr-only">Formulaire d'ajout de logement</h2>
 
-        <form action="" method="post" novalidate class="flex flex-col gap-6">
+        @if (isLoading) {
+        <app-loading></app-loading>
+        }
+        @if (success) {
+        <p class="text-green-700 bg-green-100 rounded-md px-3 py-5 my-5 text-center" aria-live="polite">
+            Logement créé avec succès. Retrouvez le dans votre espace propriétaire
+        </p>
+        }
+        @if (error) {
+        <p class="text-red-700 bg-red-200 rounded-md px-3 py-5 my-5 text-center" aria-live="polite">
+            Une erreur est survenue lors de la création du logement. Veuillez réessayer.
+        </p>
+        }
+
+        <form [formGroup]="accomodationForm" (ngSubmit)="onSubmit()" class="flex flex-col gap-6">
 
             <!-- Code postal + Ville -->
             <div class="flex flex-col md:flex-row gap-6">
-                <div class="flex flex-col flex-1">
-                    <label for="zip" class="font-bold text-sm mb-2">Code postal</label>
-                    <input id="zip" name="zip" type="text" placeholder="69001"
-                        class="bg-[var(--color-background)] border-2 border-[var(--color-primary)] rounded px-3 py-2" />
-                </div>
+
                 <div class="flex flex-col flex-1">
                     <label for="city" class="font-bold text-sm mb-2">Ville</label>
-                    <input id="city" name="city" type="text" placeholder="LYON"
+                    <input id="city" name="city" type="text" placeholder="Choisissez la ville" formControlName="city"
+                        (input)="onCityInput()"
+                        class="bg-[var(--color-background)] border-2 border-[var(--color-primary)] rounded px-3 py-2" />
+                    <app-form-control-error [field]="accomodationForm.get('city')"></app-form-control-error>
+
+                    <!-- Suggestions ville/CP -->
+                    @if (citySuggestions.length) {
+                    <ul class="mt-2 border rounded max-h-60 overflow-auto bg-white">
+                        @for (suggestion of citySuggestions; track suggestion.properties?.id) {
+                        <li (click)="pickCity(suggestion)" class="px-3 py-2 hover:bg-gray-50 cursor-pointer">
+                            {{ suggestion.properties.label ?? (suggestion.properties.postcode + ' ' +
+                            suggestion.properties.city) }}
+                        </li>
+                        }
+                    </ul>
+                    }
+                </div>
+                <div class="flex flex-col flex-1">
+                    <label for="zipcode" class="font-bold text-sm mb-2">Code postal</label>
+                    <input id="zipcode" name="zipcode" type="text" readonly formControlName="zipCode"
                         class="bg-[var(--color-background)] border-2 border-[var(--color-primary)] rounded px-3 py-2" />
                 </div>
             </div>
 
             <!-- Adresse -->
             <div class="flex flex-col">
-                <label for="address" class="font-bold text-sm mb-2">Adresse</label>
-                <input id="address" name="address" type="text" placeholder="8 boulevard Gambetta"
+                <label for="addressLine1" class="font-bold text-sm mb-2">Adresse</label>
+                <input id="addressLine1" name="addressLine1" type="text" placeholder="8 boulevard Gambetta"
+                    formControlName="addressLine1" (input)="onAddressInput()"
                     class="bg-[var(--color-background)] border-2 border-[var(--color-primary)] rounded px-3 py-2" />
+
+                <app-form-control-error [field]="accomodationForm.get('addressLine1')"></app-form-control-error>
+
+                @if (addressSuggestions.length) {
+                <ul class="mt-2 border rounded max-h-60 overflow-auto bg-white">
+                    @for (suggestion of addressSuggestions; track suggestion.properties?.id) {
+                    <li (click)="pickAddress(suggestion)" class="px-3 py-2 hover:bg-gray-50 cursor-pointer">
+                        {{ suggestion.properties.label }}
+                    </li>
+                    }
+                </ul>
+                }
             </div>
 
             <!-- Surface -->
             <div class="flex flex-col">
                 <label for="surface" class="font-bold text-sm mb-2">Surface (m²)</label>
-                <input id="surface" name="surface" type="number" inputmode="decimal" step="0.1" min="0" placeholder="45"
+                <input id="surface" name="surface" type="number"  min="1"
+                    placeholder="210 m²" formControlName="surface"
                     class="bg-[var(--color-background)] border-2 border-[var(--color-primary)] rounded px-3 py-2" />
+                <app-form-control-error [field]="accomodationForm.get('surface')"></app-form-control-error>
+
             </div>
 
             <!-- Équipements (collection de checkboxes) -->
             <fieldset class="flex flex-col">
                 <legend class="font-bold text-sm mb-2">Équipements partagés dans le logement</legend>
-            
+
                 <div class="flex flex-wrap gap-x-6 gap-y-3">
+                    @for (convenience of availableConveniences; track convenience.id) {
                     <label class="inline-flex items-center gap-2">
-                        <input type="checkbox" name="sharedEquipments[]" value="wifi" class="[accent-color:var(--color-primary)] w-5 h-5">
-                        <span>Wi-Fi</span>
-                    </label>
-            
-                    <label class="inline-flex items-center gap-2">
-                        <input type="checkbox" name="sharedEquipments[]" value="climatisation"
+                        <input type="checkbox" name="availableConveniences"
+                            [checked]="isConvenienceSelected(convenience.id)"
+                            (change)="toggleConvenience(convenience.id)"
                             class="[accent-color:var(--color-primary)] w-5 h-5">
-                        <span>Climatisation</span>
+                        <span>{{convenience.name}}</span>
                     </label>
-            
-                    <label class="inline-flex items-center gap-2">
-                        <input type="checkbox" name="sharedEquipments[]" value="chauffage"
-                            class="[accent-color:var(--color-primary)] w-5 h-5">
-                        <span>Chauffage</span>
-                    </label>
-            
-                    <label class="inline-flex items-center gap-2">
-                        <input type="checkbox" name="sharedEquipments[]" value="lave_linge"
-                            class="[accent-color:var(--color-primary)] w-5 h-5">
-                        <span>Machine à laver</span>
-                    </label>
-            
-                    <label class="inline-flex items-center gap-2">
-                        <input type="checkbox" name="sharedEquipments[]" value="lave_vaisselle"
-                            class="[accent-color:var(--color-primary)] w-5 h-5">
-                        <span>Lave-vaisselle</span>
-                    </label>
-            
-                    <label class="inline-flex items-center gap-2">
-                        <input type="checkbox" name="sharedEquipments[]" value="television"
-                            class="[accent-color:var(--color-primary)] w-5 h-5">
-                        <span>Télévision</span>
-                    </label>
-            
-                    <label class="inline-flex items-center gap-2">
-                        <input type="checkbox" name="sharedEquipments[]" value="parking"
-                            class="[accent-color:var(--color-primary)] w-5 h-5">
-                        <span>Parking</span>
-                    </label>
-            
-                    <label class="inline-flex items-center gap-2">
-                        <input type="checkbox" name="sharedEquipments[]" value="ascenseur"
-                            class="[accent-color:var(--color-primary)] w-5 h-5">
-                        <span>Ascenseur</span>
-                    </label>
-            
-                    <label class="inline-flex items-center gap-2">
-                        <input type="checkbox" name="sharedEquipments[]" value="pmr" class="[accent-color:var(--color-primary)] w-5 h-5">
-                        <span>Accessible PMR</span>
-                    </label>
-            
-                    <label class="inline-flex items-center gap-2">
-                        <input type="checkbox" name="sharedEquipments[]" value="animaux"
-                            class="[accent-color:var(--color-primary)] w-5 h-5">
-                        <span>Animaux acceptés</span>
-                    </label>
-            
-                    <label class="inline-flex items-center gap-2">
-                        <input type="checkbox" name="sharedEquipments[]" value="exterieur"
-                            class="[accent-color:var(--color-primary)] w-5 h-5">
-                        <span>Espace extérieur (balcon/jardin)</span>
-                    </label>
-            
-                    <label class="inline-flex items-center gap-2">
-                        <input type="checkbox" name="sharedEquipments[]" value="bureau"
-                            class="[accent-color:var(--color-primary)] w-5 h-5">
-                        <span>Bureau / coin travail</span>
-                    </label>
+                    }
+
                 </div>
             </fieldset>
 
@@ -116,7 +102,7 @@
             <div class="flex flex-col">
                 <span class="font-bold text-sm mb-2">Mixte</span>
                 <label for="mixed" class="inline-flex items-center gap-3 cursor-pointer">
-                    <input id="mixed" name="mixed" type="checkbox" checked
+                    <input id="mixedGender" name="mixedGender" type="checkbox" formControlName="mixedGender"
                         class="[accent-color:var(--color-primary)] w-5 h-5" />
                     <span>Oui</span>
                 </label>
