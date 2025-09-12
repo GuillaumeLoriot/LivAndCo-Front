@@ -2,6 +2,36 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.20.
 
+## Application Structure
+
+mindmap
+  root((LivAndCo-Front))
+    public
+      icons
+      uploads
+    src
+      app
+        components
+          pages
+            home
+            contact
+            help
+            login
+            register
+            announcement-list
+            announcement-detail
+            reservation
+            profile
+          layout
+          common
+        services
+        models
+        guards
+        interceptors
+        pipes
+        utils
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
