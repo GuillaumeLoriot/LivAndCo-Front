@@ -24,7 +24,7 @@ export class AnnouncementListComponent implements OnInit {
   answerIsOpen = false;
   isLoading = false;
   results: HydraCollection<Announcement> | null = null;
-
+  errorMessage = '';
 
   // Pagination hydra
   page = 1;
@@ -48,9 +48,9 @@ export class AnnouncementListComponent implements OnInit {
         this.hasNext = Boolean(data.view?.next);
         this.hasPrev = Boolean(data.view?.previous);
       },
-      error: () => {
+      error: (error) => {
         this.isLoading = false;
-        console.log('Une erreur est survenue');
+        this.errorMessage = error;
         this.announcements = [];
       }
     });
