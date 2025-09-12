@@ -4,33 +4,65 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Application Structure
 
-mindmap
-  root((LivAndCo-Front))
-    public
-      icons
-      uploads
-    src
-      app
-        components
-          pages
-            home
-            contact
-            help
-            login
-            register
-            announcement-list
-            announcement-detail
-            reservation
-            profile
-          layout
-          common
-        services
-        models
-        guards
-        interceptors
-        pipes
-        utils
+```text
 
+├─ .vscode/
+├─ public/
+│  ├─ icons/
+│  └─ uploads/
+└─ src/
+   ├─ app/
+   │  ├─ components/
+   │  │  ├─ pages/
+   │  │  │  ├─ home/
+   │  │  │  ├─ contact/
+   │  │  │  ├─ help/
+   │  │  │  ├─ login/
+   │  │  │  ├─ register/
+   │  │  │  ├─ announcement-list/
+   │  │  │  ├─ announcement-detail/
+   │  │  │  ├─ reservation/
+   │  │  │  └─ profile/
+   │  │  │     ├─ profile-shell/
+   │  │  │     ├─ messages/       
+   │  │  │     ├─ reservations/
+   │  │  │     ├─ general/      
+   │  │  │     └─ dashboard-owner/
+   │  │  │  │    ├─ accomodations/
+   │  │  │  │    ├─ announcements/       
+   │  │  │  │    ├─ rental-requests/
+   │  │  │  │    ├─ add-accomodation/      
+   │  │  │  │    └─ add-announcement/
+   │  │  ├─ layout/
+   │  │  │  ├─ nav-bar/
+   │  │  │  ├─ footer/
+   │  │  │  └─ profile/
+   │  │  │     ├─ nav-bar-secondary/
+   │  │  │     └─ panels/
+   │  │  │        ├─ messages-panel/
+   │  │  │        ├─ reservations-panel/
+   │  │  │        ├─ owner-dasboard-panel/
+   │  │  │        └─ profile-panel/
+   │  │  └─ common/
+   │  │     ├─ announcement-list-card/
+   │  │     ├─ results-map/
+   │  │     ├─ loading/
+   │  │     ├─ errors/
+   │  │     │  └─ form-control-error/
+   │  │     └─ forms/
+   │  ├─ services/
+   │  │  ├─ announcement/
+   │  │  ├─ reservation/
+   │  │  ├─ message/
+   │  │  └─ user/
+   │  ├─ models/
+   │  ├─ guards/
+   │  ├─ interceptors/
+   │  ├─ pipes/
+   │  └─ utils/
+   └─ 
+
+```
 
 ## Development server
 
