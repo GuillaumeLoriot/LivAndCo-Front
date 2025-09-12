@@ -18,18 +18,22 @@ export class AnnouncementService {
   private http = inject(HttpClient);
   id: Number | null = null;
 
+  getAnnouncementsPage(page = 1, itemsPerPage = 10): Observable<HydraCollection<Announcement>> {
+    const params = new HttpParams()
+      .set('page', page)
+      .set('itemsPerPage', itemsPerPage);
+    return this.http.get<HydraCollection<Announcement>>(this.apiUrl, { params, headers: { Accept: 'application/ld+json' } });
+  }
+  
+  getAnnouncement(id: Number): Observable<Announcement> {
+    return this.http.get<Announcement>(this.apiUrl + '/' + id, { headers: { 'accept': 'application/json' } });
+  }
+
   
   getAnnouncements(): Observable<Announcement[]> {
     return this.http.get<Announcement[]>(this.apiUrl, { headers: { 'accept': 'application/json' } });
   }
 
-  getAnnouncementsPage(page = 1, itemsPerPage = 10): Observable<HydraCollection<Announcement>> {
-    const params = new HttpParams()
-      .set('page', page)
-      .set('itemsPerPage', itemsPerPage);
-
-    return this.http.get<HydraCollection<Announcement>>(this.apiUrl, { params, headers: { Accept: 'application/ld+json' } });
-  }
 
   getSearchedAnnouncementsPage(page = 1, itemsPerPage = 10, filters: Partial<SearchFilters> = {},): Observable<HydraCollection<Announcement>> {
     let params = new HttpParams()
@@ -55,11 +59,6 @@ export class AnnouncementService {
     return this.http.get<HydraCollection<Announcement>>(this.apiUrl, { params, headers: { Accept: 'application/ld+json' } });
   }
 
-  getAnnouncement(id: Number): Observable<Announcement> {
-
-    return this.http.get<Announcement>(this.apiUrl + '/' + id, { headers: { 'accept': 'application/json' } });
-
-  }
 
   getAnnouncementLd(id: Number): Observable<Announcement> {
 

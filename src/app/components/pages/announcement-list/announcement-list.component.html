@@ -1,6 +1,5 @@
 <main>
     <app-search-bar class="flex justify-center my-7" (searchResults)="onSearchResults($event)"></app-search-bar>
-
     <!-- liste + carte : colonne dès la tablette, côte à côte seulement en ≥ lg -->
     <section id="search-results" class="flex flex-col lg:flex-row mb-32 mt-14 gap-6">
         <div class="w-full lg:w-7/12">
@@ -17,11 +16,9 @@
                 <button class="main-button" (click)="goNext()">next</button>
             </div>
         </div>
-
         <app-results-map class="w-full lg:w-5/12 self-stretch md:h-[50vh] lg:h-auto" [announcements]="announcements">
         </app-results-map>
     </section>
-
     <section id="faq" class="mt-14">
         <h2 class="text-center my-7">Foire aux Questions</h2>
         <ul class="p-7">
