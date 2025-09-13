@@ -9,11 +9,11 @@ import User from '../../models/user.interface';
 export class AuthService {
 
   private userService: UserService = inject(UserService);
-  private router: Router = inject(Router); // Pour la redirection
+  private router: Router = inject(Router);
   user :User |null = null;
   roles : string[] = []; 
   isAuthenticated = false;
-
+  
   constructor() {
     this.verifyAuth();
   }
@@ -32,17 +32,14 @@ export class AuthService {
         next: (data) => {
           this.user = data;
           this.roles = data.roles || [];
-          console.log(this.roles);
           if (redirectRoute) {
             this.router.navigateByUrl(redirectRoute);
           }
         },
         error: (error) => {
           console.log(error);
-          console.log("Token expiré ou invalide");
           this.logout();
         },
-
       });
     }
   }
