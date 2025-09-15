@@ -11,6 +11,9 @@
     --color-secondary-card: #d8d8d8;
     --color-text: #282828;
     --color-background: #f6f6f6;
+    --swiper-theme-color: var(--color-primary);
+    --swiper-navigation-color: var(--color-primary);
+    --swiper-pagination-color: var(--color-primary);
 
 }
 
@@ -19,8 +22,8 @@ body {
     background-color: var(--color-background);
 }
 
-.main-nav{
-    background-color: var(--color-background);    
+.main-nav {
+    background-color: var(--color-background);
     border-bottom: 2px solid #064749;
 }
 
@@ -182,10 +185,10 @@ footer {
         align-items: center !important;
         justify-content: center !important;
         background-color: var(--color-secondary);
-            position: fixed !important;
-                bottom: 0;
-                left: 0;
-                right: 0;
+        position: fixed !important;
+        bottom: 0;
+        left: 0;
+        right: 0;
     }
 
     .nav-secondary>ul {
@@ -203,12 +206,12 @@ footer {
         padding-bottom: 0.5rem !important;
     }
 
-    .menu{
+    .menu {
         position: fixed;
-            z-index: 40;
-            left: 0;
-            right: 0;
-            bottom: 80px;
+        z-index: 40;
+        left: 0;
+        right: 0;
+        bottom: 80px;
     }
 }
 
