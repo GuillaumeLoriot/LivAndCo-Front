@@ -104,7 +104,6 @@ export class ReservationService {
     });
   }
 
-
   // Méthode pour transformer une Date en chaîne "YYYY-MM-DD" en heure locale
   private formatDateYMD(date: Date): string {
     const year = date.getFullYear();
@@ -114,5 +113,4 @@ export class ReservationService {
 
     return year + '-' + month + '-' + day;
   }
-
 }
