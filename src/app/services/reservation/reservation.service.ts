@@ -16,13 +16,11 @@ export class ReservationService {
   reservationId: Number | null = null;
   today: string = this.formatDateYMD(new Date());
 
-
   getReservations(): Observable<Reservation[]> {
     return this.http.get<Reservation[]>(this.apiUrl, { headers: { 'accept': 'application/json' } });
   }
 
   getReservation(reservationId: Number): Observable<Reservation> {
-
     return this.http.get<Reservation>(this.apiUrl + '/' + reservationId, {
       headers: { 'accept': 'application/json' },
       context: enableAuthContext(),
@@ -31,7 +29,6 @@ export class ReservationService {
 
   // Réservations en attente de validation par le owner de l'annonce
   getReservationRequests(userId: number): Observable<Reservation[]> {
-
     const params = new HttpParams()
       .set('announcement.accomodation.owner.id', String(userId))
       .set('status', 'pending');
@@ -44,14 +41,12 @@ export class ReservationService {
     });
   }
 
-
   createReservation(reservation: { startDate: string; duration: number; announcement: string }): Observable<Reservation> {
     return this.http.post<Reservation>(this.apiUrl, reservation, {
       headers: { 'accept': 'application/json' },
       context: enableAuthContext(),
     });
   }
-
 
   confirmReservation(id: number, changes: Partial<Reservation>): Observable<Reservation> {
     return this.http.patch<Reservation>(this.apiUrl + '/' + id, changes, {
@@ -65,7 +60,6 @@ export class ReservationService {
 
   // Réservations en cours pour un user donné
   getOngoingUserReservations(userId: number): Observable<Reservation[]> {
-
     const params = new HttpParams()
       .set('user.id', String(userId))
       .set('startDate[before]', this.today)
@@ -82,7 +76,6 @@ export class ReservationService {
 
   // Réservations à venir pour un user donné
   getUpcomingUserReservations(userId: number): Observable<Reservation[]> {
-
     const params = new HttpParams()
       .set('user.id', String(userId))
       .set('startDate[strictly_after]', this.today)
@@ -96,10 +89,8 @@ export class ReservationService {
     });
   }
 
-
   // Réservations passées pour un user donné
   getPastUserReservations(userId: number): Observable<Reservation[]> {
-
     const params = new HttpParams()
       .set('user.id', String(userId))
       .set('endDate[strictly_before]', this.today)
