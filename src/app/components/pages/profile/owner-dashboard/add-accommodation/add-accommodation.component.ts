@@ -75,8 +75,7 @@ export class AddAccommodationComponent implements OnInit {
         this.errorMessage = 'Choisissez une adresse précise dans la liste pour valider.';
         return;
       }
-
-      // je merge les valeurs du form avec le les conveniences
+      // je merge les valeurs du form avec les conveniences
       const accomodation = {
         ...this.accomodationForm.value,
         conveniences: this.selectedConveniences,
@@ -151,7 +150,7 @@ export class AddAccommodationComponent implements OnInit {
   // ----------------METHODES DE SUGGESTION D'ADRESSES DANS LE FORMULAIRE----------------------------------
 
 
-  // Déclenche l’autocomplete de la commune à partir de la saisie (ville ou code postal) si la saisie fais plus de 2 caractères.
+  // Déclenche l’autocomplete de la commune à partir de la saisie si la saisie fais plus de 2 caractères.
   onCityInput() {
 
     // j'écoute les changements de valeur de l'input city dans le form
@@ -160,7 +159,6 @@ export class AddAccommodationComponent implements OnInit {
       this.citySuggestions = [];
       return;
     }
-
     this.geocodingService.searchMunicipalities(value, 5).subscribe((features) => {
       this.citySuggestions = features;
     });

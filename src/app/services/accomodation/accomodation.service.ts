@@ -16,6 +16,14 @@ export class AccomodationService {
   private http = inject(HttpClient);
   id: Number | null = null;
 
+  postAccomodation(accomodation: Accomodation): Observable<Accomodation> {
+    return this.http.post<Accomodation>(this.apiUrl, accomodation, {
+      headers: { 'accept': 'application/json' },
+      // Permet de dire qu'il faut que l'interceptor ajoute le token pour cette requète
+      context: enableAuthContext(),
+    });
+  }
+  
   
   // Récupère les logements appartenants au userId transmis en paramètre
   getAccomodations(userId: number): Observable<Accomodation[]> {
@@ -30,12 +38,5 @@ export class AccomodationService {
       context: enableAuthContext(),
     });
   }
-
-    postAccomodation(accomodation: Accomodation): Observable<Accomodation> {
-        return this.http.post<Accomodation>(this.apiUrl, accomodation, {
-          headers: { 'accept': 'application/json' },
-          context: enableAuthContext(),
-        });
-      }
 
 }

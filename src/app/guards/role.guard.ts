@@ -13,7 +13,7 @@ export class RoleGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot): boolean {
   
     const requiredRoles = route.data['roles'] as string[]; // Lis les roles nécéssaires défini dans appRoutes
-    const userRoles = this.authService.roles; // Récupère les role que possède le user
+    const userRoles = this.authService.roles; // Récupère les roles que possède le user
 
     // Vérifie si l'utilisateur a au moins un des rôles requis
     const hasRequiredRole = requiredRoles.some(role =>

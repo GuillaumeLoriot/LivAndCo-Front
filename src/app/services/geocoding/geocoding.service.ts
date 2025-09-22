@@ -12,24 +12,18 @@ export class GeocodingService {
   private http = inject(HttpClient);
   private url = 'https://api-adresse.data.gouv.fr/search/';
 
-
   constructor() { }
 
-
+  // Méthode pour rechercher d'une ville, construite en fonction de la structure de l'API
   searchMunicipalities(query: string, limit = 5): Observable<BanFeature[]> {
     const params = new HttpParams()
       .set('q', query)
       .set('limit', String(limit))
       .set('autocomplete', '1')
       .set('type', 'municipality');
-    // J'envoie la requête HTTP et, grâce à pipe, j'applique map pour récupérer uniquement response.features
-    // (ou un tableau vide si absent) afin que l’appelant reçoive directement une liste de suggestions.
     return this.http.get<BanResponse>(this.url, { params })
       .pipe(map((response) => response.features ?? []));
   }
-
-
-
 
   // Recherche de rues dans une commune (filtrage par citycode ou postcode)
   searchStreets(query: string, citycode?: string, postcode?: string, limit = 5): Observable<BanFeature[]> {
@@ -46,8 +40,6 @@ export class GeocodingService {
     return this.http.get<BanResponse>(this.url, { params })
       .pipe(map((response) => response.features ?? []));
   }
-
-
 
   // Recherche d’adresses précises (ex. "12 rue …"), filtrée par commune si possible
   searchAddress(query: string, citycode?: string, postcode?: string, limit = 5): Observable<BanFeature[]> {

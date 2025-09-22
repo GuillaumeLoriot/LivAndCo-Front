@@ -23,7 +23,7 @@ export class RandomAnnouncementsSliderComponent implements OnInit {
 
   // Pagination hydra
   page = 1;
-  itemsPerPage = 12;
+  itemsPerPage = 8;
   totalItems = 0;
 
 ngOnInit(): void {
