@@ -1,1 +1,100 @@
-<p>help works!</p>
+
+<main class="mx-auto max-w-5xl px-4 lg:px-6 py-10 bg-[var(--color-background)] text-[var(--color-text)]">
+    <header class="mb-8">
+        <h1 class="small-h1-title leading-tight">Foire aux questions</h1>
+        <p class="mt-2 text-neutral-700">Retrouvez ici les réponses aux questions courantes sur Liv&Co.</p>
+    </header>
+
+    <section aria-labelledby="faq-general" class="mb-10">
+        <h2 id="faq-general" class="small-h2-title mb-4">Général</h2>
+
+        <dl class="space-y-6">
+            <div class="rounded-md border bg-white p-4" style="border-color: var(--color-primary);">
+                <dt class="font-semibold text-base">Comment créer un compte Liv&Co ?</dt>
+                <dd class="mt-2 text-neutral-800">
+                    Cliquez sur <strong>Créer un compte</strong>, renseignez votre e-mail et un mot de passe,
+                    puis validez l'e-mail de confirmation. Vous pourrez compléter votre profil ensuite.
+                </dd>
+            </div>
+
+            <div class="rounded-md border bg-white p-4" style="border-color: var(--color-primary);">
+                <dt class="font-semibold text-base">Comment modifier mes informations personnelles ?</dt>
+                <dd class="mt-2 text-neutral-800">
+                    Depuis votre <em>Espace profil</em>, ouvrez <strong>Informations</strong>, mettez à jour et
+                    enregistrez.
+                    Vos données sont traitées conformément à notre politique de confidentialité.
+                </dd>
+            </div>
+        </dl>
+    </section>
+
+    <section aria-labelledby="faq-annonces" class="mb-10">
+        <h2 id="faq-annonces" class="small-h2-title mb-4">Annonces &amp; messagerie</h2>
+
+        <dl class="space-y-6">
+            <div class="rounded-md border bg-white p-4" style="border-color: var(--color-primary);">
+                <dt class="font-semibold text-base">Puis-je contacter un propriétaire avant de réserver ?</dt>
+                <dd class="mt-2 text-neutral-800">
+                    Oui. Utilisez la <strong>messagerie intégrée</strong> depuis la page de l'annonce.
+                    Les échanges restent centralisés dans votre espace profil.
+                </dd>
+            </div>
+
+            <div class="rounded-md border bg-white p-4" style="border-color: var(--color-primary);">
+                <dt class="font-semibold text-base">Les photos et descriptions sont-elles vérifiées ?</dt>
+                <dd class="mt-2 text-neutral-800">
+                    Les propriétaires s'engagent à publier des informations exactes. Notre équipe effectue des contrôles
+                    et vous pouvez signaler toute incohérence.
+                </dd>
+            </div>
+        </dl>
+    </section>
+
+    <section aria-labelledby="faq-reservations" class="mb-10">
+        <h2 id="faq-reservations" class="small-h2-title mb-4">Réservations &amp; paiements</h2>
+
+        <dl class="space-y-6">
+            <div class="rounded-md border bg-white p-4" style="border-color: var(--color-primary);">
+                <dt class="font-semibold text-base">Comment se passe le paiement d'une réservation ?</dt>
+                <dd class="mt-2 text-neutral-800">
+                    Le paiement est <strong>sécurisé</strong>. Le montant et les échéances sont affichés avant
+                    validation.
+                    Un reçu est disponible dans votre espace profil.
+                </dd>
+            </div>
+
+            <div class="rounded-md border bg-white p-4" style="border-color: var(--color-primary);">
+                <dt class="font-semibold text-base">Que faire en cas d'annulation ?</dt>
+                <dd class="mt-2 text-neutral-800">
+                    Les conditions d'annulation sont précisées sur chaque annonce. Vous pouvez annuler depuis votre
+                    réservation ;
+                    les remboursements suivent la politique affichée.
+                </dd>
+            </div>
+        </dl>
+    </section>
+
+    <section aria-labelledby="faq-securite" class="mb-2">
+        <h2 id="faq-securite" class="small-h2-title mb-4">Sécurité &amp; données</h2>
+
+        <dl class="space-y-6">
+            <div class="rounded-md border bg-white p-4" style="border-color: var(--color-primary);">
+                <dt class="font-semibold text-base">Comment Liv&Co protège mes données ?</dt>
+                <dd class="mt-2 text-neutral-800">
+                    Vos données sont chiffrées en transit et au repos. Vous pouvez exercer vos droits RGPD
+                    (accès, rectification, suppression) via la page <a [routerLink]="['/privacy-policy']" class="underline"
+                        style="color: var(--color-primary);">Confidentialité</a>.
+                </dd>
+            </div>
+
+            <div class="rounded-md border bg-white p-4" style="border-color: var(--color-primary);">
+                <dt class="font-semibold text-base">Comment signaler un abus ou un problème de sécurité ?</dt>
+                <dd class="mt-2 text-neutral-800">
+                    Contactez-nous via le <a [routerLink]="['/contact']" class="underline"
+                        style="color: var(--color-primary);">formulaire de contact</a>
+                    avec un maximum de détails (URL, captures, horodatage).
+                </dd>
+            </div>
+        </dl>
+    </section>
+</main>

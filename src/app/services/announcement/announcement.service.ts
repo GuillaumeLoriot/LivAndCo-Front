@@ -18,7 +18,7 @@ export class AnnouncementService {
   private http = inject(HttpClient);
   id: Number | null = null;
 
-  getAnnouncementsPage(page = 1, itemsPerPage = 10): Observable<HydraCollection<Announcement>> {
+  getAnnouncementsPage(page = 1, itemsPerPage = 6): Observable<HydraCollection<Announcement>> {
     const params = new HttpParams()
       .set('page', page)
       .set('itemsPerPage', itemsPerPage);

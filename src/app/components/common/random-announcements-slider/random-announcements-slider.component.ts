@@ -6,11 +6,12 @@ import { AnnouncementService } from '../../../services/announcement/announcement
 import { RatingComponent } from "../rating/rating.component";
 import { AverageMonthlyPipe } from '../../../pipes/average-monthly.pipe';
 import { LoadingComponent } from '../loading/loading.component';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-random-announcements-slider',
   standalone: true,
-  imports: [CommonModule, RatingComponent, AverageMonthlyPipe, LoadingComponent],
+  imports: [CommonModule, RatingComponent, AverageMonthlyPipe, LoadingComponent, RouterLink],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './random-announcements-slider.component.html',
   styleUrl: './random-announcements-slider.component.scss'
@@ -23,7 +24,7 @@ export class RandomAnnouncementsSliderComponent implements OnInit {
 
   // Pagination hydra
   page = 1;
-  itemsPerPage = 8;
+  itemsPerPage = 7;
   totalItems = 0;
 
 ngOnInit(): void {

@@ -1,23 +1,22 @@
 <main class="max-w-4xl mx-auto px-6 py-10">
     <h1 class="small-h1-title mb-8">Ajouter un logement</h1>
 
-    <section aria-labelledby="add-accommodation-form">
-        <h2 id="add-accommodation-form" class="sr-only">Formulaire d'ajout de logement</h2>
+    <section id="add-accomodation-form">
 
         @if (isLoading) {
         <app-loading></app-loading>
         }
         @if (success) {
-        <p class="text-green-700 bg-green-100 rounded-md px-3 py-5 my-5 text-center" aria-live="polite">
+        <p class="text-green-700 bg-green-100 rounded-md px-3 py-5 my-5 text-center" role="status">
             Logement créé avec succès. Retrouvez le dans votre espace propriétaire
         </p>
         }
         @if (error) {
-        <p class="text-red-700 bg-red-200 rounded-md px-3 py-5 my-5 text-center" aria-live="polite">
+        <p class="text-red-700 bg-red-200 rounded-md px-3 py-5 my-5 text-center" role="alert">
             Une erreur est survenue lors de la création du logement. Veuillez réessayer.
         </p>
         }
-        <form [formGroup]="accomodationForm" (ngSubmit)="onSubmit()" class="flex flex-col gap-6">
+        <form [formGroup]="accomodationForm" (ngSubmit)="onSubmit()" class="flex flex-col gap-6" aria-label="Formulaire d'ajout de logement">
             <!-- Code postal + Ville -->
             <div class="flex flex-col md:flex-row gap-6">
                 <div class="flex flex-col flex-1">
@@ -27,7 +26,7 @@
                         class="bg-[var(--color-background)] border-2 border-[var(--color-primary)] rounded px-3 py-2" />
                     <app-form-control-error [field]="accomodationForm.get('city')"></app-form-control-error>
                     
-                    <!-- Suggestions ville/CP -->
+                    <!-- Suggestions ville -->
                     @if (citySuggestions.length) {
                     <ul class="mt-2 border rounded max-h-60 overflow-auto bg-white">
                         @for (suggestion of citySuggestions; track suggestion.properties?.id) {

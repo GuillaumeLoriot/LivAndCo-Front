@@ -28,7 +28,7 @@ export class AnnouncementListComponent implements OnInit {
 
   // Pagination hydra
   page = 1;
-  itemsPerPage = 10;
+  itemsPerPage = 6;
   total = 0;
 
   hasNext = false;
