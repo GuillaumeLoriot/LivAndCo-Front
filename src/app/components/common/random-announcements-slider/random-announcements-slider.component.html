@@ -10,7 +10,7 @@
       '640':  { slidesPerView: 2, spaceBetween: 20 },
       '1024': { slidesPerView: 3, spaceBetween: 24 },
       '1280': { slidesPerView: 5, spaceBetween: 28 }
-    }" navigation="true" autoplay="true" loop="true" role="list" aria-label="Liste défilante d'annonces"
+    }" navigation="true" loop="true" role="list" aria-label="Liste défilante d'annonces"
         class="w-[95%]">
         @for (announcement of announcements | slice:0:10; track announcement.id) {
         <swiper-slide class="mb-16 p-4 flex justify-center">
