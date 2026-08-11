@@ -2,6 +2,32 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.20.
 
+LivAndCo est une application web de gestion et de réservation dédiée au coliving. Elle permet aux utilisateurs de rechercher des logements, de consulter leurs disponibilités et d'effectuer des réservations.
+
+L'application propose également un espace dédié aux propriétaires pour gérer leurs logements et leurs réservations, ainsi qu'une interface d'administration permettant de superviser l'ensemble de la plateforme.
+
+Le projet a été développé dans le cadre de ma formation de **Développeur Web et Web Mobile**, avec une architecture séparant le frontend et l'API.
+
+### Fonctionnalités principales
+
+* Recherche et consultation des logements
+* Affichage des logements sur une carte
+* Gestion des disponibilités et réservations
+* Gestion des logements côté propriétaire
+* Messagerie entre utilisateurs
+* Calendrier des réservations
+* Interface d'administration
+* API REST
+
+### Technologies utilisées
+
+* **Backend :** Symfony 6.4, API Platform, Doctrine ORM
+* **Frontend :** Angular 18, Tailwind CSS
+* **Base de données :** MySQL
+* **Cartographie :** MapLibre
+* **Administration :** EasyAdmin
+
+
 ## Application Structure
 
 ```text
